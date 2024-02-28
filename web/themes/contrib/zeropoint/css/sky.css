@@ -1,0 +1,57 @@
+/*** SKY STYLE ***/
+
+#top_bg, .themed-block {
+	background-color: #D3D8E0;
+	background-image: -webkit-linear-gradient(bottom, #D3D8E0 0%, #fff 180px);
+	background-image: linear-gradient(to top, #D3D8E0 0%, #fff 180px);
+}
+#section2 {
+	background-color: #fff;
+	background-image: -webkit-linear-gradient(bottom, #fff 0%, #D3D8E0 150px);
+	background-image: linear-gradient(to top, #fff 0%, #D3D8E0 150px);
+}
+.region-highlighted {
+	border: solid 1px #2f71a2;
+}
+a, a:link, h1, h2, h3, .block-title, #name-and-slogan a {
+	color: #2f71a2;
+}
+a:hover, a:active, a.is-active, ul.menu a.is-active {
+	color: #000;
+}
+.pure-menu-link {
+	color: #fff !important;
+	text-shadow: 0 1px #000;
+	background: #2f71a2;
+}
+.pure-menu-link:hover, .pure-menu-link:focus {
+	background: #408EC8;
+}
+.pure-menu-children .pure-menu-link {
+	background: #2f71a2;
+	border: 1px solid;
+	border-color: #3c90bb #176992 #176992 #3c90bb;
+}
+.pure-menu-children a:hover, .pure-menu-children a:focus {
+	background: #408EC8;
+}
+.menu-toggle {
+	background: #F4F2EE;
+}
+.menu-toggle .bars {
+	background: #2f71a2;
+}
+
+@media screen and (max-width: 48em) {
+	.pure-menu-link, .pure-menu-children,
+	.pure-menu-children .pure-menu-link {
+		color: #2f71a2 !important;
+		text-shadow: none;
+		background: none;
+		border: none;
+	}
+	.pure-menu-link:hover, .pure-menu-link:focus,
+	.pure-menu-children a:hover, .pure-menu-children a:focus {
+		color: #333 !important;
+		background: #F4F2EE;
+}

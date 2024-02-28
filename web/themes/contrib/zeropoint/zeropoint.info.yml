@@ -1,0 +1,75 @@
+name: '0 Point'
+description: 'An advanced responsive mobile-first theme with a highly customized and feature-rich design that goes beyond the basic look and feel of a typical Drupal website. It uses <a href="https://purecss.io/">Yahoo Pure.css</a>, a ridiculously tiny yet powerful responsive CSS framework. <br /> <em>Developed by <a href="https://www.radut.com/">Dr. Radut</a>.</em>'
+
+type: theme
+base theme: false
+package: Zeropoint
+core_version_requirement: ^8.9 || ^9.3 || ^10
+
+# version: VERSION
+
+# Logo
+logo: logo.png
+
+# Libraries
+libraries:
+  - zeropoint/base
+  - zeropoint/messages
+  - zeropoint/zeropoint-style
+  - zeropoint/zeropoint-custom
+  - core/normalize
+
+libraries-extend:
+  user/drupal.user:
+    - zeropoint/user
+  core/drupal.dropbutton:
+    - zeropoint/dropbutton
+  core/drupal.dialog:
+    - zeropoint/dialog
+  core/drupal.progress:
+    - zeropoint/progress
+  file/drupal.file:
+    - zeropoint/file
+  media/media_embed_ckeditor_theme:
+    - zeropoint/media_embed_ckeditor_theme
+  media_library/view:
+    - zeropoint/media_library
+  media_library/widget:
+    - zeropoint/media_library
+
+ckeditor_stylesheets:
+  - css/components/media-embed-error.css
+
+ckeditor5-stylesheets: false
+
+# Regions
+regions:
+  page_top: 'Page top'
+  topreg: 'Top region'
+  header: 'Header'
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  breadcrumb: Breadcrumb
+  user1: 'User 1'
+  user2: 'User 2'
+  user3: 'User 3'
+  user4: 'User 4'
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  user5: 'User 5'
+  user6: 'User 6'
+  user7: 'User 7'
+  user8: 'User 8'
+  tertiary_menu: 'Tertiary menu'
+  footer: 'Footer'
+  page_bottom: 'Page bottom'
+
+block_default_region: 'content'
+
+# Information added by Drupal.org packaging script on 2024-02-23
+version: '8.x-1.16'
+project: 'zeropoint'
+datestamp: 1708659350

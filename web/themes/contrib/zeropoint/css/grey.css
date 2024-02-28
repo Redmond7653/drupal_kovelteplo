@@ -1,0 +1,60 @@
+/*** GREY STYLE ***/
+
+#top_bg, .themed-block {
+	background-color: #efefef;
+	background-image: -webkit-linear-gradient(bottom, #efefef 0%, #fff 180px);
+	background-image: linear-gradient(to top, #efefef 0%, #fff 180px);
+}
+#section2 {
+	background-color: #fff;
+	background-image: -webkit-linear-gradient(bottom, #fff 0%, #efefef 150px);
+	background-image: linear-gradient(to top, #fff 0%, #efefef 150px);
+}
+.region-highlighted {
+	border: solid 1px #ddd;
+}
+a, a:link, h1, h2, h3, .block-title {
+	color: #666;
+}
+a:hover, a:active, a.is-active, ul.menu a.is-active {
+	color: #535353;
+}
+.pure-menu-link {
+	color: #fff !important;
+	text-shadow: 0 1px #000;
+	background: #666;
+}
+.pure-menu-link:hover, .pure-menu-link:focus {
+	color: #444 !important;
+	background: #999;
+}
+.pure-menu-children .pure-menu-link {
+	background: #666;
+	border: 1px solid;
+	border-color: #7D7D7D #525252 #525252 #7D7D7D;
+}
+.pure-menu-children a:hover, .pure-menu-children a:focus {
+	color: #444 !important;
+	background: #999;
+}
+.menu-toggle {
+	background: #e6e6e6;
+}
+.menu-toggle .bars {
+	background: #666;
+}
+
+@media screen and (max-width: 48em) {
+	.pure-menu-link, .pure-menu-children,
+	.pure-menu-children .pure-menu-link {
+		color: #555 !important;
+		text-shadow: none;
+		background: none;
+		border: none;
+	}
+	.pure-menu-link:hover, .pure-menu-link:focus,
+	.pure-menu-children a:hover, .pure-menu-children a:focus {
+		color: #444 !important;
+		background: #e6e6e6;
+	}
+}

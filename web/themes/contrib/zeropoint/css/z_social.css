@@ -1,0 +1,36 @@
+/* Social links */
+
+#soclinks {
+	padding: 5px;
+}
+#soclinks a, #soclinks a:hover, #soclinks a:focus {
+	border-bottom: none;
+	text-decoration: none;
+}
+#soclinks .sociallinks {
+	background: url(../images/_sprites_social.png) no-repeat 0 99px;
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	margin: 0;
+	padding: 0;
+}
+.sociallinks:hover {
+	opacity: 0.5;
+}
+
+#soclinks .drupal { background-position: 0 0; }
+#soclinks .facebook { background-position: 0 -42px; }
+#soclinks .flickr { background-position: 0 -84px; }
+#soclinks .googleplus { background-position: 0 -126px; }
+#soclinks .instagram { background-position: 0 -168px; }
+#soclinks .linkedin { background-position: 0 -210px; }
+#soclinks .pinterest { background-position: 0 -252px; }
+#soclinks .rss { background-position: 0 -294px; }
+#soclinks .skype { background-position: 0 -336px; }
+#soclinks .telegram { background-position: 0 -378px; }
+#soclinks .tumblr { background-position: 0 -420px; }
+/*#soclinks .twitter { background-position: 0 -462px; }*/
+#soclinks .twitter { background: url(../images/social/twitter_xxx_32.png) no-repeat 0 0; }
+#soclinks .vimeo { background-position: 0 -504px; }
+#soclinks .youtube { background-position: 0 -546px; }

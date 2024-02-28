@@ -1,0 +1,57 @@
+/*** SANGUE STYLE ***/
+
+#top_bg, .themed-block {
+	background-color: #D8E0D8;
+	background-image: -webkit-linear-gradient(bottom, #D8E0D8 0%, #fff 180px);
+	background-image: linear-gradient(to top, #D8E0D8 0%, #fff 180px);
+}
+#section2 {
+	background-color: #fff;
+	background-image: -webkit-linear-gradient(bottom, #fff 0%, #D8E0D8 150px);
+	background-image: linear-gradient(to top, #fff 0%, #D8E0D8 150px);
+}
+.region-highlighted {
+	border: solid 1px #ddd;
+}
+a, a:link, h1, h2, h3, .block-title, #name-and-slogan a {
+	color: #900;
+}
+a:hover, a:active, a.is-active, ul.menu a.is-active {
+	color: #000;
+}
+#footer a:hover, #menu2 a:hover {
+	color: #900;
+}
+.pure-menu-link {
+	color: #fff !important;
+	text-shadow: 1px 1px #000;
+	background: #900;
+}
+.pure-menu-link:hover, .pure-menu-link:focus {
+	background: #ca0000;
+}
+.pure-menu-children .pure-menu-link {
+	background: #ca0000;
+	border: 1px solid;
+	border-color: #df0000 #900 #900 #df0000;
+}
+.pure-menu-children a:hover, .pure-menu-children a:focus {
+	background: #df0000;
+}
+.menu-toggle .bars {
+	background: #900;
+}
+
+@media screen and (max-width: 48em) {
+	.pure-menu-link, .pure-menu-children,
+	.pure-menu-children .pure-menu-link {
+		color: #900 !important;
+		text-shadow: none;
+		background: none;
+		border: none;
+	}
+	.pure-menu-link:hover, .pure-menu-link:focus,
+	.pure-menu-children a:hover, .pure-menu-children a:focus {
+		background: #E6E6E6;
+	}
+}
