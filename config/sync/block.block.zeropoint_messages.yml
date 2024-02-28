@@ -1,0 +1,22 @@
+uuid: 001a46ca-55e4-4fb9-9408-f772044c8e34
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - zeropoint
+_core:
+  default_config_hash: ICnNxKUpMk3fYY_5XXGbpdy-iEWamDbGYFxM1aOOOVo
+id: zeropoint_messages
+theme: zeropoint
+region: help
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

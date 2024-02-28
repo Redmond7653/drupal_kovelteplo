@@ -1,0 +1,22 @@
+uuid: 6f202c3c-c322-4a37-8482-a86f569b69e1
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - zeropoint
+_core:
+  default_config_hash: JnL3SwTtLl_093sPIwsAWhPnx1GFXDOxh8NVJTKaDo4
+id: zeropoint_breadcrumbs
+theme: zeropoint
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

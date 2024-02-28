@@ -23,27 +23,27 @@ class LazyObjectRegistry
     /**
      * @var array<class-string, \ReflectionClass>
      */
-    public static array $classReflectors = [];
+    public static $classReflectors = [];
 
     /**
      * @var array<class-string, array<string, mixed>>
      */
-    public static array $defaultProperties = [];
+    public static $defaultProperties = [];
 
     /**
      * @var array<class-string, list<\Closure>>
      */
-    public static array $classResetters = [];
+    public static $classResetters = [];
 
     /**
      * @var array<class-string, array{get: \Closure, set: \Closure, isset: \Closure, unset: \Closure}>
      */
-    public static array $classAccessors = [];
+    public static $classAccessors = [];
 
     /**
      * @var array<class-string, array{set: bool, isset: bool, unset: bool, clone: bool, serialize: bool, unserialize: bool, sleep: bool, wakeup: bool, destruct: bool, get: int}>
      */
-    public static array $parentMethods = [];
+    public static $parentMethods = [];
 
     public static ?\Closure $noInitializerState = null;
 

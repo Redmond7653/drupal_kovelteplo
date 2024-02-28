@@ -1,0 +1,27 @@
+uuid: 5fb820b3-27ad-4d6e-9247-c84040ce3b77
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - zeropoint
+_core:
+  default_config_hash: FN1SDi4WsD8k4yCqZsbxePZP5Gi5pLiAXOu7jFoJNQY
+id: zeropoint_main_menu
+theme: zeropoint
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: true
+visibility: {  }

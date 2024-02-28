@@ -132,12 +132,12 @@ final class CliCommands extends DrushCommands
         $ignored_commands = [
             'help',
             self::PHP,
-            CliCommands::PHP,
+            'core:cli',
             'php',
-            PhpCommands::EVAL,
+            'php:eval',
             'eval',
             'ev',
-            PhpCommands::SCRIPT,
+            'php:script',
             'scr',
         ];
         $php_keywords = $this->getPhpKeywords();

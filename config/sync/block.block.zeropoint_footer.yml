@@ -1,0 +1,27 @@
+uuid: 3db639bb-3ca8-4056-8b10-b3f7cf14738d
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - zeropoint
+_core:
+  default_config_hash: z643Cfd9-QsYyGwurUVKKT4KI92MK2GZInmS98jPy2o
+id: zeropoint_footer
+theme: zeropoint
+region: footer
+weight: -1
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: Footer
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

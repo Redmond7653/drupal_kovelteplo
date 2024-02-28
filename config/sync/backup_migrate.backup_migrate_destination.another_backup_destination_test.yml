@@ -1,0 +1,9 @@
+uuid: c3769edb-c4da-4c4f-bc05-f92420750f67
+langcode: en
+status: true
+dependencies: {  }
+id: another_backup_destination_test
+label: Another_backup_destination_test
+type: Directory
+config:
+  name: Another_backup_destination_test

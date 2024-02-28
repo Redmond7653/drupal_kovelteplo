@@ -341,8 +341,6 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
             $constructorParameters = $constructor->getParameters();
             $missingConstructorArguments = [];
             $params = [];
-            $unsetKeys = [];
-
             foreach ($constructorParameters as $constructorParameter) {
                 $paramName = $constructorParameter->name;
                 $attributeContext = $this->getAttributeDenormalizationContext($class, $paramName, $context);
@@ -362,37 +360,37 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
                         }
 
                         $params = array_merge($params, $variadicParameters);
-                        $unsetKeys[] = $key;
+                        unset($data[$key]);
                     }
                 } elseif ($allowed && !$ignored && (isset($data[$key]) || \array_key_exists($key, $data))) {
                     $parameterData = $data[$key];
                     if (null === $parameterData && $constructorParameter->allowsNull()) {
-                        $params[$paramName] = null;
-                        $unsetKeys[] = $key;
-
+                        $params[] = null;
+                        // Don't run set for a parameter passed to the constructor
+                        unset($data[$key]);
                         continue;
                     }
 
+                    // Don't run set for a parameter passed to the constructor
                     try {
-                        $params[$paramName] = $this->denormalizeParameter($reflectionClass, $constructorParameter, $paramName, $parameterData, $attributeContext, $format);
+                        $params[] = $this->denormalizeParameter($reflectionClass, $constructorParameter, $paramName, $parameterData, $attributeContext, $format);
                     } catch (NotNormalizableValueException $exception) {
                         if (!isset($context['not_normalizable_value_exceptions'])) {
                             throw $exception;
                         }
 
                         $context['not_normalizable_value_exceptions'][] = $exception;
-                        $params[$paramName] = $parameterData;
+                        $params[] = $parameterData;
                     }
-
-                    $unsetKeys[] = $key;
+                    unset($data[$key]);
                 } elseif (\array_key_exists($key, $context[static::DEFAULT_CONSTRUCTOR_ARGUMENTS][$class] ?? [])) {
-                    $params[$paramName] = $context[static::DEFAULT_CONSTRUCTOR_ARGUMENTS][$class][$key];
+                    $params[] = $context[static::DEFAULT_CONSTRUCTOR_ARGUMENTS][$class][$key];
                 } elseif (\array_key_exists($key, $this->defaultContext[self::DEFAULT_CONSTRUCTOR_ARGUMENTS][$class] ?? [])) {
-                    $params[$paramName] = $this->defaultContext[self::DEFAULT_CONSTRUCTOR_ARGUMENTS][$class][$key];
+                    $params[] = $this->defaultContext[self::DEFAULT_CONSTRUCTOR_ARGUMENTS][$class][$key];
                 } elseif ($constructorParameter->isDefaultValueAvailable()) {
-                    $params[$paramName] = $constructorParameter->getDefaultValue();
+                    $params[] = $constructorParameter->getDefaultValue();
                 } elseif (!($context[self::REQUIRE_ALL_PROPERTIES] ?? $this->defaultContext[self::REQUIRE_ALL_PROPERTIES] ?? false) && $constructorParameter->hasType() && $constructorParameter->getType()->allowsNull()) {
-                    $params[$paramName] = null;
+                    $params[] = null;
                 } else {
                     if (!isset($context['not_normalizable_value_exceptions'])) {
                         $missingConstructorArguments[] = $constructorParameter->name;
@@ -415,25 +413,11 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
             }
 
             if (!$constructor->isConstructor()) {
-                $instance = $constructor->invokeArgs(null, $params);
-
-                // do not set a parameter that has been set in the constructor
-                foreach ($unsetKeys as $key) {
-                    unset($data[$key]);
-                }
-
-                return $instance;
+                return $constructor->invokeArgs(null, $params);
             }
 
             try {
-                $instance = $reflectionClass->newInstanceArgs($params);
-
-                // do not set a parameter that has been set in the constructor
-                foreach ($unsetKeys as $key) {
-                    unset($data[$key]);
-                }
-
-                return $instance;
+                return $reflectionClass->newInstanceArgs($params);
             } catch (\TypeError $e) {
                 if (!isset($context['not_normalizable_value_exceptions'])) {
                     throw $e;
@@ -444,15 +428,6 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
         }
 
         unset($context['has_constructor']);
-
-        if (!$reflectionClass->isInstantiable()) {
-            throw NotNormalizableValueException::createForUnexpectedDataType(
-                sprintf('Failed to create object because the class "%s" is not instantiable.', $class),
-                $data,
-                ['unknown'],
-                $context['deserialization_path'] ?? null
-            );
-        }
 
         return new $class();
     }

@@ -18,12 +18,10 @@ final class BrowseCommands extends DrushCommands implements SiteAliasManagerAwar
     use ExecTrait;
     use SiteAliasManagerAwareTrait;
 
-    const BROWSE = 'browse';
-
     /**
      * Display a link to a given path or open link in a browser.
      */
-    #[CLI\Command(name: self::BROWSE)]
+    #[CLI\Command(name: 'browse')]
     #[CLI\Argument(name: 'path', description: 'Path to open. If omitted, the site front page will be opened.')]
     #[CLI\Option(name: 'browser', description: 'Open the URL in the default browser. Use --no-browser to avoid opening a browser.')]
     #[CLI\Option(name: 'redirect-port', description: 'The port that the web server is redirected to (e.g. when running within a Vagrant environment).')]
@@ -37,7 +35,7 @@ final class BrowseCommands extends DrushCommands implements SiteAliasManagerAwar
         // Redispatch if called against a remote-host so a browser is started on the
         // the *local* machine.
         if ($this->processManager()->hasTransport($aliasRecord)) {
-            $process = $this->processManager()->drush($aliasRecord, self::BROWSE, [$path], Drush::redispatchOptions());
+            $process = $this->processManager()->drush($aliasRecord, 'browse', [$path], Drush::redispatchOptions());
             $process->mustRun();
             $link = $process->getOutput();
         } else {

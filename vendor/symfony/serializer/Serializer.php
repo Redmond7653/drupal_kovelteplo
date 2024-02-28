@@ -193,7 +193,6 @@ class Serializer implements SerializerInterface, ContextAwareNormalizerInterface
 
     /**
      * @throws NotNormalizableValueException
-     * @throws PartialDenormalizationException Occurs when one or more properties of $type fails to denormalize
      */
     public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
     {
@@ -225,20 +224,8 @@ class Serializer implements SerializerInterface, ContextAwareNormalizerInterface
             $context['not_normalizable_value_exceptions'] = [];
             $errors = &$context['not_normalizable_value_exceptions'];
             $denormalized = $normalizer->denormalize($data, $type, $format, $context);
-
             if ($errors) {
-                // merge errors so that one path has only one error
-                $uniqueErrors = [];
-                foreach ($errors as $error) {
-                    if (null === $error->getPath()) {
-                        $uniqueErrors[] = $error;
-                        continue;
-                    }
-
-                    $uniqueErrors[$error->getPath()] = $uniqueErrors[$error->getPath()] ?? $error;
-                }
-
-                throw new PartialDenormalizationException($denormalized, array_values($uniqueErrors));
+                throw new PartialDenormalizationException($denormalized, $errors);
             }
 
             return $denormalized;

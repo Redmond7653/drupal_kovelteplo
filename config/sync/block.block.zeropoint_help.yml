@@ -1,0 +1,22 @@
+uuid: bab77ff6-c8b7-477b-8c5f-00ef0328d1e9
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - zeropoint
+_core:
+  default_config_hash: 7eURKoS48EmL4awoYszkoDCF9FCZl6EEzi4cvRKAssU
+id: zeropoint_help
+theme: zeropoint
+region: help
+weight: -2
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }
