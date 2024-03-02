@@ -16,9 +16,11 @@
     ],
     "require": {
         "composer/installers": "^2.0",
+        "drupal/admin_toolbar": "^3.4",
         "drupal/core-composer-scaffold": "^10.1",
         "drupal/core-project-message": "^10.1",
         "drupal/core-recommended": "^10.1",
+        "drupal/tara": "^10.1",
         "drupal/zeropoint": "^1.16",
         "drush/drush": "^12.4"
     },
@@ -93,5 +95,9 @@
                 "      composer remove drupal/core-project-message"
             ]
         }
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "drupal/coder": "^8.3"
     }
 }

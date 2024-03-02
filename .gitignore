@@ -21,6 +21,11 @@
 /web/sites/*/tmp
 /web/sites/*/cache
 
+/web/modules/contrib
+/web/themes/contrib
+/vendor
+.idea
+
 # Ignore drupal core (if not versioning drupal sources)
 /web/vendor
 /web/core
@@ -51,7 +56,7 @@
 /web/web.config
 
 # Ignore vendor dependencies and scripts
-/vendor
+/vendor/
 /composer.phar
 /composer
 /robo.phar
