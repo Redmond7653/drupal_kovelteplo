@@ -1,0 +1,22 @@
+uuid: fa4c1757-842a-4841-a6d1-f367654d743b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - kovelteplo
+_core:
+  default_config_hash: z23qJA7Lc9jbCFC_1e5Mcu3aHLaSyhyqAnZon1gHGtw
+id: kovelteplo_content
+theme: kovelteplo
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

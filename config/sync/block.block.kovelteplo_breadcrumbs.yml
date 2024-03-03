@@ -1,0 +1,22 @@
+uuid: a8ebba31-f7be-47d1-97a4-d1795383b9b3
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - kovelteplo
+_core:
+  default_config_hash: JnL3SwTtLl_093sPIwsAWhPnx1GFXDOxh8NVJTKaDo4
+id: kovelteplo_breadcrumbs
+theme: kovelteplo
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

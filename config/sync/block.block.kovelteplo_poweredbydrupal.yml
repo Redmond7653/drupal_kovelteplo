@@ -1,0 +1,22 @@
+uuid: 6fdb04a7-f056-4b7f-9aee-512d10226dfd
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - kovelteplo
+_core:
+  default_config_hash: 8l0IFDRY_oax90uwLJx6biqL5GrimVAWE_Tjs2jYjQE
+id: kovelteplo_poweredbydrupal
+theme: kovelteplo
+region: header_top
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

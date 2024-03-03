@@ -1,0 +1,22 @@
+uuid: d5850eb3-4705-49c3-a1e1-ae25985c4db9
+langcode: en
+status: true
+dependencies:
+  theme:
+    - kovelteplo
+_core:
+  default_config_hash: 0sXDOYGUu85FvekYjhiwGyZePogle2jeDjBQjW1rjgA
+id: kovelteplo_local_tasks
+theme: kovelteplo
+region: content
+weight: -3
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

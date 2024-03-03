@@ -1,0 +1,27 @@
+uuid: 3ac9334e-b3a8-4d46-800b-a291ce451d28
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - kovelteplo
+_core:
+  default_config_hash: oDvPaNd-Wegf43UKnb1lvavag8RD3YEEPfNpM_k9klc
+id: kovelteplo_mainnavigation
+theme: kovelteplo
+region: header_top
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

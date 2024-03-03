@@ -1,0 +1,27 @@
+uuid: 3c85591c-2891-4c9c-b1a5-784e8cc61249
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.tools
+  module:
+    - system
+  theme:
+    - kovelteplo
+_core:
+  default_config_hash: 8r6ergM2oNHwrOS87xT9fCCEFkmeQcnCxZGkUB89y-Q
+id: kovelteplo_tools
+theme: kovelteplo
+region: sidebar_second
+weight: 1
+provider: null
+plugin: 'system_menu_block:tools'
+settings:
+  id: 'system_menu_block:tools'
+  label: Tools
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

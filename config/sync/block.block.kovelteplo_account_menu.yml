@@ -1,0 +1,27 @@
+uuid: 9629433f-6bea-434e-a36a-ebcaf84a02bf
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - kovelteplo
+_core:
+  default_config_hash: EyZWtiwCnqkUsiI4kIzUKAxxwfNIJMpqCLRZZtHYZAo
+id: kovelteplo_account_menu
+theme: kovelteplo
+region: header_top
+weight: 2
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: 0eeba677-884b-4b3b-94e7-efbf00c69856
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - kovelteplo
+_core:
+  default_config_hash: ICnNxKUpMk3fYY_5XXGbpdy-iEWamDbGYFxM1aOOOVo
+id: kovelteplo_messages
+theme: kovelteplo
+region: header_top
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,23 @@
+uuid: 31721bb2-ea7f-4aaa-a5fc-221b3ce19455
+langcode: en
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - kovelteplo
+_core:
+  default_config_hash: _7HA0XRMHcw_l-BvpqBhJ-4kTXjcH7uLaEe0C0LTYr8
+id: kovelteplo_search
+theme: kovelteplo
+region: header_top
+weight: 0
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  label_display: '0'
+  provider: search
+  page_id: node_search
+visibility: {  }

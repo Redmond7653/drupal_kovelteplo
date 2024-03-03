@@ -1,7 +1,5 @@
 _core:
   default_config_hash: HRXfy-tyME4siMWnzPLXQ3M4c5JDvPJobW6ZrwOx5GI
-favicon:
-  use_default: true
 features:
   comment_user_picture: true
   comment_user_verification: true
@@ -10,32 +8,29 @@ features:
   name: true
   node_user_picture: true
   slogan: true
-logo:
-  path: 'public://Koveltelpo_logo_0.png'
-  use_default: false
 css_zone: 0
 wrapper: 85em
-first_width: '5'
-second_width: '5'
-mobile_blocks: '2'
-style: '4'
-fntfam: '0'
-fntsize: '0'
-themedblocks: '0'
-blockicons: '2'
-navpos: '1'
-searchimg: '1'
+first_width: 5
+second_width: 5
+mobile_blocks: 2
+style: 4
+fntfam: 0
+fntsize: 0
+themedblocks: 0
+blockicons: 2
+navpos: 1
+searchimg: 1
 pageicons: 1
 roundcorners: 1
 headerimg: 1
 devlink: 1
 breadcrumb_display: 1
-submitted_dateuser: '0'
+submitted_dateuser: 0
 submitted_txt: 'Published by'
-page_seo: '0'
-block_seo: '0'
+page_seo: 0
+block_seo: 0
 slideshow_display: 1
-slideshow_all: 1
+slideshow_all: 0
 show_slide1: 1
 show_slide2: 1
 show_slide3: 1
@@ -70,37 +65,3 @@ httpheaders: 1
 toolbarfix: 1
 show_intl_logo: 0
 intl_logo_path: /themes/contrib/zeropoint/_custom/logos
-submitted_dateuser_blog: '0'
-submitted_dateuser_forum: '0'
-slidety: '0'
-slideh: ''
-slide1_url: ''
-slide2_url: ''
-slide3_url: ''
-slide4_url: ''
-slide5_url: ''
-show_slide6: 0
-slide6_head: ''
-slide6_desc: ''
-slide6_url: ''
-slide6_image_url: ''
-slide6_alt: ''
-show_slide7: 0
-slide7_head: ''
-slide7_desc: ''
-slide7_url: ''
-slide7_image_url: ''
-slide7_alt: ''
-google_plus_url: ''
-instagram_url: ''
-telegram_url: ''
-pinterest_url: ''
-youtube_url: ''
-vimeo_url: ''
-flickr_url: ''
-tumblr_url: ''
-skype_url: ''
-rss_url: ''
-myother_url: ''
-blockscache: 0
-siteid: ''

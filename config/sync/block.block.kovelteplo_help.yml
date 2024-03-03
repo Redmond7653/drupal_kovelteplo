@@ -1,0 +1,22 @@
+uuid: 9761bcef-e0a9-4a44-a505-cf65fe1af2f1
+langcode: en
+status: false
+dependencies:
+  module:
+    - help
+  theme:
+    - kovelteplo
+_core:
+  default_config_hash: 7eURKoS48EmL4awoYszkoDCF9FCZl6EEzi4cvRKAssU
+id: kovelteplo_help
+theme: kovelteplo
+region: header_top
+weight: -2
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

@@ -1,0 +1,20 @@
+uuid: ace36b30-cac8-4357-8f05-16d6a3b6f56f
+langcode: en
+status: true
+dependencies:
+  theme:
+    - kovelteplo
+_core:
+  default_config_hash: '-3ds_bsF8MtsGFkmK34qvO-5ah5hZ-H4hgfXcmYc7ZQ'
+id: kovelteplo_local_actions
+theme: kovelteplo
+region: content
+weight: -1
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

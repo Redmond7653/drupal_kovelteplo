@@ -1,0 +1,25 @@
+uuid: ac646525-e180-4b02-b68b-3f34ec34bbb6
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - kovelteplo
+_core:
+  default_config_hash: 66VcaKUj3J0Tycxxs5avzTnwSNnoNrfgfwELCo9m0NM
+id: kovelteplo_branding
+theme: kovelteplo
+region: header_top
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: 89bac95a-7a4c-4244-9fe4-8a7d2e30190d
+langcode: en
+status: false
+dependencies:
+  module:
+    - user
+  theme:
+    - kovelteplo
+_core:
+  default_config_hash: 1YVkkEbkys4VrF9kMSGCC0r4vhdMsVq5lW-4rmRIH6Y
+id: kovelteplo_userlogin
+theme: kovelteplo
+region: sidebar_second
+weight: 0
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'User login'
+  label_display: visible
+  provider: user
+visibility: {  }
