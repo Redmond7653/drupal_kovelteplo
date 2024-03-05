@@ -1,0 +1,49 @@
+uuid: f3967ba9-8368-4f35-8206-cf0bfe0b4f4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.posilannya_z_kartinkoyu.body
+    - field.field.node.posilannya_z_kartinkoyu.field_advanced_label_link_image
+    - field.field.node.posilannya_z_kartinkoyu.field_dodati_image
+    - node.type.posilannya_z_kartinkoyu
+  module:
+    - image
+    - text
+    - user
+id: node.posilannya_z_kartinkoyu.default
+targetEntityType: node
+bundle: posilannya_z_kartinkoyu
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_advanced_label_link_image:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_dodati_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

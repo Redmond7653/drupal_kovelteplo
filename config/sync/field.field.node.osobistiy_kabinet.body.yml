@@ -1,0 +1,24 @@
+uuid: f7142492-f34d-41f8-b857-a4b7c7a68012
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.osobistiy_kabinet
+  module:
+    - text
+id: node.osobistiy_kabinet.body
+field_name: body
+entity_type: node
+bundle: osobistiy_kabinet
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

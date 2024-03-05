@@ -1,0 +1,22 @@
+uuid: 2a7f3aef-72ba-451a-ad3d-d0caefd0cf43
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_adv_label_gallery_photo
+    - node.type.foto_dlya_galerei
+  module:
+    - text
+id: node.foto_dlya_galerei.field_adv_label_gallery_photo
+field_name: field_adv_label_gallery_photo
+entity_type: node
+bundle: foto_dlya_galerei
+label: 'Розширений заголовок'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

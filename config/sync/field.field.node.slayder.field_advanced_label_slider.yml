@@ -1,0 +1,22 @@
+uuid: 6e7cba3e-7640-4d5f-a878-49ca2dae25e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_advanced_label_slider
+    - node.type.slayder
+  module:
+    - text
+id: node.slayder.field_advanced_label_slider
+field_name: field_advanced_label_slider
+entity_type: node
+bundle: slayder
+label: 'Розширений заголовок'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

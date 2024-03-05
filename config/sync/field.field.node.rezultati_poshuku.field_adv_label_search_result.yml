@@ -1,0 +1,22 @@
+uuid: 855fa39d-a218-4af4-a495-220f4814a1c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_adv_label_search_result
+    - node.type.rezultati_poshuku
+  module:
+    - text
+id: node.rezultati_poshuku.field_adv_label_search_result
+field_name: field_adv_label_search_result
+entity_type: node
+bundle: rezultati_poshuku
+label: 'Розширений заголовок'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

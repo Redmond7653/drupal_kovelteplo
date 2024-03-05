@@ -1,0 +1,22 @@
+uuid: bbd7e398-5cc8-4d27-86ab-95691da8125a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.osobistiy_kabinet
+id: node.osobistiy_kabinet.status
+field_name: status
+entity_type: node
+bundle: osobistiy_kabinet
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

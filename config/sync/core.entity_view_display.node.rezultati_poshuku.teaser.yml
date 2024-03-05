@@ -1,0 +1,32 @@
+uuid: 95a6fbee-0017-4925-9421-421582a97daa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.rezultati_poshuku.body
+    - field.field.node.rezultati_poshuku.field_adv_label_search_result
+    - node.type.rezultati_poshuku
+  module:
+    - text
+    - user
+id: node.rezultati_poshuku.teaser
+targetEntityType: node
+bundle: rezultati_poshuku
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_adv_label_search_result: true

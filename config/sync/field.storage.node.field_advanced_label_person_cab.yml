@@ -1,0 +1,19 @@
+uuid: 84c87d6b-a4ca-417b-94ca-39169b9ed759
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_advanced_label_person_cab
+field_name: field_advanced_label_person_cab
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

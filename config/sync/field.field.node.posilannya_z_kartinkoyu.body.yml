@@ -1,0 +1,24 @@
+uuid: cab030db-9810-441e-9210-afdcd3f98b67
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.posilannya_z_kartinkoyu
+  module:
+    - text
+id: node.posilannya_z_kartinkoyu.body
+field_name: body
+entity_type: node
+bundle: posilannya_z_kartinkoyu
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

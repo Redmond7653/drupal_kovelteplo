@@ -1,0 +1,24 @@
+uuid: 34d195c1-0460-4fbb-bbef-f2d04ccc5650
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.golovna
+  module:
+    - text
+id: node.golovna.body
+field_name: body
+entity_type: node
+bundle: golovna
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

@@ -1,0 +1,36 @@
+uuid: 9708faa3-31c0-4279-aa80-bbfcfd16005c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.peredati_pokazniki.body
+    - field.field.node.peredati_pokazniki.field_advanced_label_show_pokasn
+    - node.type.peredati_pokazniki
+  module:
+    - text
+    - user
+id: node.peredati_pokazniki.default
+targetEntityType: node
+bundle: peredati_pokazniki
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_advanced_label_show_pokasn:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

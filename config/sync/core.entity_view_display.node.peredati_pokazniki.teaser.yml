@@ -1,0 +1,32 @@
+uuid: 3eaa0e76-7ed7-48b5-b55e-3bc861472641
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.peredati_pokazniki.body
+    - field.field.node.peredati_pokazniki.field_advanced_label_show_pokasn
+    - node.type.peredati_pokazniki
+  module:
+    - text
+    - user
+id: node.peredati_pokazniki.teaser
+targetEntityType: node
+bundle: peredati_pokazniki
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_advanced_label_show_pokasn: true

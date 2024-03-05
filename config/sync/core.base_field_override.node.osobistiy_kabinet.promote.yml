@@ -1,0 +1,22 @@
+uuid: 6c4c280c-db5c-48ea-a26a-391aee57c775
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.osobistiy_kabinet
+id: node.osobistiy_kabinet.promote
+field_name: promote
+entity_type: node
+bundle: osobistiy_kabinet
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

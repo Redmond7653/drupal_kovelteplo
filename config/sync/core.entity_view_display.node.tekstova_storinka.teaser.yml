@@ -1,0 +1,32 @@
+uuid: f4591937-341d-4f71-af70-f7d0d49be39d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.tekstova_storinka.body
+    - field.field.node.tekstova_storinka.field_advanced_label_text_page
+    - node.type.tekstova_storinka
+  module:
+    - text
+    - user
+id: node.tekstova_storinka.teaser
+targetEntityType: node
+bundle: tekstova_storinka
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_advanced_label_text_page: true

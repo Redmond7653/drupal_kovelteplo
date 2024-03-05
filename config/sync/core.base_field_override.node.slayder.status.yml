@@ -1,0 +1,22 @@
+uuid: 6bb0bd5c-70e7-4b31-a16f-9847c60cbda2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.slayder
+id: node.slayder.status
+field_name: status
+entity_type: node
+bundle: slayder
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,34 @@
+uuid: f23a7455-5967-4cba-afa2-7c91ef45d66c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.slayder.body
+    - field.field.node.slayder.field_advanced_label_slider
+    - field.field.node.slayder.field_dodati_image_slider
+    - node.type.slayder
+  module:
+    - text
+    - user
+id: node.slayder.teaser
+targetEntityType: node
+bundle: slayder
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_advanced_label_slider: true
+  field_dodati_image_slider: true

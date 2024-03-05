@@ -1,0 +1,36 @@
+uuid: ba4bf7b1-4a62-418f-8c80-75564629f371
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.blokovaniy_sayt.body
+    - field.field.node.blokovaniy_sayt.field_rozshireniy_zagolovok
+    - node.type.blokovaniy_sayt
+  module:
+    - text
+    - user
+id: node.blokovaniy_sayt.default
+targetEntityType: node
+bundle: blokovaniy_sayt
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_rozshireniy_zagolovok:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

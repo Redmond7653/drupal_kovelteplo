@@ -1,0 +1,32 @@
+uuid: 35709ab7-ffbe-4513-a951-d51ddb8313ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.novina.body
+    - field.field.node.novina.field_rozshireniy_zagolovok_news
+    - node.type.novina
+  module:
+    - text
+    - user
+id: node.novina.teaser
+targetEntityType: node
+bundle: novina
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_rozshireniy_zagolovok_news: true

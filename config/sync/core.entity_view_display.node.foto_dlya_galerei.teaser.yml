@@ -1,0 +1,34 @@
+uuid: 429b3660-2af7-4add-b770-099b49b57f57
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.foto_dlya_galerei.body
+    - field.field.node.foto_dlya_galerei.field_adv_label_gallery_photo
+    - field.field.node.foto_dlya_galerei.field_dodati_image_gallery_photo
+    - node.type.foto_dlya_galerei
+  module:
+    - text
+    - user
+id: node.foto_dlya_galerei.teaser
+targetEntityType: node
+bundle: foto_dlya_galerei
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_adv_label_gallery_photo: true
+  field_dodati_image_gallery_photo: true

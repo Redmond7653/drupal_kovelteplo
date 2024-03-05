@@ -1,0 +1,20 @@
+uuid: de669904-086b-4d82-91db-13fbef0e049f
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - tara
+id: tara_help_2
+theme: tara
+region: sidebar_first
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

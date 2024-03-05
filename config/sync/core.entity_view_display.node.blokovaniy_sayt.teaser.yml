@@ -1,0 +1,32 @@
+uuid: c82a7fff-743e-4322-b107-d788bed496c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.blokovaniy_sayt.body
+    - field.field.node.blokovaniy_sayt.field_rozshireniy_zagolovok
+    - node.type.blokovaniy_sayt
+  module:
+    - text
+    - user
+id: node.blokovaniy_sayt.teaser
+targetEntityType: node
+bundle: blokovaniy_sayt
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_rozshireniy_zagolovok: true

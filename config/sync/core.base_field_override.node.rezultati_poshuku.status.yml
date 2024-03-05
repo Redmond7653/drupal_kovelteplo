@@ -1,0 +1,22 @@
+uuid: 50284206-4d0c-45a0-8541-647846bbbde1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.rezultati_poshuku
+id: node.rezultati_poshuku.status
+field_name: status
+entity_type: node
+bundle: rezultati_poshuku
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

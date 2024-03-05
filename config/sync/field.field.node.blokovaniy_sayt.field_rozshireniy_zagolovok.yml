@@ -1,0 +1,22 @@
+uuid: cfd8a3ba-f4ae-489c-94f8-51b444781355
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rozshireniy_zagolovok
+    - node.type.blokovaniy_sayt
+  module:
+    - text
+id: node.blokovaniy_sayt.field_rozshireniy_zagolovok
+field_name: field_rozshireniy_zagolovok
+entity_type: node
+bundle: blokovaniy_sayt
+label: 'Розширений заголовок'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

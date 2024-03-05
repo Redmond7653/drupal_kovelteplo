@@ -1,0 +1,36 @@
+uuid: 0fa18cfa-7be1-4665-b243-0fd6eb442a2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.osobistiy_kabinet.body
+    - field.field.node.osobistiy_kabinet.field_advanced_label_person_cab
+    - node.type.osobistiy_kabinet
+  module:
+    - text
+    - user
+id: node.osobistiy_kabinet.default
+targetEntityType: node
+bundle: osobistiy_kabinet
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_advanced_label_person_cab:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

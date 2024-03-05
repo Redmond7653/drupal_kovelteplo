@@ -1,0 +1,22 @@
+uuid: e2718d7e-e9d2-48b3-ab56-4795a8464a2a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.posilannya_z_kartinkoyu
+id: node.posilannya_z_kartinkoyu.promote
+field_name: promote
+entity_type: node
+bundle: posilannya_z_kartinkoyu
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,22 @@
+uuid: 60edc0e6-3ba2-40cf-b643-e3c94228c799
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_advanced_label_text_page
+    - node.type.tekstova_storinka
+  module:
+    - text
+id: node.tekstova_storinka.field_advanced_label_text_page
+field_name: field_advanced_label_text_page
+entity_type: node
+bundle: tekstova_storinka
+label: 'Розширений заголовок'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

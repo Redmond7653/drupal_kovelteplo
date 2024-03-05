@@ -1,0 +1,36 @@
+uuid: a7c5a463-5a50-4522-832c-870a2920f86c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.tekstova_storinka.body
+    - field.field.node.tekstova_storinka.field_advanced_label_text_page
+    - node.type.tekstova_storinka
+  module:
+    - text
+    - user
+id: node.tekstova_storinka.default
+targetEntityType: node
+bundle: tekstova_storinka
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_advanced_label_text_page:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

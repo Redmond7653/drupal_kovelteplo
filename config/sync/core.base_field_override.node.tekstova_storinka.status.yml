@@ -1,0 +1,22 @@
+uuid: 995c1f62-f5cd-406f-8bce-3f58d1817157
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tekstova_storinka
+id: node.tekstova_storinka.status
+field_name: status
+entity_type: node
+bundle: tekstova_storinka
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

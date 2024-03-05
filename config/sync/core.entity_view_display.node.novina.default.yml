@@ -1,0 +1,36 @@
+uuid: 46e30c98-d940-4f2f-bd14-914111a0818d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.novina.body
+    - field.field.node.novina.field_rozshireniy_zagolovok_news
+    - node.type.novina
+  module:
+    - text
+    - user
+id: node.novina.default
+targetEntityType: node
+bundle: novina
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_rozshireniy_zagolovok_news:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

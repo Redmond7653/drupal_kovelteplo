@@ -1,0 +1,36 @@
+uuid: 9422ca45-2dd5-40c4-8e63-4ef53725831c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.golovna.body
+    - field.field.node.golovna.field_ro
+    - node.type.golovna
+  module:
+    - text
+    - user
+id: node.golovna.default
+targetEntityType: node
+bundle: golovna
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_ro:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

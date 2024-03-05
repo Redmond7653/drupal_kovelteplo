@@ -1,0 +1,22 @@
+uuid: 869436fd-13f0-444c-b8ad-b06aee995375
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.foto_dlya_galerei
+id: node.foto_dlya_galerei.status
+field_name: status
+entity_type: node
+bundle: foto_dlya_galerei
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

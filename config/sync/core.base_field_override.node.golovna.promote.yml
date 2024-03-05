@@ -1,0 +1,22 @@
+uuid: d4442e36-06a6-4f01-8229-afc8a42542f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.golovna
+id: node.golovna.promote
+field_name: promote
+entity_type: node
+bundle: golovna
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

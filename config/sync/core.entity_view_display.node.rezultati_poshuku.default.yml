@@ -1,0 +1,36 @@
+uuid: 8a29851f-5cce-4d8a-b9af-b451b15fbf4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.rezultati_poshuku.body
+    - field.field.node.rezultati_poshuku.field_adv_label_search_result
+    - node.type.rezultati_poshuku
+  module:
+    - text
+    - user
+id: node.rezultati_poshuku.default
+targetEntityType: node
+bundle: rezultati_poshuku
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_adv_label_search_result:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

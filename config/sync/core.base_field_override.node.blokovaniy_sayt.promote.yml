@@ -1,0 +1,22 @@
+uuid: e586e0cd-80ad-4612-a898-7963f93b52d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.blokovaniy_sayt
+id: node.blokovaniy_sayt.promote
+field_name: promote
+entity_type: node
+bundle: blokovaniy_sayt
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

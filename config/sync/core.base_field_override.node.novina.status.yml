@@ -1,0 +1,22 @@
+uuid: 9df788d1-e641-4f7a-b52f-486b37f95d91
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.novina
+id: node.novina.status
+field_name: status
+entity_type: node
+bundle: novina
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

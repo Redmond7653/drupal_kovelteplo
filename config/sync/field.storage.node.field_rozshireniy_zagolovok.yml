@@ -1,0 +1,19 @@
+uuid: d94d0d53-5be7-4c28-90c0-66742c7e2a64
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_rozshireniy_zagolovok
+field_name: field_rozshireniy_zagolovok
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

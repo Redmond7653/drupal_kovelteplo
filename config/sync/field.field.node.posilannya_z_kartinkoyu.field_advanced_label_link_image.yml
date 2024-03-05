@@ -1,0 +1,22 @@
+uuid: e1d86e95-546e-4b86-93db-d2934518d642
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_advanced_label_link_image
+    - node.type.posilannya_z_kartinkoyu
+  module:
+    - text
+id: node.posilannya_z_kartinkoyu.field_advanced_label_link_image
+field_name: field_advanced_label_link_image
+entity_type: node
+bundle: posilannya_z_kartinkoyu
+label: 'Розширений заголовок'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

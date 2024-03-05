@@ -1,0 +1,20 @@
+uuid: 6c951218-5de6-45e1-993a-d24e01451b60
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - kovelteplo
+id: kovelteplo_help_2
+theme: kovelteplo
+region: header_top
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

@@ -1,0 +1,24 @@
+uuid: f0f21f57-35ee-4bfe-addc-ae25d8e289ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.tekstova_storinka
+  module:
+    - text
+id: node.tekstova_storinka.body
+field_name: body
+entity_type: node
+bundle: tekstova_storinka
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

@@ -1,0 +1,49 @@
+uuid: a482a1cf-fded-4e76-ac1f-624991cfabe8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.foto_dlya_galerei.body
+    - field.field.node.foto_dlya_galerei.field_adv_label_gallery_photo
+    - field.field.node.foto_dlya_galerei.field_dodati_image_gallery_photo
+    - node.type.foto_dlya_galerei
+  module:
+    - image
+    - text
+    - user
+id: node.foto_dlya_galerei.default
+targetEntityType: node
+bundle: foto_dlya_galerei
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_adv_label_gallery_photo:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_dodati_image_gallery_photo:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

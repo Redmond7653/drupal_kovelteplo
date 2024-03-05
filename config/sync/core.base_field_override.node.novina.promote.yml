@@ -1,0 +1,22 @@
+uuid: f39fdb58-c3d2-4942-89f9-ec2679b75925
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.novina
+id: node.novina.promote
+field_name: promote
+entity_type: node
+bundle: novina
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

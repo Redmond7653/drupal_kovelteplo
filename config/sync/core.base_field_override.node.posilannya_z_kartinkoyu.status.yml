@@ -1,0 +1,22 @@
+uuid: e6c7a754-accb-4769-8d47-5b745dfa50b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.posilannya_z_kartinkoyu
+id: node.posilannya_z_kartinkoyu.status
+field_name: status
+entity_type: node
+bundle: posilannya_z_kartinkoyu
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

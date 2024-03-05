@@ -1,0 +1,22 @@
+uuid: ab5bed57-e833-47df-9dc7-ed1f0a64b510
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.peredati_pokazniki
+id: node.peredati_pokazniki.status
+field_name: status
+entity_type: node
+bundle: peredati_pokazniki
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,41 +1,39 @@
-_core:
-  default_config_hash: E-JchzJJLFVtxwzUW8uPQD-6rx7jvo3FHWn260elKw4
-favicon:
-  use_default: true
 features:
-  comment_user_picture: true
-  comment_user_verification: true
-  favicon: true
-  node_user_picture: true
+  node_user_picture: 1
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
 logo:
-  path: 'public://Koveltelpo_logo.png'
-  use_default: false
+  use_default: 0
+  path: 'public://Koveltelpo_logo_0_0.png'
+favicon:
+  use_default: 1
 all_icons_show: 1
 facebook_url: 'https://www.facebook.com/idewdot'
 twitter_url: 'https://twitter.com/dewdots'
 instagram_url: 'https://www.instagram.com/google'
 linkedin_url: 'https://in.linkedin.com/company/google'
 youtube_url: 'https://www.youtube.com/user/Google'
+vimeo_url: ''
 vk_url: ''
 whatsapp_url: ''
 github_url: ''
 telegram_url: ''
-vimeo_url: ''
 slider_show: 0
 slider_image: {  }
 slider_time: '5000'
 slider_dots: 'true'
 slider_code: ''
 front_sidebar: 0
-google_font: local
-comment_user_pic: 0
-node_author_pic: 0
-node_tags: 0
-copyright_text: 1
 scrolltotop_on: 1
+copyright_text: 1
 css_extra: 0
 css_code: ''
+google_font: local
 fontawesome_four: 0
 fontawesome_five: 0
 fontawesome_six: 0
 bootstrapicons: 0
+comment_user_pic: 0
+node_author_pic: 0
+node_tags: 0

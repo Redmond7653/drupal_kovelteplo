@@ -1,0 +1,34 @@
+uuid: b338b458-7c36-403b-ba9b-ebaf5650d5d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.posilannya_z_kartinkoyu.body
+    - field.field.node.posilannya_z_kartinkoyu.field_advanced_label_link_image
+    - field.field.node.posilannya_z_kartinkoyu.field_dodati_image
+    - node.type.posilannya_z_kartinkoyu
+  module:
+    - text
+    - user
+id: node.posilannya_z_kartinkoyu.teaser
+targetEntityType: node
+bundle: posilannya_z_kartinkoyu
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_advanced_label_link_image: true
+  field_dodati_image: true

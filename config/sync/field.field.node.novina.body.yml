@@ -1,0 +1,24 @@
+uuid: 97d4d24e-ba98-4f66-9d9f-6bcd151c8290
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.novina
+  module:
+    - text
+id: node.novina.body
+field_name: body
+entity_type: node
+bundle: novina
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary
