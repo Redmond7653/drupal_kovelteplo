@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ *
+ */
+function first_migration_module_uninstall() {
+  $configs = [
+    'migrate_plus.migration_group.first_migration_module',
+    'migrate_plus.migration.first_migration.module',
+  ];
+  foreach ($configs as $config) {
+    $delete = \Drupal::database()->delete('config')
+      ->condition('name', $config)
+      ->execute();
+  }
+  drupal_flush_all_caches();
+}

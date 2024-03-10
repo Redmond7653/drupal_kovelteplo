@@ -14,6 +14,19 @@ services:
 #      - ./mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
 #      - /path/to/mariadb/data/on/host:/var/lib/mysql # Use bind mount
 
+  db:
+    image: 'mysql:5.7'
+    container_name: "${PROJECT_NAME}_db"
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: modx
+      MYSQL_USER: modx
+      MYSQL_PASSWORD: modx
+    command: mysqld --sql-mode=NO_ENGINE_SUBSTITUTION
+
+
+
   php:
     image: wodby/drupal-php:$PHP_TAG
     container_name: "${PROJECT_NAME}_php"
@@ -129,17 +142,17 @@ services:
 #    container_name: "${PROJECT_NAME}_redis"
 #    image: wodby/redis:$REDIS_TAG
 
-#  adminer:
-#    container_name: "${PROJECT_NAME}_adminer"
-#    init: true
-#    image: wodby/adminer:$ADMINER_TAG
-#    environment:
-#      # For PostgreSQL:
-#      #      ADMINER_DEFAULT_DB_DRIVER: pgsql
-#      ADMINER_DEFAULT_DB_HOST: $DB_HOST
-#      ADMINER_DEFAULT_DB_NAME: $DB_NAME
-#    labels:
-#    - "traefik.http.routers.${PROJECT_NAME}_adminer.rule=Host(`adminer.${PROJECT_BASE_URL}`)"
+  adminer:
+    container_name: "${PROJECT_NAME}_adminer"
+    init: true
+    image: wodby/adminer:$ADMINER_TAG
+    environment:
+      # For PostgreSQL:
+      #      ADMINER_DEFAULT_DB_DRIVER: pgsql
+      ADMINER_DEFAULT_DB_HOST: $DB_HOST
+      ADMINER_DEFAULT_DB_NAME: $DB_NAME
+    labels:
+    - "traefik.http.routers.${PROJECT_NAME}_adminer.rule=Host(`adminer.${PROJECT_BASE_URL}`)"
 
 #  pma:
 #    image: phpmyadmin/phpmyadmin

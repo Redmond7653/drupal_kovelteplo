@@ -1,0 +1,7 @@
+name: First Migration Module
+type: module
+description: 'First Migration Module.'
+package: Migration
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  -migrate_tools:migrate_tools
