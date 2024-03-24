@@ -1,7 +1,0 @@
-first_migration_module.first_migration_module:
-  path: '/node'
-  defaults:
-    _controller: '\Drupal\first_migration_module\Controller\FirstMigrationModuleController::first_migration_module'
-    _title: 'My first migration module in Drupal 10'
-  requirements:
-    _permission: 'access content'

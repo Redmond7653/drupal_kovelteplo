@@ -1,0 +1,22 @@
+uuid: 218f1eca-a312-470a-820d-d75db335f9fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_anotaciya_vstup_
+    - node.type.tekstova_storinka
+  module:
+    - text
+id: node.tekstova_storinka.field_anotaciya_vstup_
+field_name: field_anotaciya_vstup_
+entity_type: node
+bundle: tekstova_storinka
+label: 'Анотація (вступ)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text

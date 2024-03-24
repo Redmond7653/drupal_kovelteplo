@@ -6,6 +6,8 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.tekstova_storinka.body
     - field.field.node.tekstova_storinka.field_advanced_label_text_page
+    - field.field.node.tekstova_storinka.field_anotaciya_vstup_
+    - field.field.node.tekstova_storinka.field_id
     - node.type.tekstova_storinka
   module:
     - text
@@ -30,3 +32,5 @@ content:
     region: content
 hidden:
   field_advanced_label_text_page: true
+  field_anotaciya_vstup_: true
+  field_id: true

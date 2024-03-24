@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.node.tekstova_storinka.body
     - field.field.node.tekstova_storinka.field_advanced_label_text_page
+    - field.field.node.tekstova_storinka.field_anotaciya_vstup_
+    - field.field.node.tekstova_storinka.field_id
     - node.type.tekstova_storinka
   module:
     - path
@@ -36,6 +38,21 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_anotaciya_vstup_:
+    type: text_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_id:
+    type: number
+    weight: 27
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   path:

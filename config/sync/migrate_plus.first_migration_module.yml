@@ -1,0 +1,5 @@
+_core:
+  default_config_hash: pVPu5m9sAWX1ULdAQxiVxfA89-AsP3PM6UzBdIKuvXo
+id: first_migration
+label: 'Migrate list of Kovel Teplo'
+migration_group: first_migration_module
