@@ -5,6 +5,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.novina.body
+    - field.field.node.novina.field_anotaciya_vstup_
+    - field.field.node.novina.field_id
     - field.field.node.novina.field_rozshireniy_zagolovok_news
     - node.type.novina
   module:
@@ -29,4 +31,6 @@ content:
     weight: 100
     region: content
 hidden:
+  field_anotaciya_vstup_: true
+  field_id: true
   field_rozshireniy_zagolovok_news: true

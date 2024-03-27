@@ -6,7 +6,9 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.posilannya_z_kartinkoyu.body
     - field.field.node.posilannya_z_kartinkoyu.field_advanced_label_link_image
+    - field.field.node.posilannya_z_kartinkoyu.field_anotaciya_vstup_
     - field.field.node.posilannya_z_kartinkoyu.field_dodati_image
+    - field.field.node.posilannya_z_kartinkoyu.field_id
     - node.type.posilannya_z_kartinkoyu
   module:
     - text
@@ -22,7 +24,7 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
-    weight: 101
+    weight: 0
     region: content
   links:
     settings: {  }
@@ -31,4 +33,6 @@ content:
     region: content
 hidden:
   field_advanced_label_link_image: true
+  field_anotaciya_vstup_: true
   field_dodati_image: true
+  field_id: true

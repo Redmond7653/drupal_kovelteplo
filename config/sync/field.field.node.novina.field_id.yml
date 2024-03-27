@@ -1,0 +1,23 @@
+uuid: a951d2f3-365d-464d-8007-19324caa5b63
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_id
+    - node.type.novina
+id: node.novina.field_id
+field_name: field_id
+entity_type: node
+bundle: novina
+label: id
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

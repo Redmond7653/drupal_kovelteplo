@@ -1,24 +1,22 @@
-uuid: af1f32e1-c6f9-4154-875d-197647834e91
+uuid: 9cbd835b-ada5-4f1c-8f57-9f8128d0fd36
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
+    - field.storage.node.field_anotaciya_vstup_
     - node.type.slayder
   module:
     - text
-id: node.slayder.body
-field_name: body
+id: node.slayder.field_anotaciya_vstup_
+field_name: field_anotaciya_vstup_
 entity_type: node
 bundle: slayder
-label: Body
+label: 'Анотація (вступ)'
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  display_summary: true
-  required_summary: false
   allowed_formats: {  }
-field_type: text_with_summary
+field_type: text

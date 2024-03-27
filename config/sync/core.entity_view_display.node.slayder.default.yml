@@ -5,7 +5,9 @@ dependencies:
   config:
     - field.field.node.slayder.body
     - field.field.node.slayder.field_advanced_label_slider
+    - field.field.node.slayder.field_anotaciya_vstup_
     - field.field.node.slayder.field_dodati_image_slider
+    - field.field.node.slayder.field_id
     - node.type.slayder
   module:
     - image
@@ -21,7 +23,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 0
     region: content
   field_advanced_label_slider:
     type: text_default
@@ -29,6 +31,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_anotaciya_vstup_:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
     region: content
   field_dodati_image_slider:
     type: image
@@ -40,6 +49,15 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_id:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 104
     region: content
   links:
     settings: {  }

@@ -5,7 +5,9 @@ dependencies:
   config:
     - field.field.node.posilannya_z_kartinkoyu.body
     - field.field.node.posilannya_z_kartinkoyu.field_advanced_label_link_image
+    - field.field.node.posilannya_z_kartinkoyu.field_anotaciya_vstup_
     - field.field.node.posilannya_z_kartinkoyu.field_dodati_image
+    - field.field.node.posilannya_z_kartinkoyu.field_id
     - node.type.posilannya_z_kartinkoyu
   module:
     - image
@@ -21,9 +23,16 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 0
     region: content
   field_advanced_label_link_image:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_anotaciya_vstup_:
     type: text_default
     label: above
     settings: {  }
@@ -40,6 +49,15 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_id:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 104
     region: content
   links:
     settings: {  }

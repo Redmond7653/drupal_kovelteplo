@@ -1,10 +1,10 @@
-id: yearly_plan_purchases
-label: import yearly plan of purchases
+id: text_node_content
+label: import templates_with_id_number_1
 migration_group: default
 
 source:
   plugin: 'csv'
-  path: './modx_site_content.csv'
+  path: './content_type:text_nodes.csv'
   delimiter: ','
   enclosure: '"'
   header_offset: 0
@@ -47,6 +47,11 @@ source:
     14:
       name: body
       label: 'content'
+    15:
+      name: f15
+    16:
+      name: template
+      label: 'template'
 
 process:
     title: title

@@ -1,0 +1,23 @@
+uuid: f3a94b50-3ece-4b40-bd0f-86a4baa356a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_id
+    - node.type.posilannya_z_kartinkoyu
+id: node.posilannya_z_kartinkoyu.field_id
+field_name: field_id
+entity_type: node
+bundle: posilannya_z_kartinkoyu
+label: id
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.novina.body
+    - field.field.node.novina.field_anotaciya_vstup_
+    - field.field.node.novina.field_id
     - field.field.node.novina.field_rozshireniy_zagolovok_news
     - node.type.novina
   module:
@@ -20,6 +22,22 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_anotaciya_vstup_:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_id:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 104
     region: content
   field_rozshireniy_zagolovok_news:
     type: text_default

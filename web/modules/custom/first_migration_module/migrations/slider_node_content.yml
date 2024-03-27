@@ -1,0 +1,69 @@
+id: slider_node_content
+label: import from ktmodx templates that have "slider" name and with id number 4
+migration_group: default
+
+source:
+  plugin: 'csv'
+  path: './content_type:slider.csv'
+  delimiter: ','
+  enclosure: '"'
+  header_offset: 0
+  ids:
+    - id
+  fields:
+    0:
+      name: id
+      label: 'id'
+    1:
+      name: type
+    2:
+      name: f2
+    3:
+      name: title
+      label: 'pagetitle'
+    4:
+      name: long_title
+      label: 'longtitle'
+    5:
+      name: description
+      label: 'description'
+    6:
+      name: f6
+    7:
+      name: f7
+    8:
+      name: f8
+    9:
+      name: f9
+    10:
+      name: f10
+    11:
+      name: f11
+    12:
+      name: f12
+    13:
+      name: annotation
+      label: 'introtext'
+    14:
+      name: body
+      label: 'content'
+    15:
+      name: f15
+    16:
+      name: template
+      label: 'template'
+
+process:
+  title: title
+  field_id: id
+  field_advanced_label_text_page: long_title
+  summary: description
+  body: body
+  field_anotaciya_vstup_: annotation
+  type:
+    plugin: default_value
+    default_value: slayder
+
+destination:
+  plugin: entity:node
+
