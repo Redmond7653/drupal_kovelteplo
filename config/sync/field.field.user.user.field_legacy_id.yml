@@ -1,0 +1,24 @@
+uuid: 3a6944f0-52be-463f-ac3e-5adbedf40cde
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_legacy_id
+  module:
+    - user
+id: user.user.field_legacy_id
+field_name: field_legacy_id
+entity_type: user
+bundle: user
+label: 'Legacy id'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

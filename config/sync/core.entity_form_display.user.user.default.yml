@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_legacy_id
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -21,6 +22,13 @@ content:
   contact:
     weight: 5
     region: content
+  field_legacy_id:
+    type: number
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   language:
     weight: 0
     region: content

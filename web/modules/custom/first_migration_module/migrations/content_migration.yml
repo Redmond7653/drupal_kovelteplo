@@ -1,10 +1,10 @@
-id: news_node_content
-label: import from ktmodx templates that have "news" name and with id number 1
+id: content_migration
+label: import all node from ktmodx
 migration_group: default
 
 source:
   plugin: 'csv'
-  path: './content_type:news.csv'
+  path: './modx_site_content.csv'
   delimiter: ','
   enclosure: '"'
   header_offset: 0
@@ -52,8 +52,21 @@ source:
     16:
       name: template
       label: 'template'
+    17:
+      name: f17
+    18:
+      name: f18
+    19:
+      name: f19
+    20:
+      name: created_by
+      label: 'author'
 
 process:
+  uid:
+    plugin: migration_lookup
+    migration: users_migration
+    source: created_by
   title: title
   field_id: id
   field_advanced_label_text_page: long_title
@@ -61,8 +74,15 @@ process:
   body: body
   field_anotaciya_vstup_: annotation
   type:
-    plugin: default_value
-    default_value: novina
+    plugin: static_map
+    bypass: true
+    source: template
+    map:
+      1: tekstova_storinka
+      3: novina
+      4: slayder
+      8: posilannya_z_kartinkoyu
+
 
 destination:
   plugin: entity:node

@@ -1,0 +1,10 @@
+﻿id,username,password,cachepwd,class_key,active,remote_key,remote_data,hash_class,salt,primary_group,session_stale,sudo,createdon
+1,root,827ccb0eea8a706c4c34a16891f84e7b,"",modUser,1,,,hashing.modMD5,7ac6631d21a63ed9eb31e0f0d6d4dde1,1,"a:2:{i:0;s:3:""mgr"";i:1;s:3:""web"";}",1,"0"
+2,test,bZbeixYDnwMdKvL4NekENvfayf6nZqxVa5Vv0d+N0GE=,"",modUser,"0",,,hashing.modPBKDF2,7b0172a1b793b35b80fb2bf9a78ce340,2,"a:2:{i:0;s:3:""mgr"";i:1;s:3:""web"";}","0","0"
+3,pev@kovelteplo.org.ua,tQ/v4dzJWYCVgtaHzjbT69Ss4ccVmEFTEyiYec+GasE=,"",modUser,1,,,hashing.modPBKDF2,1178e9bae3616eb3ab85f414d5569a7c,2,a:0:{},"0","0"
+4,vtv@kovelteplo.org.ua,S7of5GL0xy3geEcsiG1OXW4ADoBjywvewpnmHfniTok=,"",modUser,"0",,,hashing.modPBKDF2,59fc1b8a1aa38e47b7ec762b7eafd012,2,"a:2:{i:0;s:3:""mgr"";i:1;s:3:""web"";}","0","0"
+5,andreykiv@kovelteplo.org.ua,q+xCbcRLmg/h5KXVJ1TiktPe3zrkvHzBwIKxLba9BsI=,"",modUser,"0",,,hashing.modPBKDF2,d8cc3239f96f479419f2a82f3ed53744,2,"a:2:{i:0;s:3:""mgr"";i:1;s:3:""web"";}","0","0"
+6,urist@kovelteplo.org.ua,doCQWpnMox/yd3Gf7dTT/Q9A5Oe/5EUJF8M7V8N9+a0=,"",modUser,"0",,,hashing.modPBKDF2,a6e27e49ea428bf4fc5f51620943a5c4,2,"a:2:{i:0;s:3:""mgr"";i:1;s:3:""web"";}","0","0"
+7,golota@kovelteplo.org.ua,31sxqcz5blIc0LTa+EWm7bbSdqbwJce0wx3gfkt0hPY=,"",modUser,"0",,,hashing.modPBKDF2,"00a261c72c2734f5768a0452cc3c7922",2,"a:2:{i:0;s:3:""mgr"";i:1;s:3:""web"";}","0","0"
+8,Nadia,KuRb5kul5LS7SX8b8AY7r6OnRdelDhW1OEu1XtHqfbA=,"",modUser,1,,,hashing.modPBKDF2,c576b9fedd5e28988f72734d348a516a,2,a:0:{},"0","0"
+9,secretary@kovelteplo.org.ua,+AsJg9G01HTRXrazgvXMSkwixVFEoTklIcTmMfNts5U=,"",modUser,1,,,hashing.modPBKDF2,869f1b934c7125c2da8ba1ae0e16d916,2,a:0:{},"0",1617628544

@@ -1,0 +1,73 @@
+id: users_migration
+label: user migration from ktmodx
+migration_group: default
+
+source:
+    plugin: 'csv'
+    path: './modx_users.csv'
+    delimiter: ','
+    enclosure: '"'
+    header_offset: 0
+    ids:
+      - id
+    fields:
+      0:
+        name: id
+        label: 'id'
+      1:
+        name: username
+        label: 'username'
+      2:
+        name: password
+        label: 'password'
+      3:
+        name: f3
+      4:
+        name: f4
+      5:
+        name: active_user
+        label: 'active'
+      6:
+        name: f6
+      7:
+        name: f7
+      8:
+        name: f8
+      9:
+        name: f9
+      10:
+        name: roles
+        label: 'primary_group'
+
+
+process:
+  field_legacy_id: id
+  name: username
+  roles:
+    plugin: static_map
+    bypass: true
+    source: roles
+    map:
+      1: administrator
+      2: content_editor
+  status:
+    plugin: static_map
+    bypass: true
+    source: active_user
+    map:
+      0: false
+      1: true
+
+#    plugin: switch_on_condition
+#    source: roles
+#    cases:
+#      -
+#        condition: equals(1)
+#        default_value: administrator
+#      -
+#        condition: equals(2)
+#        default_value: content_editor
+
+destination:
+  plugin: entity:user
+#  md5_passwords: true
