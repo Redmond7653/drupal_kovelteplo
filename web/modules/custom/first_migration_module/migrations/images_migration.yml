@@ -1,0 +1,34 @@
+id: images_migration
+label: import all images from ktmodx
+migration_group: default
+
+source:
+  plugin: 'csv'
+  path: './images.csv'
+  delimiter: ','
+  enclosure: '"'
+  header_offset: 0
+  ids:
+    - id
+  fields:
+    0:
+      name: id
+      label: 'id'
+    1:
+      name: value_source
+      label: 'value_source'
+    2:
+      name: value_dest
+      label: 'value_dest'
+
+process:
+  field_dodati_image_slider:
+    plugin: download
+    source:
+      - value_source
+      - value_dest
+    file_exists: use existing
+
+destination:
+  plugin: entity:file
+
