@@ -9,25 +9,54 @@ source:
   enclosure: '"'
   header_offset: 0
   ids:
-    - id
+    - content_id
   fields:
     0:
       name: id
       label: 'id'
     1:
-      name: value_source
-      label: 'value_source'
+      name: content_id
+      label: 'content_id'
     2:
-      name: value_dest
-      label: 'value_dest'
+      name: value
+      label: 'value'
+  constants:
+    is_public: true
+    source_base_path: 'https://kovelteplo.org.ua/files'
+    uri_base_path: 'public:/'
+
 
 process:
-  field_dodati_image_slider:
-    plugin: download
-    source:
-      - value_source
-      - value_dest
-    file_exists: use existing
+  source_full_path:
+    - plugin: concat
+      delimiter: /
+      source:
+        - constants/source_base_path
+        - value
+    - plugin: urlencode
+  dest_full_path:
+    - plugin: concat
+      delimiter: /
+      source:
+        - constants/uri_base_path
+        - value
+    - plugin: urlencode
+
+#  field_id:
+#    plugin: migration_lookup
+#    migration: content_migration
+#    source: id
+
+  uri:
+    - plugin: skip_on_empty
+      method: row
+      source: content_id
+
+    - plugin: download
+      source:
+        - '@source_full_path'
+        - '@dest_full_path'
+      file_exists: use existing
 
 destination:
   plugin: entity:file

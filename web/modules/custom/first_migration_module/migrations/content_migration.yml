@@ -32,7 +32,8 @@ source:
     7:
       name: f7
     8:
-      name: f8
+      name: status
+      label: 'status'
     9:
       name: f9
     10:
@@ -61,27 +62,121 @@ source:
     20:
       name: created_by
       label: 'author'
+    21:
+      name: f21
+    22:
+      name: f22
+    23:
+      name: f23
+    24:
+      name: f24
+    25:
+      name: f25
+    26:
+      name: f26
+    27:
+      name: f27
+    28:
+      name: f28
+    29:
+      name: f29
+    30:
+      name: f30
+    31:
+      name: f31
+    32:
+      name: f32
+    33:
+      name: f33
+    34:
+      name: f34
+    35:
+      name: f35
+    36:
+      name: f36
+    37:
+      name: f37
+    38:
+      name: f38
+    39:
+      name: f39
+    40:
+      name: f40
+    41:
+      name: f41
+    42:
+      name: f42
+    43:
+      name: f43
+    44:
+      name: file_url
+      label: 'file_url'
+  constants:
+    is_public: true
+    source_base_path: 'https://kovelteplo.org.ua/files'
+    uri_base_path: 'public:/'
 
 process:
   uid:
     plugin: migration_lookup
     migration: users_migration
     source: created_by
+
   title: title
+
   field_id: id
+
   field_advanced_label_text_page: long_title
+
+  status: status
+
   summary: description
+
   body: body
+
   field_anotaciya_vstup_: annotation
+
+  source_full_path:
+    plugin: concat
+    delimiter: /
+    source:
+      - constants/source_base_path
+      - file_url
+  dest_full_path:
+    plugin: concat
+    delimiter: /
+    source:
+      - constants/uri_base_path
+      - file_url
+
+#  field_dodati_image:
+#    plugin: download
+#    source:
+#      - '@source_full_path'
+#      - '@dest_full_path'
+#    file_exists: use existing
+
+  field_dodati_image:
+    plugin: image_import
+    source: '@source_full_path'
+    destination: '@dest_full_path'
+    alt: !file
+    skip_on_missing_source: true
+
   type:
     plugin: static_map
     bypass: true
     source: template
     map:
       1: tekstova_storinka
+      2: golovna
       3: novina
       4: slayder
+      5: rezultati_poshuku
+      6: blokovaniy_sayt
       8: posilannya_z_kartinkoyu
+      9: foto_dlya_galerei
+      11: osobistiy_kabinet
 
 
 destination:
