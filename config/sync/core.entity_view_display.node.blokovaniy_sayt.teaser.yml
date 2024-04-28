@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.blokovaniy_sayt.body
+    - field.field.node.blokovaniy_sayt.field_dodati_image
     - field.field.node.blokovaniy_sayt.field_rozshireniy_zagolovok
     - node.type.blokovaniy_sayt
   module:
@@ -29,4 +30,5 @@ content:
     weight: 100
     region: content
 hidden:
+  field_dodati_image: true
   field_rozshireniy_zagolovok: true

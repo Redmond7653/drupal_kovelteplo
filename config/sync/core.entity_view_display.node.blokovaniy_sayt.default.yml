@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.blokovaniy_sayt.body
+    - field.field.node.blokovaniy_sayt.field_dodati_image
     - field.field.node.blokovaniy_sayt.field_rozshireniy_zagolovok
     - node.type.blokovaniy_sayt
   module:
+    - image
     - text
     - user
 id: node.blokovaniy_sayt.default
@@ -20,6 +22,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_dodati_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 102
     region: content
   field_rozshireniy_zagolovok:
     type: text_default

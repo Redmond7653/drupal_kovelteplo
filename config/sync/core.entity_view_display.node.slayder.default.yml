@@ -6,7 +6,7 @@ dependencies:
     - field.field.node.slayder.body
     - field.field.node.slayder.field_advanced_label_slider
     - field.field.node.slayder.field_anotaciya_vstup_
-    - field.field.node.slayder.field_dodati_image_slider
+    - field.field.node.slayder.field_dodati_image
     - field.field.node.slayder.field_id
     - node.type.slayder
   module:
@@ -39,7 +39,7 @@ content:
     third_party_settings: {  }
     weight: 103
     region: content
-  field_dodati_image_slider:
+  field_dodati_image:
     type: image
     label: above
     settings:
@@ -48,7 +48,7 @@ content:
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 103
+    weight: 102
     region: content
   field_id:
     type: number_integer

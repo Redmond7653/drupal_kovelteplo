@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.golovna.body
+    - field.field.node.golovna.field_dodati_image
     - field.field.node.golovna.field_ro
     - node.type.golovna
   module:
+    - image
     - text
     - user
 id: node.golovna.default
@@ -20,6 +22,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_dodati_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 102
     region: content
   field_ro:
     type: text_default

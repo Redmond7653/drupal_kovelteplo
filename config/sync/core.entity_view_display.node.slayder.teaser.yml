@@ -7,7 +7,7 @@ dependencies:
     - field.field.node.slayder.body
     - field.field.node.slayder.field_advanced_label_slider
     - field.field.node.slayder.field_anotaciya_vstup_
-    - field.field.node.slayder.field_dodati_image_slider
+    - field.field.node.slayder.field_dodati_image
     - field.field.node.slayder.field_id
     - node.type.slayder
   module:
@@ -34,5 +34,5 @@ content:
 hidden:
   field_advanced_label_slider: true
   field_anotaciya_vstup_: true
-  field_dodati_image_slider: true
+  field_dodati_image: true
   field_id: true

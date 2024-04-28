@@ -6,9 +6,11 @@ dependencies:
     - field.field.node.tekstova_storinka.body
     - field.field.node.tekstova_storinka.field_advanced_label_text_page
     - field.field.node.tekstova_storinka.field_anotaciya_vstup_
+    - field.field.node.tekstova_storinka.field_dodati_image
     - field.field.node.tekstova_storinka.field_id
     - node.type.tekstova_storinka
   module:
+    - image
     - text
     - user
 id: node.tekstova_storinka.default
@@ -36,6 +38,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_dodati_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 102
     region: content
   field_id:
     type: number_integer

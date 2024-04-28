@@ -1,16 +1,16 @@
-uuid: 4ef0b71f-8770-4f81-b128-b1fbd56d7c47
+uuid: f9c38fd8-00c5-45cd-bf12-e7bd04cff658
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_dodati_image_slider
-    - node.type.slayder
+    - field.storage.node.field_dodati_image
+    - node.type.tekstova_storinka
   module:
     - image
-id: node.slayder.field_dodati_image_slider
-field_name: field_dodati_image_slider
+id: node.tekstova_storinka.field_dodati_image
+field_name: field_dodati_image
 entity_type: node
-bundle: slayder
+bundle: tekstova_storinka
 label: 'Додати image'
 description: ''
 required: false

@@ -1,0 +1,6 @@
+helloworld.hellopage:
+  path: '/personal'
+  defaults:
+    _controller: '\Drupal\personal\Controller\PersonalController::helloWorld'
+  requirements:
+    _permission: 'view content'

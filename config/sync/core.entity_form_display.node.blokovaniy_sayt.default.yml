@@ -4,9 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.blokovaniy_sayt.body
+    - field.field.node.blokovaniy_sayt.field_dodati_image
     - field.field.node.blokovaniy_sayt.field_rozshireniy_zagolovok
+    - image.style.thumbnail
     - node.type.blokovaniy_sayt
   module:
+    - image
     - path
     - text
 id: node.blokovaniy_sayt.default
@@ -29,6 +32,14 @@ content:
     weight: 2
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_dodati_image:
+    type: image_image
+    weight: 8
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   field_rozshireniy_zagolovok:
     type: text_textarea

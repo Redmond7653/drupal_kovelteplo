@@ -5,10 +5,12 @@ dependencies:
   config:
     - field.field.node.novina.body
     - field.field.node.novina.field_anotaciya_vstup_
+    - field.field.node.novina.field_dodati_image
     - field.field.node.novina.field_id
     - field.field.node.novina.field_rozshireniy_zagolovok_news
     - node.type.novina
   module:
+    - image
     - text
     - user
 id: node.novina.default
@@ -29,6 +31,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_dodati_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 102
     region: content
   field_id:
     type: number_integer

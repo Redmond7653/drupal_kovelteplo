@@ -6,9 +6,12 @@ dependencies:
     - field.field.node.tekstova_storinka.body
     - field.field.node.tekstova_storinka.field_advanced_label_text_page
     - field.field.node.tekstova_storinka.field_anotaciya_vstup_
+    - field.field.node.tekstova_storinka.field_dodati_image
     - field.field.node.tekstova_storinka.field_id
+    - image.style.thumbnail
     - node.type.tekstova_storinka
   module:
+    - image
     - path
     - text
 id: node.tekstova_storinka.default
@@ -47,6 +50,14 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_dodati_image:
+    type: image_image
+    weight: 8
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   field_id:
     type: number

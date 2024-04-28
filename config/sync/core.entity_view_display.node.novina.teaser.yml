@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.novina.body
     - field.field.node.novina.field_anotaciya_vstup_
+    - field.field.node.novina.field_dodati_image
     - field.field.node.novina.field_id
     - field.field.node.novina.field_rozshireniy_zagolovok_news
     - node.type.novina
@@ -32,5 +33,6 @@ content:
     region: content
 hidden:
   field_anotaciya_vstup_: true
+  field_dodati_image: true
   field_id: true
   field_rozshireniy_zagolovok_news: true

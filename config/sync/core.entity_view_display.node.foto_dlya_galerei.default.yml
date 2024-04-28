@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.field.node.foto_dlya_galerei.body
     - field.field.node.foto_dlya_galerei.field_adv_label_gallery_photo
-    - field.field.node.foto_dlya_galerei.field_dodati_image_gallery_photo
+    - field.field.node.foto_dlya_galerei.field_dodati_image
     - node.type.foto_dlya_galerei
   module:
     - image
@@ -30,7 +30,7 @@ content:
     third_party_settings: {  }
     weight: 102
     region: content
-  field_dodati_image_gallery_photo:
+  field_dodati_image:
     type: image
     label: above
     settings:
@@ -39,7 +39,7 @@ content:
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 103
+    weight: 102
     region: content
   links:
     settings: {  }

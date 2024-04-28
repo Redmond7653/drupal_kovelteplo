@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.tekstova_storinka.body
     - field.field.node.tekstova_storinka.field_advanced_label_text_page
     - field.field.node.tekstova_storinka.field_anotaciya_vstup_
+    - field.field.node.tekstova_storinka.field_dodati_image
     - field.field.node.tekstova_storinka.field_id
     - node.type.tekstova_storinka
   module:
@@ -33,4 +34,5 @@ content:
 hidden:
   field_advanced_label_text_page: true
   field_anotaciya_vstup_: true
+  field_dodati_image: true
   field_id: true

@@ -5,8 +5,10 @@ dependencies:
   config:
     - field.field.node.osobistiy_kabinet.body
     - field.field.node.osobistiy_kabinet.field_advanced_label_person_cab
+    - field.field.node.osobistiy_kabinet.field_dodati_image
     - node.type.osobistiy_kabinet
   module:
+    - image
     - text
     - user
 id: node.osobistiy_kabinet.default
@@ -25,6 +27,17 @@ content:
     type: text_default
     label: above
     settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_dodati_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 102
     region: content

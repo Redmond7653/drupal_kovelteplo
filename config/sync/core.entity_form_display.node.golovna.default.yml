@@ -4,9 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.golovna.body
+    - field.field.node.golovna.field_dodati_image
     - field.field.node.golovna.field_ro
+    - image.style.thumbnail
     - node.type.golovna
   module:
+    - image
     - path
     - text
 id: node.golovna.default
@@ -29,6 +32,14 @@ content:
     weight: 2
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_dodati_image:
+    type: image_image
+    weight: 8
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   field_ro:
     type: text_textfield

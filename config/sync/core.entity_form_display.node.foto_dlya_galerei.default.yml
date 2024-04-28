@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.field.node.foto_dlya_galerei.body
     - field.field.node.foto_dlya_galerei.field_adv_label_gallery_photo
-    - field.field.node.foto_dlya_galerei.field_dodati_image_gallery_photo
+    - field.field.node.foto_dlya_galerei.field_dodati_image
     - image.style.thumbnail
     - node.type.foto_dlya_galerei
   module:
@@ -41,7 +41,7 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-  field_dodati_image_gallery_photo:
+  field_dodati_image:
     type: image_image
     weight: 8
     region: content

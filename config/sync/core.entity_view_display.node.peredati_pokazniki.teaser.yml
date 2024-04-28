@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.peredati_pokazniki.body
     - field.field.node.peredati_pokazniki.field_advanced_label_show_pokasn
+    - field.field.node.peredati_pokazniki.field_dodati_image
     - node.type.peredati_pokazniki
   module:
     - text
@@ -30,3 +31,4 @@ content:
     region: content
 hidden:
   field_advanced_label_show_pokasn: true
+  field_dodati_image: true

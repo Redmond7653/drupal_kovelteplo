@@ -6,7 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.foto_dlya_galerei.body
     - field.field.node.foto_dlya_galerei.field_adv_label_gallery_photo
-    - field.field.node.foto_dlya_galerei.field_dodati_image_gallery_photo
+    - field.field.node.foto_dlya_galerei.field_dodati_image
     - node.type.foto_dlya_galerei
   module:
     - text
@@ -31,4 +31,4 @@ content:
     region: content
 hidden:
   field_adv_label_gallery_photo: true
-  field_dodati_image_gallery_photo: true
+  field_dodati_image: true

@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.golovna.body
+    - field.field.node.golovna.field_dodati_image
     - field.field.node.golovna.field_ro
     - node.type.golovna
   module:
@@ -29,4 +30,5 @@ content:
     weight: 100
     region: content
 hidden:
+  field_dodati_image: true
   field_ro: true

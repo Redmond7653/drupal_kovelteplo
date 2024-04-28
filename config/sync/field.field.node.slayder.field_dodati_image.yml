@@ -1,16 +1,16 @@
-uuid: 8edc6cd5-8f92-4204-8b9c-a689fc149dfb
+uuid: 86fc4786-406a-45b5-86aa-6cbd1d0f09a0
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_dodati_image_gallery_photo
-    - node.type.foto_dlya_galerei
+    - field.storage.node.field_dodati_image
+    - node.type.slayder
   module:
     - image
-id: node.foto_dlya_galerei.field_dodati_image_gallery_photo
-field_name: field_dodati_image_gallery_photo
+id: node.slayder.field_dodati_image
+field_name: field_dodati_image
 entity_type: node
-bundle: foto_dlya_galerei
+bundle: slayder
 label: 'Додати image'
 description: ''
 required: false

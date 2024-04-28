@@ -6,7 +6,7 @@ dependencies:
     - field.field.node.slayder.body
     - field.field.node.slayder.field_advanced_label_slider
     - field.field.node.slayder.field_anotaciya_vstup_
-    - field.field.node.slayder.field_dodati_image_slider
+    - field.field.node.slayder.field_dodati_image
     - field.field.node.slayder.field_id
     - image.style.thumbnail
     - node.type.slayder
@@ -51,7 +51,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_dodati_image_slider:
+  field_dodati_image:
     type: image_image
     weight: 8
     region: content

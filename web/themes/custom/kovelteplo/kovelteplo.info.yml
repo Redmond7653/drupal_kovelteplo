@@ -4,6 +4,9 @@ type: theme
 base theme: tara
 core_version_requirement: ^8.9 || ^9.3 || ^10
 
+libraries:
+  - kovelteplo/global-styling
+
 regions:
   header_top: 'Header Top'
   site_branding: 'Site Branding'
