@@ -1,0 +1,11 @@
+teplo_counter.type_add:
+  title: 'Add teplo counter type'
+  route_name: entity.teplo_counter_type.add_form
+  appears_on:
+    - entity.teplo_counter_type.collection
+
+teplo_counter.add_page:
+  title: 'Add teplo counter'
+  route_name: entity.teplo_counter.add_page
+  appears_on:
+    - entity.teplo_counter.collection

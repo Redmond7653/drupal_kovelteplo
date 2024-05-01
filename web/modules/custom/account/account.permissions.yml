@@ -1,0 +1,3 @@
+administer account:
+  title: 'Administer accounts'
+  restrict access: true

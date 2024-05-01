@@ -1,0 +1,11 @@
+entity.teplo_counter_type.collection:
+  title: 'Teplo counter types'
+  description: 'Manage and CRUD actions on Teplo counter type.'
+  parent: system.admin_structure
+  route_name: entity.teplo_counter_type.collection
+
+entity.teplo_counter.collection:
+  title: 'Teplo counters'
+  description: 'List of teplo counters.'
+  route_name: entity.teplo_counter.collection
+  parent: system.admin_content

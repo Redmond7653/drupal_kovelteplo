@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - teplo_counter
+id: teplo_counter_delete_action
+label: 'Delete teplo counters'
+type: teplo_counter
+plugin: entity:delete_action:teplo_counter
+configuration: {  }

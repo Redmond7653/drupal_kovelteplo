@@ -1,0 +1,13 @@
+uuid: 24a3e9d1-5e6a-41ad-8628-13e9e04bc90e
+langcode: en
+status: true
+dependencies:
+  module:
+    - account
+_core:
+  default_config_hash: qD1b5lhJUEBpva70VqUMtAB1KSdwsNCJ4OIj04jGwQk
+id: account_delete_action
+label: 'Delete accounts'
+type: account
+plugin: 'entity:delete_action:account'
+configuration: {  }

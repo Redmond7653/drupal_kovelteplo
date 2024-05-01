@@ -1,0 +1,4 @@
+administer calculation types:
+  title: 'Administer calculation types'
+  description: 'Maintain the types of calculation entity.'
+  restrict access: true

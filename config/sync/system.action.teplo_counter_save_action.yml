@@ -1,0 +1,13 @@
+uuid: c9664eb9-c6db-485b-985c-3a36606074f6
+langcode: en
+status: true
+dependencies:
+  module:
+    - teplo_counter
+_core:
+  default_config_hash: WphmynlG7nTdUtHjXGSGpn4Yz4I0jtpCFkwIgO9xo4A
+id: teplo_counter_save_action
+label: 'Save teplo counters'
+type: teplo_counter
+plugin: 'entity:save_action:teplo_counter'
+configuration: {  }

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - calculation
+id: calculation_save_action
+label: 'Save calculations'
+type: calculation
+plugin: entity:save_action:calculation
+configuration: {  }

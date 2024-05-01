@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - account
+id: account_save_action
+label: 'Save accounts'
+type: account
+plugin: entity:save_action:account
+configuration: {  }

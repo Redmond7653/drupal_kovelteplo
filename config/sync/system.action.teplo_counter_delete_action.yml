@@ -1,0 +1,13 @@
+uuid: 2ed230c8-e5ec-443f-a341-ebc512d405e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - teplo_counter
+_core:
+  default_config_hash: c-FUlNkkkViBnPSgrDQBEzcstLl8m0aAoIF4A8ZqFzE
+id: teplo_counter_delete_action
+label: 'Delete teplo counters'
+type: teplo_counter
+plugin: 'entity:delete_action:teplo_counter'
+configuration: {  }

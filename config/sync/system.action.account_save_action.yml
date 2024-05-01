@@ -1,0 +1,13 @@
+uuid: 281092db-9ea9-4007-8ef3-301995784586
+langcode: en
+status: true
+dependencies:
+  module:
+    - account
+_core:
+  default_config_hash: K7Qr6cGEmi_YnaMMy6TQJChn5VNp7zijXFAkX8lL7oU
+id: account_save_action
+label: 'Save accounts'
+type: account
+plugin: 'entity:save_action:account'
+configuration: {  }

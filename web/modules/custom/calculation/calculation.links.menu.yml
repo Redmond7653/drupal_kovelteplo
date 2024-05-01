@@ -1,0 +1,11 @@
+entity.calculation_type.collection:
+  title: 'Calculation types'
+  description: 'Manage and CRUD actions on Calculation type.'
+  parent: system.admin_structure
+  route_name: entity.calculation_type.collection
+
+entity.calculation.collection:
+  title: 'Calculations'
+  description: 'List of calculations.'
+  route_name: entity.calculation.collection
+  parent: system.admin_content

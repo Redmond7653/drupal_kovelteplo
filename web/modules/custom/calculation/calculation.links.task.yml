@@ -1,0 +1,13 @@
+entity.calculation.collection:
+  title: 'Calculations'
+  route_name: entity.calculation.collection
+  base_route: system.admin_content
+  weight: 10
+entity.calculation_type.edit_form:
+  title: 'Edit'
+  route_name: entity.calculation_type.edit_form
+  base_route: entity.calculation_type.edit_form
+entity.calculation_type.collection:
+  title: 'List'
+  route_name: entity.calculation_type.collection
+  base_route: entity.calculation_type.collection

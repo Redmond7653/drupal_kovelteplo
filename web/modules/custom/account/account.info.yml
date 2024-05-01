@@ -1,0 +1,5 @@
+name: 'Account'
+type: module
+description: 'Kovelteplo accounts.'
+package: '@todo Add package'
+core_version_requirement: ^10

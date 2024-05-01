@@ -1,0 +1,10 @@
+entity.account.edit_form:
+  route_name: entity.account.edit_form
+  group: account
+  title: 'Edit'
+
+entity.account.delete_form:
+  route_name: entity.account.delete_form
+  group: account
+  title: 'Delete'
+  weight: 10

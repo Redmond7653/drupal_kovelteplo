@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for ktpersonal module.
+ */
+
+  /**
+   * Implements hook_update_N().
+   */
+  function ktpersonal_update_9001(&$sandbox) {
+    $z = 0;
+
+    throw new Exception();
+  }

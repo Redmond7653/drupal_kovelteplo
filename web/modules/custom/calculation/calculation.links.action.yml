@@ -1,0 +1,11 @@
+calculation.type_add:
+  title: 'Add calculation type'
+  route_name: entity.calculation_type.add_form
+  appears_on:
+    - entity.calculation_type.collection
+
+calculation.add_page:
+  title: 'Add calculation'
+  route_name: entity.calculation.add_page
+  appears_on:
+    - entity.calculation.collection

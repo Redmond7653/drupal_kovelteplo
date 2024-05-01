@@ -1,0 +1,5 @@
+account.add_form:
+  title: 'Add account'
+  route_name: entity.account.add_form
+  appears_on:
+    - entity.account.collection

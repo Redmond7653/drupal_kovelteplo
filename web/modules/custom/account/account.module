@@ -1,0 +1,126 @@
+<?php
+
+/**
+ * @file
+ */
+
+declare(strict_types=1);
+
+/**
+ * @file
+ * Provides an account entity type.
+ */
+
+  use Drupal\Core\Entity\EntityTypeInterface;
+  use Drupal\Core\Field\BaseFieldDefinition;
+  use Drupal\Core\Render\Element;
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function account_theme(): array {
+  return [
+    'account' => ['render element' => 'elements'],
+  ];
+}
+
+/**
+ * Prepares variables for account templates.
+ *
+ * Default template: account.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the account information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_account(array &$variables): void {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_user_cancel().
+ */
+function account_user_cancel($edit, UserInterface $account, $method): void {
+  switch ($method) {
+    case 'user_cancel_block_unpublish':
+      // Unpublish accounts.
+      $storage = \Drupal::entityTypeManager()->getStorage('account');
+      $account_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->condition('status', 1)
+        ->accessCheck(FALSE)
+        ->execute();
+      foreach ($storage->loadMultiple($account_ids) as $account) {
+        $account->set('status', FALSE)->save();
+      }
+      break;
+
+    case 'user_cancel_reassign':
+      // Anonymize accounts.
+      $storage = \Drupal::entityTypeManager()->getStorage('account');
+      $account_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->accessCheck(FALSE)
+        ->execute();
+      foreach ($storage->loadMultiple($account_ids) as $account) {
+        $account->setOwnerId(0)->save();
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete() for user entities.
+ */
+function account_user_predelete(UserInterface $account): void {
+  // Delete accounts that belong to this account.
+  $storage = \Drupal::entityTypeManager()->getStorage('account');
+  $account_ids = $storage->getQuery()
+    ->condition('uid', $account->id())
+    ->accessCheck(FALSE)
+    ->execute();
+  $storage->delete(
+    $storage->loadMultiple($account_ids)
+  );
+  // Delete old revisions.
+  $account_ids = $storage->getQuery()
+    ->allRevisions()
+    ->condition('uid', $account->id())
+    ->accessCheck(FALSE)
+    ->execute();
+  foreach (array_keys($account_ids) as $revision_id) {
+    $storage->deleteRevision($revision_id);
+  }
+}
+
+///**
+// * Implements hook_entity_base_field_info().
+// */
+//function account_entity_base_field_info(EntityTypeInterface $entity_type) {
+//  $fields = [];
+//  if ($entity_type->id() === 'account') {
+//    $fields['field_demo_field'] = BaseFieldDefinition::create('string')
+//      ->setLabel(t('Demo field'))
+//      ->setDescription(t('The demo field description.'))
+//      ->setRequired(FALSE)
+//      ->setTranslatable(TRUE)
+//      ->setSettings([
+//        'default_value' => '',
+//        'max_length' => 255,
+//      ])
+//      ->setDisplayOptions('form', [
+//        'type' => 'string_textfield',
+//        'weight' => 10,
+//      ])
+//      ->setDisplayConfigurable('view', TRUE)
+//      ->setDisplayConfigurable('form', TRUE);
+//
+//    return $fields;
+//  }
+//}

@@ -1,0 +1,7 @@
+ktpersonal.personal:
+  path: '/personal'
+  defaults:
+    _title: 'Hello'
+    _controller: '\Drupal\ktpersonal\Controller\KtpersonalController'
+  requirements:
+    _permission: 'access content'

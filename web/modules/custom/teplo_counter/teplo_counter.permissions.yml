@@ -1,0 +1,4 @@
+administer teplo_counter types:
+  title: 'Administer teplo counter types'
+  description: 'Maintain the types of teplo counter entity.'
+  restrict access: true

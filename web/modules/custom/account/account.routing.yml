@@ -1,0 +1,7 @@
+entity.account.settings:
+  path: 'admin/structure/account'
+  defaults:
+    _form: '\Drupal\account\Form\AccountSettingsForm'
+    _title: 'account'
+  requirements:
+    _permission: 'administer account'

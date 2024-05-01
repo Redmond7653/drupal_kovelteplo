@@ -1,0 +1,11 @@
+entity.account.settings:
+  title: 'account'
+  description: 'Configure an account entity type.'
+  route_name:  entity.account.settings
+  parent: system.admin_structure
+
+entity.account.collection:
+  title: 'accounts'
+  description: 'List of accounts.'
+  route_name: entity.account.collection
+  parent: system.admin_content
