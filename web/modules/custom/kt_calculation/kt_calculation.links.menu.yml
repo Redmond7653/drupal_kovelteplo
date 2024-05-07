@@ -1,0 +1,11 @@
+entity.kt_calculation.settings:
+  title: 'Kt calculation'
+  description: 'Configure a Kt calculation entity type.'
+  route_name:  entity.kt_calculation.settings
+  parent: system.admin_structure
+
+entity.kt_calculation.collection:
+  title: 'Kt calculations'
+  description: 'List of kt calculations.'
+  route_name: entity.kt_calculation.collection
+  parent: system.admin_content

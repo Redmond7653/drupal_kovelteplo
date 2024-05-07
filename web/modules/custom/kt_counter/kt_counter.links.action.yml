@@ -1,0 +1,5 @@
+kt_counter.add_form:
+  title: 'Add kt counter'
+  route_name: entity.kt_counter.add_form
+  appears_on:
+    - entity.kt_counter.collection

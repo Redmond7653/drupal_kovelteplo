@@ -1,0 +1,61 @@
+id: kt_calculations_migration
+label: import all calculations from ktmodx
+migration_group: default
+
+source:
+  plugin: 'csv'
+  track_changes: true
+  path: './baf_kt_calculations - CALCULATION.csv'
+  delimiter: ';'
+  enclosure: '"'
+  header_offset: 0
+  ids:
+    - code
+    - details
+    - billing_month
+  fields:
+    0:
+      name: code
+      label: 'code_field'
+    1:
+      name: details
+      label: 'details-field'
+    2:
+      name: billing_month
+      label: 'billing_month_field'
+    3:
+      name: sum_payment
+      label: 'sum_payment_field'
+    4:
+      name: paid
+      label: 'paid_field'
+    5:
+      name: debt
+      label: 'debt_field'
+    6:
+      name: payment_date
+      label: 'payment_date_field'
+
+
+
+process:
+
+  operation_code_field: code
+
+  details_field: details
+
+  billing_month_field: billing_month
+
+  sum_payment_field: sum_payment
+
+  paid_field: paid
+
+  debt_field: debt
+
+  payment_date_field: payment_date
+
+
+
+
+destination:
+  plugin: entity:kt_calculation

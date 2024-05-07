@@ -1,0 +1,11 @@
+administer kt_calculation:
+  title: 'Administer kt calculations'
+  restrict access: true
+view kt_calculation:
+  title: 'View kt calculation'
+edit kt_calculation:
+  title: 'Edit kt calculation'
+delete kt_calculation:
+  title: 'Delete kt calculation'
+create kt_calculation:
+  title: 'Create kt calculation'

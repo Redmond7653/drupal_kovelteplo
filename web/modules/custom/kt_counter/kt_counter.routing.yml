@@ -1,0 +1,7 @@
+entity.kt_counter.settings:
+  path: 'admin/structure/kt-counter'
+  defaults:
+    _form: '\Drupal\kt_counter\Form\KtCounterSettingsForm'
+    _title: 'Kt counter'
+  requirements:
+    _permission: 'administer kt_counter'

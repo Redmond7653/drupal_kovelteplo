@@ -1,0 +1,9 @@
+entity.kt_calculation.settings:
+  title: 'Settings'
+  route_name: entity.kt_calculation.settings
+  base_route: entity.kt_calculation.settings
+entity.kt_calculation.collection:
+  title: 'Kt calculations'
+  route_name: entity.kt_calculation.collection
+  base_route: system.admin_content
+  weight: 10

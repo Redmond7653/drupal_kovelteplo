@@ -1,0 +1,64 @@
+id: kt_counters_migration
+label: import all counters from ktmodx
+migration_group: default
+
+source:
+  plugin: 'csv'
+  track_changes: true
+  path: './baf_kt_output_counters - COUNTER.csv'
+  delimiter: ';'
+  enclosure: '"'
+  header_offset: 0
+  ids:
+    - counter_id
+  fields:
+    0:
+      name: code
+      label: 'code_field'
+    1:
+      name: personal_account_number
+      label: 'personal_account_number_field'
+    2:
+      name: counter_id
+      label: 'counter_id_field'
+    3:
+      name: last_data
+      label: 'last_data_field'
+    4:
+      name: info
+      label: 'info_field'
+    5:
+      name: enabled
+      label: 'enabled_field'
+    6:
+      name: next_date_checking
+      label: 'next_date_checking_field'
+
+
+
+process:
+
+  operation_code_field: code
+
+  personal_account_number_field: personal_account_number
+
+  counter_id_field: counter_id
+
+  last_data_field: last_data
+
+  info_field: info
+
+  enabled_field: enabled
+
+  next_date_checking_field: next_date_checking
+
+  kt_accounts_drupal_id_field:
+    plugin: migration_lookup
+    migration: kt_accounts_migration
+    source: code
+
+
+
+
+destination:
+  plugin: entity:kt_counter

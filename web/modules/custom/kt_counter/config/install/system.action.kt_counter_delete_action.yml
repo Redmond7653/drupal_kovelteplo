@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - kt_counter
+id: kt_counter_delete_action
+label: 'Delete kt counters'
+type: kt_counter
+plugin: entity:delete_action:kt_counter
+configuration: {  }

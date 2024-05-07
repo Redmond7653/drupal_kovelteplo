@@ -1,0 +1,11 @@
+administer kt_counter:
+  title: 'Administer kt counters'
+  restrict access: true
+view kt_counter:
+  title: 'View kt counter'
+edit kt_counter:
+  title: 'Edit kt counter'
+delete kt_counter:
+  title: 'Delete kt counter'
+create kt_counter:
+  title: 'Create kt counter'

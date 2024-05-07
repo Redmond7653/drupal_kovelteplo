@@ -1,0 +1,11 @@
+entity.kt_counter.settings:
+  title: 'Kt counter'
+  description: 'Configure a Kt counter entity type.'
+  route_name:  entity.kt_counter.settings
+  parent: system.admin_structure
+
+entity.kt_counter.collection:
+  title: 'Kt counters'
+  description: 'List of kt counters.'
+  route_name: entity.kt_counter.collection
+  parent: system.admin_content

@@ -1,4 +1,4 @@
-id: accounts_migration
+id: kt_accounts_migration
 label: import all accounts from ktmodx
 migration_group: default
 

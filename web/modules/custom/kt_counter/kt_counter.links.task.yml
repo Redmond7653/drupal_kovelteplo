@@ -1,0 +1,9 @@
+entity.kt_counter.settings:
+  title: 'Settings'
+  route_name: entity.kt_counter.settings
+  base_route: entity.kt_counter.settings
+entity.kt_counter.collection:
+  title: 'Kt counters'
+  route_name: entity.kt_counter.collection
+  base_route: system.admin_content
+  weight: 10

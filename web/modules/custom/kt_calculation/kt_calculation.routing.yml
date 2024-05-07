@@ -1,0 +1,7 @@
+entity.kt_calculation.settings:
+  path: 'admin/structure/kt-calculation'
+  defaults:
+    _form: '\Drupal\kt_calculation\Form\KtCalculationSettingsForm'
+    _title: 'Kt calculation'
+  requirements:
+    _permission: 'administer kt_calculation'
