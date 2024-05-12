@@ -1,7 +1,16 @@
 ktpersonal.personal:
   path: '/personal'
   defaults:
-    _title: 'Hello'
-    _controller: '\Drupal\ktpersonal\Controller\KtpersonalController'
+    _title: 'Personal search'
+    _controller: '\Drupal\ktpersonal\Controller\KtpersonalController::content'
   requirements:
     _permission: 'access content'
+
+
+ktpersonal.admin_settings:
+  path: '/admin/config/ktpersonal'
+  defaults:
+    _form: '\Drupal\your_module\Form\ModuleConfigurationForm'
+    _title: 'Ktpersonal configuration screen'
+  requirements:
+    _permission: 'administer site configuration'

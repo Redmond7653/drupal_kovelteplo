@@ -54,6 +54,11 @@ process:
 
   payment_date_field: payment_date
 
+  drupal_account_id_field:
+    plugin: migration_lookup
+    migration: kt_accounts_migration
+    source: code
+
 
 
 

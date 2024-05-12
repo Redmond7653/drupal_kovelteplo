@@ -292,6 +292,23 @@ final class KtCalculation extends RevisionableContentEntityBase implements KtCal
       ->setDisplayConfigurable('form', TRUE);
 
 
+    $fields['drupal_account_id_field'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('Drupal аккаунт ID'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'integer_number',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+
+
     return $fields;
   }
 
