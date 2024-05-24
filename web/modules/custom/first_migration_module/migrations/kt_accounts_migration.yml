@@ -42,24 +42,26 @@ source:
 
 process:
 
-  operation_code_field: code
+  label: owner_account_number
 
-  type_of_abonent_field: abonent_id
+  operation_code: code
 
-  operation_status_field: custom_status
+  type_of_abonent: abonent_id
 
-  short_address_field: short_address
+  operation_status: custom_status
 
-  home_number_field: house_number
+  short_address: short_address
 
-  apartment_number_field: apartment_number
+  home_number: house_number
 
-  account_number_field: account_number
+  apartment_number: apartment_number
 
-  owner_account_number_field: owner_account_number
+  account_number: account_number
 
-  remains_field: remains
+  owner_account_number: owner_account_number
+
+  remains: remains
 
 
 destination:
-  plugin: entity:account
+  plugin: entity:ktpersonal_kt_account

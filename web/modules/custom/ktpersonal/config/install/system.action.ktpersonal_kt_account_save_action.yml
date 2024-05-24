@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ktpersonal
+id: ktpersonal_kt_account_save_action
+label: 'Save kt_accounts'
+type: ktpersonal_kt_account
+plugin: entity:save_action:ktpersonal_kt_account
+configuration: {  }

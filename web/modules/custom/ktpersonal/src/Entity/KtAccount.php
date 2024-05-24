@@ -1,62 +1,74 @@
 <?php declare(strict_types = 1);
 
-namespace Drupal\kt_counter\Entity;
+namespace Drupal\ktpersonal\Entity;
 
-use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Entity\RevisionableContentEntityBase;
 use Drupal\Core\Field\BaseFieldDefinition;
-use Drupal\kt_counter\KtCounterInterface;
+use Drupal\ktpersonal\KtAccountInterface;
 use Drupal\user\EntityOwnerTrait;
 
 /**
- * Defines the kt counter entity class.
+ * Defines the kt_account entity class.
  *
  * @ContentEntityType(
- *   id = "kt_counter",
- *   label = @Translation("Kt counter"),
- *   label_collection = @Translation("Kt counters"),
- *   label_singular = @Translation("kt counter"),
- *   label_plural = @Translation("kt counters"),
+ *   id = "ktpersonal_kt_account",
+ *   label = @Translation("kt_account"),
+ *   label_collection = @Translation("kt_accounts"),
+ *   label_singular = @Translation("kt_account"),
+ *   label_plural = @Translation("kt_accounts"),
  *   label_count = @PluralTranslation(
- *     singular = "@count kt counters",
- *     plural = "@count kt counters",
+ *     singular = "@count kt_accounts",
+ *     plural = "@count kt_accounts",
  *   ),
  *   handlers = {
- *     "list_builder" = "Drupal\kt_counter\KtCounterListBuilder",
+ *     "list_builder" = "Drupal\ktpersonal\KtAccountListBuilder",
  *     "views_data" = "Drupal\views\EntityViewsData",
- *     "access" = "Drupal\kt_counter\KtCounterAccessControlHandler",
+ *     "access" = "Drupal\ktpersonal\KtAccountAccessControlHandler",
  *     "form" = {
- *       "add" = "Drupal\kt_counter\Form\KtCounterForm",
- *       "edit" = "Drupal\kt_counter\Form\KtCounterForm",
+ *       "add" = "Drupal\ktpersonal\Form\KtAccountForm",
+ *       "edit" = "Drupal\ktpersonal\Form\KtAccountForm",
  *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm",
  *       "delete-multiple-confirm" = "Drupal\Core\Entity\Form\DeleteMultipleForm",
  *     },
  *     "route_provider" = {
- *       "html" = "Drupal\kt_counter\Routing\KtCounterHtmlRouteProvider",
+ *       "html" = "Drupal\ktpersonal\Routing\KtAccountHtmlRouteProvider",
  *     },
  *   },
- *   base_table = "kt_counter",
- *   admin_permission = "administer kt_counter",
+ *   base_table = "ktpersonal_kt_account",
+ *   data_table = "ktpersonal_kt_account_field_data",
+ *   revision_table = "ktpersonal_kt_account_revision",
+ *   revision_data_table = "ktpersonal_kt_account_field_revision",
+ *   show_revision_ui = TRUE,
+ *   translatable = TRUE,
+ *   admin_permission = "administer ktpersonal_kt_account",
  *   entity_keys = {
  *     "id" = "id",
+ *     "revision" = "revision_id",
+ *     "langcode" = "langcode",
  *     "label" = "label",
  *     "uuid" = "uuid",
  *     "owner" = "uid",
  *   },
- *   links = {
- *     "collection" = "/admin/content/kt-counter",
- *     "add-form" = "/kt-counter/add",
- *     "canonical" = "/kt-counter/{kt_counter}",
- *     "edit-form" = "/kt-counter/{kt_counter}",
- *     "delete-form" = "/kt-counter/{kt_counter}/delete",
- *     "delete-multiple-form" = "/admin/content/kt-counter/delete-multiple",
+ *   revision_metadata_keys = {
+ *     "revision_user" = "revision_uid",
+ *     "revision_created" = "revision_timestamp",
+ *     "revision_log_message" = "revision_log",
  *   },
- *   field_ui_base_route = "entity.kt_counter.settings",
+ *   links = {
+ *     "collection" = "/admin/content/kt-account",
+ *     "add-form" = "/kt-account/add",
+ *     "canonical" = "/kt-account/{ktpersonal_kt_account}",
+ *     "edit-form" = "/kt-account/{ktpersonal_kt_account}",
+ *     "delete-form" = "/kt-account/{ktpersonal_kt_account}/delete",
+ *     "delete-multiple-form" = "/admin/content/kt-account/delete-multiple",
+ *   },
+ *   field_ui_base_route = "entity.ktpersonal_kt_account.settings",
  * )
  */
-final class KtCounter extends ContentEntityBase implements KtCounterInterface {
+final class KtAccount extends RevisionableContentEntityBase implements KtAccountInterface {
 
   use EntityChangedTrait;
   use EntityOwnerTrait;
@@ -80,6 +92,8 @@ final class KtCounter extends ContentEntityBase implements KtCounterInterface {
     $fields = parent::baseFieldDefinitions($entity_type);
 
     $fields['label'] = BaseFieldDefinition::create('string')
+      ->setRevisionable(TRUE)
+      ->setTranslatable(TRUE)
       ->setLabel(t('Label'))
       ->setRequired(TRUE)
       ->setSetting('max_length', 255)
@@ -96,6 +110,7 @@ final class KtCounter extends ContentEntityBase implements KtCounterInterface {
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['status'] = BaseFieldDefinition::create('boolean')
+      ->setRevisionable(TRUE)
       ->setLabel(t('Status'))
       ->setDefaultValue(TRUE)
       ->setSetting('on_label', 'Enabled')
@@ -118,6 +133,8 @@ final class KtCounter extends ContentEntityBase implements KtCounterInterface {
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['description'] = BaseFieldDefinition::create('text_long')
+      ->setRevisionable(TRUE)
+      ->setTranslatable(TRUE)
       ->setLabel(t('Description'))
       ->setDisplayOptions('form', [
         'type' => 'text_textarea',
@@ -132,6 +149,8 @@ final class KtCounter extends ContentEntityBase implements KtCounterInterface {
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['uid'] = BaseFieldDefinition::create('entity_reference')
+      ->setRevisionable(TRUE)
+      ->setTranslatable(TRUE)
       ->setLabel(t('Author'))
       ->setSetting('target_type', 'user')
       ->setDefaultValueCallback(self::class . '::getDefaultEntityOwner')
@@ -154,7 +173,8 @@ final class KtCounter extends ContentEntityBase implements KtCounterInterface {
 
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Authored on'))
-      ->setDescription(t('The time that the kt counter was created.'))
+      ->setTranslatable(TRUE)
+      ->setDescription(t('The time that the kt_account was created.'))
       ->setDisplayOptions('view', [
         'label' => 'above',
         'type' => 'timestamp',
@@ -169,10 +189,11 @@ final class KtCounter extends ContentEntityBase implements KtCounterInterface {
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
-      ->setDescription(t('The time that the kt counter was last edited.'));
+      ->setTranslatable(TRUE)
+      ->setDescription(t('The time that the kt_account was last edited.'));
 
 
-    $fields['operation_code_field'] = BaseFieldDefinition::create('string')
+    $fields['operation_code'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Код'))
       ->setRequired(FALSE)
       ->setTranslatable(TRUE)
@@ -187,7 +208,96 @@ final class KtCounter extends ContentEntityBase implements KtCounterInterface {
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
-    $fields['personal_account_number_field'] = BaseFieldDefinition::create('string')
+
+
+    $fields['type_of_abonent'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Вид абонента'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+
+    $fields['operation_status'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Закритий'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+
+    $fields['short_address'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Коротка адреса'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+
+
+    $fields['home_number'] = BaseFieldDefinition::create('integer')
+      ->setRevisionable(TRUE)
+      ->setLabel(t('Номер будинку'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'integer_number',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'test',
+        'weight' => 15,
+      ])
+      ->setDisplayConfigurable('form', TRUE);
+
+
+
+    $fields['apartment_number'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('Номер квартири'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'integer_number',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['account_number'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Номер особового рахунку'))
       ->setRequired(FALSE)
       ->setTranslatable(TRUE)
@@ -202,38 +312,9 @@ final class KtCounter extends ContentEntityBase implements KtCounterInterface {
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
-    $fields['counter_id_field'] = BaseFieldDefinition::create('integer')
-      ->setLabel(t('Id лічильника'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'integer_number',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
 
-    $fields['last_data_field'] = BaseFieldDefinition::create('integer')
-      ->setLabel(t('Останні дані'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'integer_number',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
-
-    $fields['info_field'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Інформація'))
+    $fields['owner_account_number'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Власник особового рахунку'))
       ->setRequired(FALSE)
       ->setTranslatable(TRUE)
       ->setSettings([
@@ -247,8 +328,9 @@ final class KtCounter extends ContentEntityBase implements KtCounterInterface {
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
-    $fields['enabled_field'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Доступність'))
+
+    $fields['remains'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Залишок'))
       ->setRequired(FALSE)
       ->setTranslatable(TRUE)
       ->setSettings([
@@ -261,37 +343,6 @@ final class KtCounter extends ContentEntityBase implements KtCounterInterface {
       ])
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
-
-    $fields['next_date_checking_field'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Дата наступної повірки'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
-
-    $fields['kt_accounts_drupal_id_field'] = BaseFieldDefinition::create('integer')
-      ->setLabel(t('Kt_accounts Drupal ID'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'integer_number',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
-
 
     return $fields;
   }

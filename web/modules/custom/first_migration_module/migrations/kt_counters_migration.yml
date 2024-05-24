@@ -38,21 +38,20 @@ source:
 
 process:
 
-  operation_code_field: code
 
-  personal_account_number_field: personal_account_number
+  operation_code: code
 
-  counter_id_field: counter_id
+  counter_id: counter_id
 
-  last_data_field: last_data
+  last_data: last_data
 
-  info_field: info
+  info: info
 
-  enabled_field: enabled
+  enabled: enabled
 
-  next_date_checking_field: next_date_checking
+  next_date_checking: next_date_checking
 
-  kt_accounts_drupal_id_field:
+  kt_accounts_drupal_id:
     plugin: migration_lookup
     migration: kt_accounts_migration
     source: code
@@ -61,4 +60,4 @@ process:
 
 
 destination:
-  plugin: entity:kt_counter
+  plugin: entity:ktpersonal_kt_counter

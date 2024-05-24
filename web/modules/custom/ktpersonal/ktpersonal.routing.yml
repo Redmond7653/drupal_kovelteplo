@@ -1,10 +1,10 @@
-ktpersonal.personal:
-  path: '/personal'
-  defaults:
-    _title: 'Personal search'
-    _controller: '\Drupal\ktpersonal\Controller\KtpersonalController::content'
-  requirements:
-    _permission: 'access content'
+#ktpersonal.personal:
+#  path: '/personal'
+#  defaults:
+#    _title: 'Personal search'
+#    _controller: '\Drupal\ktpersonal\Controller\KtpersonalController::content'
+#  requirements:
+#    _permission: 'access content'
 
 
 ktpersonal.admin_settings:
@@ -14,3 +14,27 @@ ktpersonal.admin_settings:
     _title: 'Ktpersonal configuration screen'
   requirements:
     _permission: 'administer site configuration'
+
+ktpersonal.ktpersonal:
+  path: '/ktpersonal'
+  defaults:
+    _title: 'Ktpersonal'
+    _form: 'Drupal\ktpersonal\Form\KtpersonalForm'
+  requirements:
+    _permission: 'access content'
+
+entity.ktpersonal_kt_account.settings:
+  path: 'admin/structure/ktpersonal-kt-account'
+  defaults:
+    _form: '\Drupal\ktpersonal\Form\KtAccountSettingsForm'
+    _title: 'kt_account'
+  requirements:
+    _permission: 'administer ktpersonal_kt_account'
+
+entity.ktpersonal_kt_counter.settings:
+  path: 'admin/structure/ktpersonal-kt-counter'
+  defaults:
+    _form: '\Drupal\ktpersonal\Form\KtCounterSettingsForm'
+    _title: 'kt_counter'
+  requirements:
+    _permission: 'administer ktpersonal_kt_counter'

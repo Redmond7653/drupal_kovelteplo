@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ktpersonal
+id: ktpersonal_kt_account_delete_action
+label: 'Delete kt_accounts'
+type: ktpersonal_kt_account
+plugin: entity:delete_action:ktpersonal_kt_account
+configuration: {  }

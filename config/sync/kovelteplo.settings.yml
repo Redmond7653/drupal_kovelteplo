@@ -24,7 +24,7 @@ slider_image: {  }
 slider_time: '5000'
 slider_dots: 'true'
 slider_code: ''
-front_sidebar: 0
+front_sidebar: 1
 scrolltotop_on: 1
 copyright_text: 1
 css_extra: 0

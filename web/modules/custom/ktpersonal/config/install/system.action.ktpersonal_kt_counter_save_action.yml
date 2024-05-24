@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ktpersonal
+id: ktpersonal_kt_counter_save_action
+label: 'Save kt_counters'
+type: ktpersonal_kt_counter
+plugin: entity:save_action:ktpersonal_kt_counter
+configuration: {  }

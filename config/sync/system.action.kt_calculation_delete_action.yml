@@ -1,0 +1,13 @@
+uuid: 224c62eb-0164-4c6a-ae4a-4287ef160cb2
+langcode: en
+status: true
+dependencies:
+  module:
+    - kt_calculation
+_core:
+  default_config_hash: v3bS_FHNvxOCw6ITIc481OrHjfHdI1ZBNmVuvives6s
+id: kt_calculation_delete_action
+label: 'Delete kt calculations'
+type: kt_calculation
+plugin: 'entity:delete_action:kt_calculation'
+configuration: {  }

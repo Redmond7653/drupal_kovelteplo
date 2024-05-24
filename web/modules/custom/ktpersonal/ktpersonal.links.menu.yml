@@ -1,0 +1,23 @@
+entity.ktpersonal_kt_account.settings:
+  title: 'kt_account'
+  description: 'Configure a kt_account entity type.'
+  route_name:  entity.ktpersonal_kt_account.settings
+  parent: system.admin_structure
+
+entity.ktpersonal_kt_account.collection:
+  title: 'kt_accounts'
+  description: 'List of kt_accounts.'
+  route_name: entity.ktpersonal_kt_account.collection
+  parent: system.admin_content
+
+entity.ktpersonal_kt_counter.settings:
+  title: 'kt_counter'
+  description: 'Configure a kt_counter entity type.'
+  route_name:  entity.ktpersonal_kt_counter.settings
+  parent: system.admin_structure
+
+entity.ktpersonal_kt_counter.collection:
+  title: 'kt_counters'
+  description: 'List of kt_counters.'
+  route_name: entity.ktpersonal_kt_counter.collection
+  parent: system.admin_content

@@ -1,0 +1,19 @@
+entity.ktpersonal_kt_account.settings:
+  title: 'Settings'
+  route_name: entity.ktpersonal_kt_account.settings
+  base_route: entity.ktpersonal_kt_account.settings
+entity.ktpersonal_kt_account.collection:
+  title: 'kt_accounts'
+  route_name: entity.ktpersonal_kt_account.collection
+  base_route: system.admin_content
+  weight: 10
+
+entity.ktpersonal_kt_counter.settings:
+  title: 'Settings'
+  route_name: entity.ktpersonal_kt_counter.settings
+  base_route: entity.ktpersonal_kt_counter.settings
+entity.ktpersonal_kt_counter.collection:
+  title: 'kt_counters'
+  route_name: entity.ktpersonal_kt_counter.collection
+  base_route: system.admin_content
+  weight: 10

@@ -1,0 +1,124 @@
+ $fields['operation_code'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Код'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+//    $fields['personal_account_number'] = BaseFieldDefinition::create('string')
+//      ->setLabel(t('Номер особового рахунку'))
+//      ->setRequired(FALSE)
+//      ->setTranslatable(TRUE)
+//      ->setSettings([
+//        'default_value' => '',
+//        'max_length' => 255,
+//      ])
+//      ->setDisplayOptions('form', [
+//        'type' => 'string_textfield',
+//        'weight' => 10,
+//      ])
+//      ->setDisplayConfigurable('view', TRUE)
+//      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['counter_id'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('Id лічильника'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'integer_number',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['last_data'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('Останні дані'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'integer_number',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['info'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Інформація'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['enabled'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Доступність'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['next_date_checking'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Дата наступної повірки'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['kt_accounts_drupal_id'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Кт аккаунт'))
+      ->setSetting('target_type', 'account')
+      ->setDisplayOptions('form', [
+        'type' => 'entity_reference_autocomplete',
+        'settings' => [
+          'match_operator' => 'CONTAINS',
+          'size' => 60,
+          'placeholder' => '',
+        ],
+        'weight' => 15,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'author',
+        'weight' => 15,
+      ])
+      ->setDisplayConfigurable('view', TRUE);

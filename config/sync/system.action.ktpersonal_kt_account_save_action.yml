@@ -1,0 +1,13 @@
+uuid: 36caf3db-ca96-437a-a1a0-c3fd91c16542
+langcode: en
+status: true
+dependencies:
+  module:
+    - ktpersonal
+_core:
+  default_config_hash: JGPzST8Y6P8tDt9X-bLrETOGBpOIku8BwxB3xm-yGxY
+id: ktpersonal_kt_account_save_action
+label: 'Save kt_accounts'
+type: ktpersonal_kt_account
+plugin: 'entity:save_action:ktpersonal_kt_account'
+configuration: {  }

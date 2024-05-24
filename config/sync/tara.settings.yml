@@ -26,7 +26,7 @@ slider_image: {  }
 slider_time: '5000'
 slider_dots: 'true'
 slider_code: ''
-front_sidebar: 0
+front_sidebar: 1
 google_font: local
 comment_user_pic: 0
 node_author_pic: 0

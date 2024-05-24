@@ -1,49 +1,53 @@
 <?php declare(strict_types = 1);
 
-namespace Drupal\account\Entity;
+namespace Drupal\ktpersonal\Entity;
 
-use Drupal\account\AccountInterface;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\RevisionableContentEntityBase;
 use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\ktpersonal\KtCounterInterface;
 use Drupal\user\EntityOwnerTrait;
 
 /**
- * Defines the account entity class.
+ * Defines the kt_counter entity class.
  *
  * @ContentEntityType(
- *   id = "account",
- *   label = @Translation("account"),
- *   label_collection = @Translation("accounts"),
- *   label_singular = @Translation("account"),
- *   label_plural = @Translation("accounts"),
+ *   id = "ktpersonal_kt_counter",
+ *   label = @Translation("kt_counter"),
+ *   label_collection = @Translation("kt_counters"),
+ *   label_singular = @Translation("kt_counter"),
+ *   label_plural = @Translation("kt_counters"),
  *   label_count = @PluralTranslation(
- *     singular = "@count accounts",
- *     plural = "@count accounts",
+ *     singular = "@count kt_counters",
+ *     plural = "@count kt_counters",
  *   ),
  *   handlers = {
- *     "list_builder" = "Drupal\account\AccountListBuilder",
+ *     "list_builder" = "Drupal\ktpersonal\KtCounterListBuilder",
  *     "views_data" = "Drupal\views\EntityViewsData",
+ *     "access" = "Drupal\ktpersonal\KtCounterAccessControlHandler",
  *     "form" = {
- *       "add" = "Drupal\account\Form\AccountForm",
- *       "edit" = "Drupal\account\Form\AccountForm",
+ *       "add" = "Drupal\ktpersonal\Form\KtCounterForm",
+ *       "edit" = "Drupal\ktpersonal\Form\KtCounterForm",
  *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm",
  *       "delete-multiple-confirm" = "Drupal\Core\Entity\Form\DeleteMultipleForm",
  *     },
  *     "route_provider" = {
- *       "html" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider",
+ *       "html" = "Drupal\ktpersonal\Routing\KtCounterHtmlRouteProvider",
  *     },
  *   },
- *   base_table = "account",
- *   revision_table = "account_revision",
+ *   base_table = "ktpersonal_kt_counter",
+ *   data_table = "ktpersonal_kt_counter_field_data",
+ *   revision_table = "ktpersonal_kt_counter_revision",
+ *   revision_data_table = "ktpersonal_kt_counter_field_revision",
  *   show_revision_ui = TRUE,
- *   admin_permission = "administer account",
+ *   translatable = TRUE,
+ *   admin_permission = "administer ktpersonal_kt_counter",
  *   entity_keys = {
  *     "id" = "id",
  *     "revision" = "revision_id",
- *     "label" = "label",
+ *     "langcode" = "langcode",
  *     "uuid" = "uuid",
  *     "owner" = "uid",
  *   },
@@ -53,17 +57,17 @@ use Drupal\user\EntityOwnerTrait;
  *     "revision_log_message" = "revision_log",
  *   },
  *   links = {
- *     "collection" = "/admin/content/account",
- *     "add-form" = "/account/add",
- *     "canonical" = "/account/{account}",
- *     "edit-form" = "/account/{account}/edit",
- *     "delete-form" = "/account/{account}/delete",
- *     "delete-multiple-form" = "/admin/content/account/delete-multiple",
+ *     "collection" = "/admin/content/kt-counter",
+ *     "add-form" = "/kt-counter/add",
+ *     "canonical" = "/kt-counter/{ktpersonal_kt_counter}",
+ *     "edit-form" = "/kt-counter/{ktpersonal_kt_counter}",
+ *     "delete-form" = "/kt-counter/{ktpersonal_kt_counter}/delete",
+ *     "delete-multiple-form" = "/admin/content/kt-counter/delete-multiple",
  *   },
- *   field_ui_base_route = "entity.account.settings",
+ *   field_ui_base_route = "entity.ktpersonal_kt_counter.settings",
  * )
  */
-final class Account extends RevisionableContentEntityBase implements AccountInterface {
+final class KtCounter extends RevisionableContentEntityBase implements KtCounterInterface {
 
   use EntityChangedTrait;
   use EntityOwnerTrait;
@@ -88,6 +92,7 @@ final class Account extends RevisionableContentEntityBase implements AccountInte
 
     $fields['label'] = BaseFieldDefinition::create('string')
       ->setRevisionable(TRUE)
+      ->setTranslatable(TRUE)
       ->setLabel(t('Label'))
       ->setRequired(TRUE)
       ->setSetting('max_length', 255)
@@ -128,6 +133,7 @@ final class Account extends RevisionableContentEntityBase implements AccountInte
 
     $fields['description'] = BaseFieldDefinition::create('text_long')
       ->setRevisionable(TRUE)
+      ->setTranslatable(TRUE)
       ->setLabel(t('Description'))
       ->setDisplayOptions('form', [
         'type' => 'text_textarea',
@@ -143,6 +149,7 @@ final class Account extends RevisionableContentEntityBase implements AccountInte
 
     $fields['uid'] = BaseFieldDefinition::create('entity_reference')
       ->setRevisionable(TRUE)
+      ->setTranslatable(TRUE)
       ->setLabel(t('Author'))
       ->setSetting('target_type', 'user')
       ->setDefaultValueCallback(self::class . '::getDefaultEntityOwner')
@@ -165,7 +172,8 @@ final class Account extends RevisionableContentEntityBase implements AccountInte
 
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Authored on'))
-      ->setDescription(t('The time that the account was created.'))
+      ->setTranslatable(TRUE)
+      ->setDescription(t('The time that the kt_counter was created.'))
       ->setDisplayOptions('view', [
         'label' => 'above',
         'type' => 'timestamp',
@@ -180,9 +188,10 @@ final class Account extends RevisionableContentEntityBase implements AccountInte
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
-      ->setDescription(t('The time that the account was last edited.'));
+      ->setTranslatable(TRUE)
+      ->setDescription(t('The time that the kt_counter was last edited.'));
 
-    $fields['operation_code_field'] = BaseFieldDefinition::create('string')
+    $fields['operation_code'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Код'))
       ->setRequired(FALSE)
       ->setTranslatable(TRUE)
@@ -197,60 +206,23 @@ final class Account extends RevisionableContentEntityBase implements AccountInte
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
+    //    $fields['personal_account_number'] = BaseFieldDefinition::create('string')
+    //      ->setLabel(t('Номер особового рахунку'))
+    //      ->setRequired(FALSE)
+    //      ->setTranslatable(TRUE)
+    //      ->setSettings([
+    //        'default_value' => '',
+    //        'max_length' => 255,
+    //      ])
+    //      ->setDisplayOptions('form', [
+    //        'type' => 'string_textfield',
+    //        'weight' => 10,
+    //      ])
+    //      ->setDisplayConfigurable('view', TRUE)
+    //      ->setDisplayConfigurable('form', TRUE);
 
-
-    $fields['type_of_abonent_field'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Вид абонента'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
-
-
-    $fields['operation_status_field'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Закритий'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
-
-
-    $fields['short_address_field'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Коротка адреса'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
-
-
-
-    $fields['home_number_field'] = BaseFieldDefinition::create('integer')
-      ->setRevisionable(TRUE)
-      ->setLabel(t('Номер будинку'))
+    $fields['counter_id'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('Id лічильника'))
       ->setRequired(FALSE)
       ->setTranslatable(TRUE)
       ->setSettings([
@@ -262,78 +234,87 @@ final class Account extends RevisionableContentEntityBase implements AccountInte
         'weight' => 10,
       ])
       ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayOptions('view', [
-        'label' => 'above',
-        'type' => 'test',
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['last_data'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('Останні дані'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'integer_number',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['info'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Інформація'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['enabled'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Доступність'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['next_date_checking'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Дата наступної повірки'))
+      ->setRequired(FALSE)
+      ->setTranslatable(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayConfigurable('form', TRUE);
+
+    $fields['kt_accounts_drupal_id'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Кт аккаунт'))
+      ->setSetting('target_type', 'ktpersonal_kt_account')
+      ->setDisplayOptions('form', [
+        'type' => 'entity_reference_autocomplete',
+        'settings' => [
+          'match_operator' => 'CONTAINS',
+          'size' => 60,
+          'placeholder' => '',
+        ],
         'weight' => 15,
       ])
-      ->setDisplayConfigurable('form', TRUE);
-
-
-
-    $fields['apartment_number_field'] = BaseFieldDefinition::create('integer')
-      ->setLabel(t('Номер квартири'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'author',
+        'weight' => 15,
       ])
-      ->setDisplayOptions('form', [
-        'type' => 'integer_number',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
-
-    $fields['account_number_field'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Номер особового рахунку'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
-
-
-    $fields['owner_account_number_field'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Власник особового рахунку'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
-
-
-    $fields['remains_field'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Залишок'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
-
-
+      ->setDisplayConfigurable('view', TRUE);
 
     return $fields;
   }

@@ -1,0 +1,11 @@
+ktpersonal_kt_account.add_form:
+  title: 'Add kt_account'
+  route_name: entity.ktpersonal_kt_account.add_form
+  appears_on:
+    - entity.ktpersonal_kt_account.collection
+
+ktpersonal_kt_counter.add_form:
+  title: 'Add kt_counter'
+  route_name: entity.ktpersonal_kt_counter.add_form
+  appears_on:
+    - entity.ktpersonal_kt_counter.collection

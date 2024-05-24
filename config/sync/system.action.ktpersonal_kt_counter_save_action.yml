@@ -1,0 +1,13 @@
+uuid: 5d751b7e-26cb-43c4-ac31-969e3835711e
+langcode: en
+status: true
+dependencies:
+  module:
+    - ktpersonal
+_core:
+  default_config_hash: Z-LRVFUKkgM9_liyhEk5lKHwtxEdoq9035vY08UTu_g
+id: ktpersonal_kt_counter_save_action
+label: 'Save kt_counters'
+type: ktpersonal_kt_counter
+plugin: 'entity:save_action:ktpersonal_kt_counter'
+configuration: {  }

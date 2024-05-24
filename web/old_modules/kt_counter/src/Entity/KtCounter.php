@@ -1,70 +1,62 @@
 <?php declare(strict_types = 1);
 
-namespace Drupal\kt_calculation\Entity;
+namespace Drupal\kt_counter\Entity;
 
+use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Entity\RevisionableContentEntityBase;
 use Drupal\Core\Field\BaseFieldDefinition;
-use Drupal\kt_calculation\KtCalculationInterface;
+use Drupal\kt_counter\KtCounterInterface;
 use Drupal\user\EntityOwnerTrait;
 
 /**
- * Defines the kt calculation entity class.
+ * Defines the kt counter entity class.
  *
  * @ContentEntityType(
- *   id = "kt_calculation",
- *   label = @Translation("Kt calculation"),
- *   label_collection = @Translation("Kt calculations"),
- *   label_singular = @Translation("kt calculation"),
- *   label_plural = @Translation("kt calculations"),
+ *   id = "kt_counter",
+ *   label = @Translation("Kt counter"),
+ *   label_collection = @Translation("Kt counters"),
+ *   label_singular = @Translation("kt counter"),
+ *   label_plural = @Translation("kt counters"),
  *   label_count = @PluralTranslation(
- *     singular = "@count kt calculations",
- *     plural = "@count kt calculations",
+ *     singular = "@count kt counters",
+ *     plural = "@count kt counters",
  *   ),
  *   handlers = {
- *     "list_builder" = "Drupal\kt_calculation\KtCalculationListBuilder",
+ *     "list_builder" = "Drupal\kt_counter\KtCounterListBuilder",
  *     "views_data" = "Drupal\views\EntityViewsData",
- *     "access" = "Drupal\kt_calculation\KtCalculationAccessControlHandler",
+ *     "access" = "Drupal\kt_counter\KtCounterAccessControlHandler",
  *     "form" = {
- *       "add" = "Drupal\kt_calculation\Form\KtCalculationForm",
- *       "edit" = "Drupal\kt_calculation\Form\KtCalculationForm",
+ *       "add" = "Drupal\kt_counter\Form\KtCounterForm",
+ *       "edit" = "Drupal\kt_counter\Form\KtCounterForm",
  *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm",
  *       "delete-multiple-confirm" = "Drupal\Core\Entity\Form\DeleteMultipleForm",
  *     },
  *     "route_provider" = {
- *       "html" = "Drupal\kt_calculation\Routing\KtCalculationHtmlRouteProvider",
+ *       "html" = "Drupal\kt_counter\Routing\KtCounterHtmlRouteProvider",
  *     },
  *   },
- *   base_table = "kt_calculation",
- *   revision_table = "kt_calculation_revision",
- *   show_revision_ui = TRUE,
- *   admin_permission = "administer kt_calculation",
+ *   base_table = "kt_counter",
+ *   admin_permission = "administer kt_counter",
  *   entity_keys = {
  *     "id" = "id",
- *     "revision" = "revision_id",
  *     "label" = "label",
  *     "uuid" = "uuid",
  *     "owner" = "uid",
  *   },
- *   revision_metadata_keys = {
- *     "revision_user" = "revision_uid",
- *     "revision_created" = "revision_timestamp",
- *     "revision_log_message" = "revision_log",
- *   },
  *   links = {
- *     "collection" = "/admin/content/kt-calculation",
- *     "add-form" = "/kt-calculation/add",
- *     "canonical" = "/kt-calculation/{kt_calculation}",
- *     "edit-form" = "/kt-calculation/{kt_calculation}",
- *     "delete-form" = "/kt-calculation/{kt_calculation}/delete",
- *     "delete-multiple-form" = "/admin/content/kt-calculation/delete-multiple",
+ *     "collection" = "/admin/content/kt-counter",
+ *     "add-form" = "/kt-counter/add",
+ *     "canonical" = "/kt-counter/{kt_counter}",
+ *     "edit-form" = "/kt-counter/{kt_counter}",
+ *     "delete-form" = "/kt-counter/{kt_counter}/delete",
+ *     "delete-multiple-form" = "/admin/content/kt-counter/delete-multiple",
  *   },
- *   field_ui_base_route = "entity.kt_calculation.settings",
+ *   field_ui_base_route = "entity.kt_counter.settings",
  * )
  */
-final class KtCalculation extends RevisionableContentEntityBase implements KtCalculationInterface {
+final class KtCounter extends ContentEntityBase implements KtCounterInterface {
 
   use EntityChangedTrait;
   use EntityOwnerTrait;
@@ -88,7 +80,6 @@ final class KtCalculation extends RevisionableContentEntityBase implements KtCal
     $fields = parent::baseFieldDefinitions($entity_type);
 
     $fields['label'] = BaseFieldDefinition::create('string')
-      ->setRevisionable(TRUE)
       ->setLabel(t('Label'))
       ->setRequired(TRUE)
       ->setSetting('max_length', 255)
@@ -105,7 +96,6 @@ final class KtCalculation extends RevisionableContentEntityBase implements KtCal
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['status'] = BaseFieldDefinition::create('boolean')
-      ->setRevisionable(TRUE)
       ->setLabel(t('Status'))
       ->setDefaultValue(TRUE)
       ->setSetting('on_label', 'Enabled')
@@ -128,7 +118,6 @@ final class KtCalculation extends RevisionableContentEntityBase implements KtCal
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['description'] = BaseFieldDefinition::create('text_long')
-      ->setRevisionable(TRUE)
       ->setLabel(t('Description'))
       ->setDisplayOptions('form', [
         'type' => 'text_textarea',
@@ -142,10 +131,7 @@ final class KtCalculation extends RevisionableContentEntityBase implements KtCal
       ])
       ->setDisplayConfigurable('view', TRUE);
 
-
-
     $fields['uid'] = BaseFieldDefinition::create('entity_reference')
-      ->setRevisionable(TRUE)
       ->setLabel(t('Author'))
       ->setSetting('target_type', 'user')
       ->setDefaultValueCallback(self::class . '::getDefaultEntityOwner')
@@ -166,12 +152,9 @@ final class KtCalculation extends RevisionableContentEntityBase implements KtCal
       ])
       ->setDisplayConfigurable('view', TRUE);
 
-
-
-
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Authored on'))
-      ->setDescription(t('The time that the kt calculation was created.'))
+      ->setDescription(t('The time that the kt counter was created.'))
       ->setDisplayOptions('view', [
         'label' => 'above',
         'type' => 'timestamp',
@@ -186,9 +169,10 @@ final class KtCalculation extends RevisionableContentEntityBase implements KtCal
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
-      ->setDescription(t('The time that the kt calculation was last edited.'));
+      ->setDescription(t('The time that the kt counter was last edited.'));
 
-    $fields['operation_code_field'] = BaseFieldDefinition::create('string')
+
+    $fields['operation_code'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Код'))
       ->setRequired(FALSE)
       ->setTranslatable(TRUE)
@@ -204,8 +188,8 @@ final class KtCalculation extends RevisionableContentEntityBase implements KtCal
       ->setDisplayConfigurable('form', TRUE);
 
 
-    $fields['details_field'] = BaseFieldDefinition::create('integer')
-      ->setLabel(t('Детально'))
+    $fields['counter_id'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('Id лічильника'))
       ->setRequired(FALSE)
       ->setTranslatable(TRUE)
       ->setSettings([
@@ -219,10 +203,8 @@ final class KtCalculation extends RevisionableContentEntityBase implements KtCal
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
-
-
-    $fields['billing_month_field'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Розрахунковий місяць'))
+    $fields['last_data'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('Останні дані'))
       ->setRequired(FALSE)
       ->setTranslatable(TRUE)
       ->setSettings([
@@ -236,38 +218,8 @@ final class KtCalculation extends RevisionableContentEntityBase implements KtCal
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
-    $fields['sum_payment_field'] = BaseFieldDefinition::create('integer')
-      ->setLabel(t('Нараховано'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'integer_number',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
-
-    $fields['paid_field'] = BaseFieldDefinition::create('integer')
-      ->setLabel(t('Сплачено'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'integer_number',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
-
-    $fields['debt_field'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Борг'))
+    $fields['info'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Інформація'))
       ->setRequired(FALSE)
       ->setTranslatable(TRUE)
       ->setSettings([
@@ -281,8 +233,8 @@ final class KtCalculation extends RevisionableContentEntityBase implements KtCal
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
-    $fields['payment_date_field'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Дата сплати'))
+    $fields['enabled'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Доступність'))
       ->setRequired(FALSE)
       ->setTranslatable(TRUE)
       ->setSettings([
@@ -296,9 +248,8 @@ final class KtCalculation extends RevisionableContentEntityBase implements KtCal
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
-
-    $fields['drupal_account_id_field'] = BaseFieldDefinition::create('integer')
-      ->setLabel(t('Drupal аккаунт ID'))
+    $fields['next_date_checking'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Дата наступної повірки'))
       ->setRequired(FALSE)
       ->setTranslatable(TRUE)
       ->setSettings([
@@ -306,12 +257,31 @@ final class KtCalculation extends RevisionableContentEntityBase implements KtCal
         'max_length' => 255,
       ])
       ->setDisplayOptions('form', [
-        'type' => 'integer_number',
+        'type' => 'string_textfield',
         'weight' => 10,
       ])
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
+    $fields['kt_accounts_drupal_id'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Кт аккаунт'))
+      ->setSetting('target_type', 'account')
+      ->setDisplayOptions('form', [
+        'type' => 'entity_reference_autocomplete',
+        'settings' => [
+          'match_operator' => 'CONTAINS',
+          'size' => 60,
+          'placeholder' => '',
+        ],
+        'weight' => 15,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'author',
+        'weight' => 15,
+      ])
+      ->setDisplayConfigurable('view', TRUE);
 
 
     return $fields;

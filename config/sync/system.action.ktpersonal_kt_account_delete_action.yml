@@ -1,0 +1,13 @@
+uuid: 7197cea1-a025-4e7f-b4ce-3e811f0eccce
+langcode: en
+status: true
+dependencies:
+  module:
+    - ktpersonal
+_core:
+  default_config_hash: xjnBWEXU11ym3ff2g1IkBLBy5y8gTgHHQ71phHK56R0
+id: ktpersonal_kt_account_delete_action
+label: 'Delete kt_accounts'
+type: ktpersonal_kt_account
+plugin: 'entity:delete_action:ktpersonal_kt_account'
+configuration: {  }
