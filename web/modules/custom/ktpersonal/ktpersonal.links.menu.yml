@@ -21,3 +21,15 @@ entity.ktpersonal_kt_counter.collection:
   description: 'List of kt_counters.'
   route_name: entity.ktpersonal_kt_counter.collection
   parent: system.admin_content
+
+entity.ktpersonal_kt_calculation.settings:
+  title: 'kt_calculation'
+  description: 'Configure a kt_calculation entity type.'
+  route_name:  entity.ktpersonal_kt_calculation.settings
+  parent: system.admin_structure
+
+entity.ktpersonal_kt_calculation.collection:
+  title: 'kt_calculations'
+  description: 'List of kt_calculations.'
+  route_name: entity.ktpersonal_kt_calculation.collection
+  parent: system.admin_content

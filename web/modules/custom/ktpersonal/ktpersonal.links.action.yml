@@ -9,3 +9,9 @@ ktpersonal_kt_counter.add_form:
   route_name: entity.ktpersonal_kt_counter.add_form
   appears_on:
     - entity.ktpersonal_kt_counter.collection
+
+ktpersonal_kt_calculation.add_form:
+  title: 'Add kt_calculation'
+  route_name: entity.ktpersonal_kt_calculation.add_form
+  appears_on:
+    - entity.ktpersonal_kt_calculation.collection

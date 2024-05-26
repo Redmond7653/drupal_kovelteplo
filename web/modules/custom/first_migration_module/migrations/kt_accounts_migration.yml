@@ -4,7 +4,7 @@ migration_group: default
 
 source:
   plugin: 'csv'
-  path: './baf_kt_output - ACCOUNT.csv'
+  path: './test_kt_accounts_sql.csv'
   delimiter: ';'
   enclosure: '"'
   header_offset: 0

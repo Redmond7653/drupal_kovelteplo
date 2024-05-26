@@ -17,3 +17,13 @@ entity.ktpersonal_kt_counter.collection:
   route_name: entity.ktpersonal_kt_counter.collection
   base_route: system.admin_content
   weight: 10
+
+entity.ktpersonal_kt_calculation.settings:
+  title: 'Settings'
+  route_name: entity.ktpersonal_kt_calculation.settings
+  base_route: entity.ktpersonal_kt_calculation.settings
+entity.ktpersonal_kt_calculation.collection:
+  title: 'kt_calculations'
+  route_name: entity.ktpersonal_kt_calculation.collection
+  base_route: system.admin_content
+  weight: 10

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ktpersonal
+id: ktpersonal_kt_calculation_save_action
+label: 'Save kt_calculations'
+type: ktpersonal_kt_calculation
+plugin: entity:save_action:ktpersonal_kt_calculation
+configuration: {  }

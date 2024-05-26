@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ktpersonal
+id: ktpersonal_kt_calculation_delete_action
+label: 'Delete kt_calculations'
+type: ktpersonal_kt_calculation
+plugin: entity:delete_action:ktpersonal_kt_calculation
+configuration: {  }

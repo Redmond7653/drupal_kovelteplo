@@ -38,3 +38,11 @@ entity.ktpersonal_kt_counter.settings:
     _title: 'kt_counter'
   requirements:
     _permission: 'administer ktpersonal_kt_counter'
+
+entity.ktpersonal_kt_calculation.settings:
+  path: 'admin/structure/ktpersonal-kt-calculation'
+  defaults:
+    _form: '\Drupal\ktpersonal\Form\KtCalculationSettingsForm'
+    _title: 'kt_calculation'
+  requirements:
+    _permission: 'administer ktpersonal_kt_calculation'

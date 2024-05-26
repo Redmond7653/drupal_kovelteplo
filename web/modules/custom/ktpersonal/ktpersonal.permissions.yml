@@ -21,3 +21,15 @@ delete ktpersonal_kt_counter:
   title: 'Delete kt_counter'
 create ktpersonal_kt_counter:
   title: 'Create kt_counter'
+
+administer ktpersonal_kt_calculation:
+  title: 'Administer kt_calculations'
+  restrict access: true
+view ktpersonal_kt_calculation:
+  title: 'View kt_calculation'
+edit ktpersonal_kt_calculation:
+  title: 'Edit kt_calculation'
+delete ktpersonal_kt_calculation:
+  title: 'Delete kt_calculation'
+create ktpersonal_kt_calculation:
+  title: 'Create kt_calculation'

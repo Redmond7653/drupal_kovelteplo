@@ -1,0 +1,13 @@
+uuid: c551ac82-c5df-4808-a768-9b8dfd043ab1
+langcode: en
+status: true
+dependencies:
+  module:
+    - ktpersonal
+_core:
+  default_config_hash: af6XO4bNsCjUv7KpNesvDxi5dd5MqR3fO62R8Tz8wSM
+id: ktpersonal_kt_calculation_save_action
+label: 'Save kt_calculations'
+type: ktpersonal_kt_calculation
+plugin: 'entity:save_action:ktpersonal_kt_calculation'
+configuration: {  }

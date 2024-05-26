@@ -1,0 +1,13 @@
+uuid: 900fd7af-40c1-48f9-9724-e3a6ff84023f
+langcode: en
+status: true
+dependencies:
+  module:
+    - ktpersonal
+_core:
+  default_config_hash: bql1bYppsFQox5Kj_DCn7SHhPimJ3nSthPgrVXf01vI
+id: ktpersonal_kt_calculation_delete_action
+label: 'Delete kt_calculations'
+type: ktpersonal_kt_calculation
+plugin: 'entity:delete_action:ktpersonal_kt_calculation'
+configuration: {  }
