@@ -5,7 +5,7 @@ migration_group: default
 source:
   plugin: 'csv'
   track_changes: true
-  path: './test_kt_calculation.csv'
+  path: './baf_kt_calculations - CALCULATION.csv'
   delimiter: ';'
   enclosure: '"'
   header_offset: 0
@@ -39,6 +39,15 @@ source:
 
 
 process:
+
+
+
+  label:
+    - plugin: concat
+      delimiter: /
+      source:
+        - billing_month
+        - code
 
   operation_code: code
 
