@@ -27,38 +27,50 @@ final class KtpersonalForm extends FormBase {
     $ktuser_inputs = $form_state->getUserInput();
 
     if (!empty($ktuser_inputs)) {
-      $entities_kt_counters = \Drupal::entityTypeManager()
-        ->getStorage('kt_counter')
+
+      $entities_kt_account = \Drupal::entityTypeManager()
+        ->getStorage('ktpersonal_kt_account')
         ->loadByProperties([
-          'personal_account_number_field' => $ktuser_inputs,
+          'account_number' => $ktuser_inputs,
         ]);
 
-      // todo: Зробити методи для загрузки entity: accounts, calculation, counters
-      foreach ($entities_kt_counters as $entity) {
-        $drupal_array_id_account = $entity->get('kt_accounts_drupal_id_field')
+      foreach ($entities_kt_account as $entity_account) {
+        $drupal_array_id_account = $entity_account->get('id')
           ->getValue();
         $drupal_id_account = $drupal_array_id_account[0]['value'];
       }
 
+
+      $entities_kt_counters = \Drupal::entityTypeManager()
+        ->getStorage('ktpersonal_kt_counter')
+        ->loadByProperties([
+          'kt_accounts_drupal_id' => $drupal_id_account,
+        ]);
+
+      // @todo Зробити методи для загрузки entity: accounts, calculation, counters
+      //   foreach ($entities_kt_counters as $entity) {
+      //        $drupal_array_id_account = $entity->get('kt_accounts_drupal_id_field')
+      //          ->getValue();
+      //        $drupal_id_account = $drupal_array_id_account[0]['value'];
+      //      }
       $entities_kt_calculation = \Drupal::entityTypeManager()
-        ->getStorage('kt_calculation')
+        ->getStorage('ktpersonal_kt_calculation')
         ->loadByProperties([
-          'drupal_account_id_field' => $drupal_id_account,
+          'kt_owner' => $drupal_id_account,
         ]);
 
-      $entities_kt_account = \Drupal::entityTypeManager()
-        ->getStorage('account')
-        ->loadByProperties([
-          'account_number_field' => $ktuser_inputs,
-        ]);
-
+      // $entities_kt_account = \Drupal::entityTypeManager()
+      //        ->getStorage('ktpersonal_kt_account')
+      //        ->loadByProperties([
+      //          'account_number_field' => $ktuser_inputs,
+      //        ]);
       $last_array_of_entity_kt_calculation = end($entities_kt_calculation);
 
-      $debt_field = $last_array_of_entity_kt_calculation->get('debt_field');
+      $debt_field = $last_array_of_entity_kt_calculation->get('debt');
       $entity_array_debt = $debt_field->getValue();
 
       foreach ($entities_kt_account as $entity_kt_account) {
-        $apartment_array_field = $entity_kt_account->get('apartment_number_field')->getValue();
+        $apartment_array_field = $entity_kt_account->get('apartment_number')->getValue();
       }
     }
 
@@ -100,9 +112,9 @@ final class KtpersonalForm extends FormBase {
       foreach ($entities_kt_counters as $entity_kt_counter) {
 
         /** @var \Drupal\Core\Field\FieldItemListInterface $info_field */
-        $info_field = $entity_kt_counter->get('info_field');
+        $info_field = $entity_kt_counter->get('info');
         $entity_array_info = $info_field->getValue();
-        $entity_array_date_checking = $entity_kt_counter->get('next_date_checking_field')->getValue();
+        $entity_array_date_checking = $entity_kt_counter->get('next_date_checking')->getValue();
         $entity_array_account = $entity_kt_counter->get('id')->getValue();
         $entity_account = $entity_array_account[0]['value'];
 
@@ -118,14 +130,13 @@ final class KtpersonalForm extends FormBase {
 
       $rows = [];
       foreach ($entities_kt_calculation as $entity_kt_calculation) {
-        $entity_array_bill_month = $entity_kt_calculation->get('billing_month_field')->getValue();
-        $entity_array_sum_payment = $entity_kt_calculation->get('sum_payment_field')->getValue();
-        $entity_array_paid_field = $entity_kt_calculation->get('paid_field')->getValue();
-        $entity_array_debt_field = $entity_kt_calculation->get('debt_field')->getValue();
-        $entity_array_row_field = $entity_kt_calculation->get('details_field')->getValue();
+        $entity_array_bill_month = $entity_kt_calculation->get('billing_month')->getValue();
+        $entity_array_sum_payment = $entity_kt_calculation->get('sum_payment')->getValue();
+        $entity_array_paid_field = $entity_kt_calculation->get('paid')->getValue();
+        $entity_array_debt_field = $entity_kt_calculation->get('debt')->getValue();
+        $entity_array_row_field = $entity_kt_calculation->get('details')->getValue();
 
         $test = $entity_array_row_field[0]['value'];
-
 
         if ($entity_array_row_field[0]['value'] == 0) {
           $rows[] = [
@@ -134,7 +145,8 @@ final class KtpersonalForm extends FormBase {
             'Сплачено' => $entity_array_paid_field[0]['value'],
             'Борг' => $entity_array_debt_field[0]['value'],
           ];
-        } else {
+        }
+        else {
           $rows[] = [
             'Розрахунковий місяць' => $entity_array_bill_month[0]['value'],
             'Нараховано' => ' ',
@@ -143,7 +155,6 @@ final class KtpersonalForm extends FormBase {
           ];
         }
       }
-
 
       $form['contacts'] = [
         '#type' => 'table',
@@ -157,7 +168,6 @@ final class KtpersonalForm extends FormBase {
         '#rows' => $rows,
 
       ];
-
 
     }
 
