@@ -1,0 +1,24 @@
+uuid: 4d5bd387-f811-4675-85d4-72020e7fe881
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.kt_personal
+  module:
+    - views
+  theme:
+    - kovelteplo
+id: kovelteplo_views_block__kt_personal_block_1
+theme: kovelteplo
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:kt_personal-block_1'
+settings:
+  id: 'views_block:kt_personal-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility: {  }

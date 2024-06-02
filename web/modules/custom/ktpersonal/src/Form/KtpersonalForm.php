@@ -146,7 +146,7 @@ final class KtpersonalForm extends FormBase {
 
           $form['contacts'] = [
             '#type' => 'table',
-            '#caption' => $this->t('Example'),
+            '#caption' => $this->t(''),
             '#header' => [
               $this->t('Рохрахунковий місяць'),
               $this->t('Нараховано'),
@@ -156,16 +156,6 @@ final class KtpersonalForm extends FormBase {
             '#rows' => $rows,
 
           ];
-
-          $form['view_test'] = [
-            '#type' => 'view',
-            '#name' => 'kt_personal',
-            '#display_id' => 'kt_personal_block',
-            '#arguments' => [
-              '1/06119',
-            ],
-          ];
-
         }
 
 
