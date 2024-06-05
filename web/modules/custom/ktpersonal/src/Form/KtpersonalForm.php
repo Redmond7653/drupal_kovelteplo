@@ -62,103 +62,92 @@ final class KtpersonalForm extends FormBase {
       }
     }
 
-        $form['message'] = [
-          '#type' => 'textfield',
-          '#title' => $this->t('Введіть номер рахунку'),
-          '#placeholder' => 'Номер рахунку',
-        ];
+    $form['message'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Введіть номер рахунку'),
+      '#placeholder' => 'Номер рахунку',
+    ];
 
-        $form['actions'] = [
-          '#type' => 'actions',
-          'submit' => [
-            '#type' => 'submit',
-            '#value' => $this->t('Пошук'),
-          ],
-        ];
+    $form['actions'] = [
+      '#type' => 'actions',
+      'submit' => [
+        '#type' => 'submit',
+        '#value' => $this->t('Пошук'),
+      ],
+    ];
 
-        // $counter = \Drupal::service('entity_type.manager')->getStorage('kt_counter')->load(12430);
-        if (isset($ktuser_inputs['message']) && $form_state->isSubmitted()) {
+    // $counter = \Drupal::service('entity_type.manager')->getStorage('kt_counter')->load(12430);
+    if (isset($ktuser_inputs['message']) && $form_state->isSubmitted()) {
 
-          $bill = $ktuser_inputs['message'];
+//      $bill = $ktuser_inputs['message'];
+//
+//      $form['bill'] = [
+//        '#type' => 'item',
+//        '#title' => 'Рахунок' . ' ' . $bill,
+//      ];
+//
+//      $form['debt'] = [
+//        '#type' => 'item',
+//        '#title' => 'Заборгованість по рахунку:' . ' ' . $entity_array_debt[0]['value'],
+//      ];
+//
+//      $form['apartment'] = [
+//        '#type' => 'item',
+//        '#title' => 'Номер квартири (для перевірки):' . ' ' . $apartment_array_field[0]['value'],
+//      ];
+//
+//      /** @var \Drupal\kt_counter\Entity\KtCounter $entity_kt_counter */
+//      foreach ($entities_kt_counters as $entity_kt_counter) {
+//
+//        /** @var \Drupal\Core\Field\FieldItemListInterface $info_field */
+//        $info_field = $entity_kt_counter->get('info');
+//        $entity_array_info = $info_field->getValue();
+//        $entity_array_date_checking = $entity_kt_counter->get('next_date_checking')->getValue();
+//        $entity_array_account = $entity_kt_counter->get('id')->getValue();
+//        $entity_account = $entity_array_account[0]['value'];
+//
+//        $form['counter_number'][$entity_account] = [
+//          '#type' => 'item',
+//          // $this->t('Hello'),
+//          '#title' => $entity_array_info[0]['value'],
+//          '#markup' => $entity_array_date_checking[0]['value'],
+//        ];
+//      }
 
-          $form['bill'] = [
-            '#type' => 'item',
-            '#title' => 'Рахунок' . ' ' . $bill,
-          ];
+      $view_builder = \Drupal::entityTypeManager()->getViewBuilder('ktpersonal_kt_account');
+      $output = $view_builder->view($entities_kt_account, 'short_ktaccount_info');
 
-          $form['debt'] = [
-            '#type' => 'item',
-            '#title' => 'Заборгованість по рахунку:' . ' ' . $entity_array_debt[0]['value'],
-          ];
+      $form['display_entity'] = $output;
 
-          $form['apartment'] = [
-            '#type' => 'item',
-            '#title' => 'Номер квартири (для перевірки):' . ' ' . $apartment_array_field[0]['value'],
-          ];
+      $form['view_account_info'] = [
+        '#type' => 'view',
+        '#name' => 'ktpersonal_ktaccount_info',
+        '#display_id' => 'kt_personal_account_info_block',
+        '#arguments' => $ktuser_inputs,
+      ];
 
-          /** @var \Drupal\kt_counter\Entity\KtCounter $entity_kt_counter */
-          foreach ($entities_kt_counters as $entity_kt_counter) {
+      $form['view_debt'] = [
+        '#type' => 'view',
+        '#name' => 'ktpersonal_ktcalculation_debt',
+        '#display_id' => 'debt_block',
+        '#arguments' => $ktuser_inputs,
+      ];
 
-            /** @var \Drupal\Core\Field\FieldItemListInterface $info_field */
-            $info_field = $entity_kt_counter->get('info');
-            $entity_array_info = $info_field->getValue();
-            $entity_array_date_checking = $entity_kt_counter->get('next_date_checking')->getValue();
-            $entity_array_account = $entity_kt_counter->get('id')->getValue();
-            $entity_account = $entity_array_account[0]['value'];
+      $form['view_counter'] = [
+        '#type' => 'view',
+        '#name' => 'ktpersonal_ktcounter',
+        '#display_id' => 'kt_personal_counter_block',
+        '#arguments' => $ktuser_inputs,
+      ];
 
-            $form['counter_number'][$entity_account] = [
-              '#type' => 'item',
-            // $this->t('Hello'),
-              '#title' => $entity_array_info[0]['value'],
-              '#markup' => $entity_array_date_checking[0]['value'],
-            ];
+      $form['view_calculation'] = [
+        '#type' => 'view',
+        '#name' => 'ktpersonal_ktcalculation',
+        '#display_id' => 'kt_personal_calculation_block',
+        '#arguments' => $ktuser_inputs,
+      ];
 
-            $test = 1;
-          }
-
-          $rows = [];
-          foreach ($entities_kt_calculation as $entity_kt_calculation) {
-            $entity_array_bill_month = $entity_kt_calculation->get('billing_month')->getValue();
-            $entity_array_sum_payment = $entity_kt_calculation->get('sum_payment')->getValue();
-            $entity_array_paid_field = $entity_kt_calculation->get('paid')->getValue();
-            $entity_array_debt_field = $entity_kt_calculation->get('debt')->getValue();
-            $entity_array_row_field = $entity_kt_calculation->get('details')->getValue();
-
-            $test = $entity_array_row_field[0]['value'];
-
-            if ($entity_array_row_field[0]['value'] == 0) {
-              $rows[] = [
-                'Розрахунковий місяць' => $entity_array_bill_month[0]['value'],
-                'Нараховано' => $entity_array_sum_payment[0]['value'],
-                'Сплачено' => $entity_array_paid_field[0]['value'],
-                'Борг' => $entity_array_debt_field[0]['value'],
-              ];
-            }
-            else {
-              $rows[] = [
-                'Розрахунковий місяць' => $entity_array_bill_month[0]['value'],
-                'Нараховано' => ' ',
-                'Сплачено' => $entity_array_paid_field[0]['value'],
-                'Борг' => ' ',
-              ];
-            }
-          }
-
-          $form['contacts'] = [
-            '#type' => 'table',
-            '#caption' => $this->t(''),
-            '#header' => [
-              $this->t('Рохрахунковий місяць'),
-              $this->t('Нараховано'),
-              $this->t('Сплачено'),
-              $this->t('Борг'),
-            ],
-            '#rows' => $rows,
-
-          ];
-        }
-
-
+    }
 
     // @todo Зробити методи для загрузки entity: accounts, calculation, counters
     //   foreach ($entities_kt_counters as $entity) {

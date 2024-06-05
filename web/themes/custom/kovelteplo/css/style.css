@@ -3467,4 +3467,12 @@ div#sliding-popup, div#sliding-popup .eu-cookie-withdraw-banner, .eu-cookie-with
     color: #f5ffac;
   }
 
+  aside.views-label.views-label-info.bold {
+    font-weight: bold;
+  }
+
+  .views-label.views-label-debt.label-red {
+    color: red;
+  }
+
 }/*# sourceMappingURL=style.css.map */

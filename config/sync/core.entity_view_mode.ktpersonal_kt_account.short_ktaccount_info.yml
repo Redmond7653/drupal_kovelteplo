@@ -1,0 +1,10 @@
+uuid: dca05921-af11-4cb7-81e5-5d30db06e9a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - ktpersonal
+id: ktpersonal_kt_account.short_ktaccount_info
+label: short_ktaccount_info
+targetEntityType: ktpersonal_kt_account
+cache: true

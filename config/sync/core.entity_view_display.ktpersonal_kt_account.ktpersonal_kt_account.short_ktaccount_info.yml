@@ -1,0 +1,43 @@
+uuid: 1c488870-734e-44e2-836b-c63822073a83
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.ktpersonal_kt_account.short_ktaccount_info
+  module:
+    - ktpersonal
+id: ktpersonal_kt_account.ktpersonal_kt_account.short_ktaccount_info
+targetEntityType: ktpersonal_kt_account
+bundle: ktpersonal_kt_account
+mode: short_ktaccount_info
+content:
+  account_number:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  apartment_number:
+    type: number_integer
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  description: true
+  home_number: true
+  label: true
+  operation_code: true
+  operation_status: true
+  owner_account_number: true
+  remains: true
+  short_address: true
+  status: true
+  type_of_abonent: true
+  uid: true
