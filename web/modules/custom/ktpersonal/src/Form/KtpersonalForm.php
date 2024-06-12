@@ -24,44 +24,41 @@ final class KtpersonalForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
 
-    $ktuser_inputs = $form_state->getUserInput();
-
-    if (!empty($ktuser_inputs)) {
-
-      /** @var \Drupal\ktpersonal\Entity\KtAccount[] $entities_kt_account */
-      if ($entities_kt_account = \Drupal::entityTypeManager()
-        ->getStorage('ktpersonal_kt_account')
-        ->loadByProperties([
-          'account_number' => $ktuser_inputs,
-        ])) {
-        $entities_kt_account = reset($entities_kt_account);
-        $drupal_id_account = $entities_kt_account->id();
-        // Foreach ($entities_kt_account as $entity_account) {
-        //        $drupal_array_id_account = $entity_account->get('id')
-        //          ->getValue();
-        //        $drupal_id_account = $drupal_array_id_account[0]['value'];
-        //      }.
-        $entities_kt_counters = \Drupal::entityTypeManager()
-          ->getStorage('ktpersonal_kt_counter')
-          ->loadByProperties([
-            'kt_accounts_drupal_id' => $drupal_id_account,
-          ]);
-
-        $entities_kt_calculation = \Drupal::entityTypeManager()
-          ->getStorage('ktpersonal_kt_calculation')
-          ->loadByProperties([
-            'kt_owner' => $drupal_id_account,
-          ]);
-
-        $last_array_of_entity_kt_calculation = end($entities_kt_calculation);
-
-        $debt_field = $last_array_of_entity_kt_calculation->get('debt');
-        $entity_array_debt = $debt_field->getValue();
-
-        $apartment_array_field = $entities_kt_account->get('apartment_number')->getValue();
-      }
-    }
-
+    // If (!empty($ktuser_inputs)) {
+    //
+    //      /** @var \Drupal\ktpersonal\Entity\KtAccount[] $entities_kt_account */
+    //      if ($entities_kt_account = \Drupal::entityTypeManager()
+    //        ->getStorage('ktpersonal_kt_account')
+    //        ->loadByProperties([
+    //          'account_number' => $ktuser_inputs,
+    //        ])) {
+    //        $entities_kt_account = reset($entities_kt_account);
+    //        $drupal_id_account = $entities_kt_account->id();
+    //        // Foreach ($entities_kt_account as $entity_account) {
+    //        //        $drupal_array_id_account = $entity_account->get('id')
+    //        //          ->getValue();
+    //        //        $drupal_id_account = $drupal_array_id_account[0]['value'];
+    //        //      }.
+    //        $entities_kt_counters = \Drupal::entityTypeManager()
+    //          ->getStorage('ktpersonal_kt_counter')
+    //          ->loadByProperties([
+    //            'kt_accounts_drupal_id' => $drupal_id_account,
+    //          ]);
+    //
+    //        $entities_kt_calculation = \Drupal::entityTypeManager()
+    //          ->getStorage('ktpersonal_kt_calculation')
+    //          ->loadByProperties([
+    //            'kt_owner' => $drupal_id_account,
+    //          ]);
+    //
+    //        $last_array_of_entity_kt_calculation = end($entities_kt_calculation);
+    //
+    //        $debt_field = $last_array_of_entity_kt_calculation->get('debt');
+    //        $entity_array_debt = $debt_field->getValue();
+    //
+    //        $apartment_array_field = $entities_kt_account->get('apartment_number')->getValue();
+    //      }
+    //    }
     $form['message'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Введіть номер рахунку'),
@@ -76,90 +73,43 @@ final class KtpersonalForm extends FormBase {
       ],
     ];
 
-    // $counter = \Drupal::service('entity_type.manager')->getStorage('kt_counter')->load(12430);
-    if (isset($ktuser_inputs['message']) && $form_state->isSubmitted()) {
-
-//      $bill = $ktuser_inputs['message'];
-//
-//      $form['bill'] = [
-//        '#type' => 'item',
-//        '#title' => 'Рахунок' . ' ' . $bill,
-//      ];
-//
-//      $form['debt'] = [
-//        '#type' => 'item',
-//        '#title' => 'Заборгованість по рахунку:' . ' ' . $entity_array_debt[0]['value'],
-//      ];
-//
-//      $form['apartment'] = [
-//        '#type' => 'item',
-//        '#title' => 'Номер квартири (для перевірки):' . ' ' . $apartment_array_field[0]['value'],
-//      ];
-//
-//      /** @var \Drupal\kt_counter\Entity\KtCounter $entity_kt_counter */
-//      foreach ($entities_kt_counters as $entity_kt_counter) {
-//
-//        /** @var \Drupal\Core\Field\FieldItemListInterface $info_field */
-//        $info_field = $entity_kt_counter->get('info');
-//        $entity_array_info = $info_field->getValue();
-//        $entity_array_date_checking = $entity_kt_counter->get('next_date_checking')->getValue();
-//        $entity_array_account = $entity_kt_counter->get('id')->getValue();
-//        $entity_account = $entity_array_account[0]['value'];
-//
-//        $form['counter_number'][$entity_account] = [
-//          '#type' => 'item',
-//          // $this->t('Hello'),
-//          '#title' => $entity_array_info[0]['value'],
-//          '#markup' => $entity_array_date_checking[0]['value'],
-//        ];
-//      }
-
-      $view_builder = \Drupal::entityTypeManager()->getViewBuilder('ktpersonal_kt_account');
-      $output = $view_builder->view($entities_kt_account, 'short_ktaccount_info');
-
-      $form['display_entity'] = $output;
-
-      $form['view_account_info'] = [
-        '#type' => 'view',
-        '#name' => 'ktpersonal_ktaccount_info',
-        '#display_id' => 'kt_personal_account_info_block',
-        '#arguments' => $ktuser_inputs,
-      ];
-
-      $form['view_debt'] = [
-        '#type' => 'view',
-        '#name' => 'ktpersonal_ktcalculation_debt',
-        '#display_id' => 'debt_block',
-        '#arguments' => $ktuser_inputs,
-      ];
-
-      $form['view_counter'] = [
-        '#type' => 'view',
-        '#name' => 'ktpersonal_ktcounter',
-        '#display_id' => 'kt_personal_counter_block',
-        '#arguments' => $ktuser_inputs,
-      ];
-
-      $form['view_calculation'] = [
-        '#type' => 'view',
-        '#name' => 'ktpersonal_ktcalculation',
-        '#display_id' => 'kt_personal_calculation_block',
-        '#arguments' => $ktuser_inputs,
-      ];
-
-    }
-
-    // @todo Зробити методи для загрузки entity: accounts, calculation, counters
-    //   foreach ($entities_kt_counters as $entity) {
-    //        $drupal_array_id_account = $entity->get('kt_accounts_drupal_id_field')
-    //          ->getValue();
-    //        $drupal_id_account = $drupal_array_id_account[0]['value'];
-    //      }
-    // $entities_kt_account = \Drupal::entityTypeManager()
-    //        ->getStorage('ktpersonal_kt_account')
-    //        ->loadByProperties([
-    //          'account_number_field' => $ktuser_inputs,
-    //        ]);
+    // If (isset($ktuser_inputs['message']) && $form_state->isSubmitted()) {
+    //
+    //
+    //      $view_builder = \Drupal::entityTypeManager()->getViewBuilder('ktpersonal_kt_account');
+    //      $output = $view_builder->view($entities_kt_account, 'short_ktaccount_info');
+    //
+    //      $form['display_entity'] = $output;
+    //
+    //      $form['view_account_info'] = [
+    //        '#type' => 'view',
+    //        '#name' => 'ktpersonal_ktaccount_info',
+    //        '#display_id' => 'kt_personal_account_info_block',
+    //        '#arguments' => $ktuser_inputs,
+    //      ];
+    //
+    //      $form['view_debt'] = [
+    //        '#type' => 'view',
+    //        '#name' => 'ktpersonal_ktcalculation_debt',
+    //        '#display_id' => 'debt_block',
+    //        '#arguments' => $ktuser_inputs,
+    //      ];
+    //
+    //      $form['view_counter'] = [
+    //        '#type' => 'view',
+    //        '#name' => 'ktpersonal_ktcounter',
+    //        '#display_id' => 'kt_personal_counter_block',
+    //        '#arguments' => $ktuser_inputs,
+    //      ];
+    //
+    //      $form['view_calculation'] = [
+    //        '#type' => 'view',
+    //        '#name' => 'ktpersonal_ktcalculation',
+    //        '#display_id' => 'kt_personal_calculation_block',
+    //        '#arguments' => $ktuser_inputs,
+    //      ];
+    //
+    //    }.
     return $form;
   }
 
@@ -167,6 +117,19 @@ final class KtpersonalForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state): void {
+
+    $validate_user_input = \Drupal::entityTypeManager()
+      ->getStorage('ktpersonal_kt_account')
+      ->loadByProperties([
+        'account_number' => $form_state->getValue('message'),
+      ]);
+
+    if (empty($validate_user_input)) {
+      $form_state->setErrorByName(
+        'message',
+        $this->t('Номер особового рахунку не знайдено')
+      );
+    }
 
     if (is_null($form_state->getValue('message')) || empty($form_state->getValue('message'))) {
       $form_state->setErrorByName(
@@ -188,9 +151,12 @@ final class KtpersonalForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
+    $ktuser_all_inputs = $form_state->getUserInput();
+    $ktuser_account_number = $ktuser_all_inputs['message'];
     $this->messenger()->addStatus($this->t('The message has been sent.'));
     // $form_state->setRedirect('ktpersonal.ktpersonal');
-    $form_state->setRebuild();
+    //    $form_state->setRebuild();
+    $form_state->setRedirect('ktpersonal.ktpersonal_build', ['account' => $ktuser_account_number]);
   }
 
 }

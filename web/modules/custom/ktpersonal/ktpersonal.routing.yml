@@ -46,3 +46,11 @@ entity.ktpersonal_kt_calculation.settings:
     _title: 'kt_calculation'
   requirements:
     _permission: 'administer ktpersonal_kt_calculation'
+
+ktpersonal.ktpersonal_build:
+  path: '/ktpersonal/ktpersonal-build'
+  defaults:
+    _title: 'Ktpersonal Build'
+    _form: 'Drupal\ktpersonal\Form\KtpersonalBuildForm'
+  requirements:
+    _permission: 'access content'
