@@ -33,3 +33,7 @@ delete ktpersonal_kt_calculation:
   title: 'Delete kt_calculation'
 create ktpersonal_kt_calculation:
   title: 'Create kt_calculation'
+
+administer ktpersonal_counterlog:
+  title: 'Administer counterlogs'
+  restrict access: true

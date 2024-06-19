@@ -54,3 +54,11 @@ ktpersonal.ktpersonal_build:
     _form: 'Drupal\ktpersonal\Form\KtpersonalBuildForm'
   requirements:
     _permission: 'access content'
+
+entity.ktpersonal_counterlog.settings:
+  path: 'admin/structure/ktpersonal-counterlog'
+  defaults:
+    _form: '\Drupal\ktpersonal\Form\CounterLogSettingsForm'
+    _title: 'CounterLog'
+  requirements:
+    _permission: 'administer ktpersonal_counterlog'

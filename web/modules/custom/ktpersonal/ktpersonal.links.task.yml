@@ -27,3 +27,13 @@ entity.ktpersonal_kt_calculation.collection:
   route_name: entity.ktpersonal_kt_calculation.collection
   base_route: system.admin_content
   weight: 10
+
+entity.ktpersonal_counterlog.settings:
+  title: 'Settings'
+  route_name: entity.ktpersonal_counterlog.settings
+  base_route: entity.ktpersonal_counterlog.settings
+entity.ktpersonal_counterlog.collection:
+  title: 'CounterLogs'
+  route_name: entity.ktpersonal_counterlog.collection
+  base_route: system.admin_content
+  weight: 10

@@ -15,3 +15,9 @@ ktpersonal_kt_calculation.add_form:
   route_name: entity.ktpersonal_kt_calculation.add_form
   appears_on:
     - entity.ktpersonal_kt_calculation.collection
+
+ktpersonal_counterlog.add_form:
+  title: 'Add counterlog'
+  route_name: entity.ktpersonal_counterlog.add_form
+  appears_on:
+    - entity.ktpersonal_counterlog.collection

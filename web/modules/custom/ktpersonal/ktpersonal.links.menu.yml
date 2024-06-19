@@ -33,3 +33,15 @@ entity.ktpersonal_kt_calculation.collection:
   description: 'List of kt_calculations.'
   route_name: entity.ktpersonal_kt_calculation.collection
   parent: system.admin_content
+
+entity.ktpersonal_counterlog.settings:
+  title: 'CounterLog'
+  description: 'Configure a CounterLog entity type.'
+  route_name:  entity.ktpersonal_counterlog.settings
+  parent: system.admin_structure
+
+entity.ktpersonal_counterlog.collection:
+  title: 'CounterLogs'
+  description: 'List of counterlogs.'
+  route_name: entity.ktpersonal_counterlog.collection
+  parent: system.admin_content

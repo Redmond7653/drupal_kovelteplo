@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ktpersonal
+id: ktpersonal_counterlog_delete_action
+label: 'Delete counterlogs'
+type: ktpersonal_counterlog
+plugin: entity:delete_action:ktpersonal_counterlog
+configuration: {  }
