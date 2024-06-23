@@ -5,7 +5,7 @@ migration_group: default
 source:
   plugin: 'csv'
   track_changes: true
-  path: './baf_kt_output_counters - COUNTER.csv'
+  path: './test_kt_counters.csv'
   delimiter: ';'
   enclosure: '"'
   header_offset: 0

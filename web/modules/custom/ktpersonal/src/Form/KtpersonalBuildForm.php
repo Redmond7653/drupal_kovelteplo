@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Drupal\ktpersonal\Form;
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\ktpersonal\Entity\CounterLog;
 
 /**
  * Provides a ktpersonal form.
@@ -98,25 +100,65 @@ final class KtpersonalBuildForm extends FormBase {
 
       $last_info = $last_info_array[0]['value'];
 
-
       $form['counter_info']["$last_info"] = [
-        '#type' => 'textfield',
+        '#type' => 'number',
         '#title' => '',
       ];
     }
 
-    $form_rebulit_values = $form_state->getValues();
-    $new_counters_info_array = $form_rebulit_values['counter_info'];
+    $form_state_values = $form_state->getValues();
 
-    if ($form_rebulit_values) {
-      foreach ($new_counters_info_array as $new_counter_info) {
-        $form['counter_new_info']["$new_counter_info"] = [
-          '#type' => 'item',
-          '#title' => "$new_counter_info",
-        ];
+    if ($form_state_values) {
+
+      /** @var \Drupal\ktpersonal\Entity\KtCounter[] $entities_kt_counters */
+
+      $account_owner = $entities_kt_account->get('owner_account_number')->getValue();
+      $apparment_number = $entities_kt_account->get('apartment_number')->getValue();
+
+      foreach ($form_state_values['counter_info'] as $key => $new_counter_value) {
+
+
+
+        $ts = strtotime(date('Y-m-d'));
+
+        $now = new DrupalDateTime('now');
+
+        $query = \Drupal::entityTypeManager()
+          ->getStorage('ktpersonal_counterlog')->getQuery();
+
+        // $query = \Drupal::entityQuery('ktpersonal_counterlog');
+        $query->condition('created', $ts, '>=');
+        $query->condition('created', $ts + 24 * 60 * 60, '<');
+        $query->accessCheck(FALSE);
+
+        $result = $query->execute();
+
+        $new_counter_date = time();
+        $counter_info = $entities_kt_counters[$key]->get('info')->getValue();
+
+
+
+        if (empty($result)) {
+          $counter_log = CounterLog::create([
+            'info' => $counter_info[0]['value'],
+            'apartment_number' => $apparment_number[0]['value'],
+            'owner_account_number' => $account_owner[0]['value'],
+            'last_data' => "$new_counter_value",
+          ]);
+          $counter_log->save();
+        }
+
+        // $query->condition('field_date', $now->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT), '>=');
+        //        $counter_log = CounterLog::create([
+        //          'info' => $counter_info[0]['value'],
+        //          'apartment_number' => $apparment_number[0]['value'],
+        //          'owner_account_number' => $account_owner[0]['value'],
+        //          'last_data' => "$new_counter_value",
+        //        ]);
+        //
+        //        $counter_log->save();
       }
     }
-
 
     $form['change_account'] = [
       '#type' => 'submit',
@@ -128,19 +170,6 @@ final class KtpersonalBuildForm extends FormBase {
       '#value' => $this->t('Відправити показники'),
     ];
 
-    // $form['change'] = [
-    //      'change_account' => [
-    //        '#type' => 'submit',
-    //        '#value' => $this->t('Змінити рахунок'),
-    //      ],
-    //    ];
-    //
-    //    $form['actions'] = [
-    //      'submit_values' => [
-    //        '#type' => 'submit',
-    //        '#value' => $this->t('Відправити показники'),
-    //      ],
-    //    ];
     $form['view_calculation'] = [
       '#type' => 'view',
       '#name' => 'ktpersonal_ktcalculation',
@@ -180,8 +209,8 @@ final class KtpersonalBuildForm extends FormBase {
 
     if ($triggering_element['#id'] == 'edit-submit-values') {
       $form_state->setRebuild();
+      // $form_state->setRedirect('ktpersonal.ktpersonal_edit');
     }
-
 
   }
 
