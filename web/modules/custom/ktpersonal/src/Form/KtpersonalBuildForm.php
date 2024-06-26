@@ -112,16 +112,12 @@ final class KtpersonalBuildForm extends FormBase {
 
       /** @var \Drupal\ktpersonal\Entity\KtCounter[] $entities_kt_counters */
 
-      $account_owner = $entities_kt_account->get('owner_account_number')->getValue();
-      $apparment_number = $entities_kt_account->get('apartment_number')->getValue();
-
       foreach ($form_state_values['counter_info'] as $key => $new_counter_value) {
 
 
 
         $ts = strtotime(date('Y-m-d'));
 
-        $now = new DrupalDateTime('now');
 
         $query = \Drupal::entityTypeManager()
           ->getStorage('ktpersonal_counterlog')->getQuery();
@@ -129,11 +125,12 @@ final class KtpersonalBuildForm extends FormBase {
         // $query = \Drupal::entityQuery('ktpersonal_counterlog');
         $query->condition('created', $ts, '>=');
         $query->condition('created', $ts + 24 * 60 * 60, '<');
+        $query->condition('last_data', $new_counter_value, '=');
+
         $query->accessCheck(FALSE);
 
         $result = $query->execute();
 
-        $new_counter_date = time();
         $counter_info = $entities_kt_counters[$key]->get('info')->getValue();
 
 
@@ -141,8 +138,7 @@ final class KtpersonalBuildForm extends FormBase {
         if (empty($result)) {
           $counter_log = CounterLog::create([
             'info' => $counter_info[0]['value'],
-            'apartment_number' => $apparment_number[0]['value'],
-            'owner_account_number' => $account_owner[0]['value'],
+
             'last_data' => "$new_counter_value",
           ]);
           $counter_log->save();

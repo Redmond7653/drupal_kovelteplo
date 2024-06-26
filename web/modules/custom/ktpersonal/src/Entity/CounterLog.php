@@ -91,20 +91,7 @@ final class CounterLog extends ContentEntityBase implements CounterLogInterface 
       ->setDisplayConfigurable('form', TRUE);
 
 
-    $fields['apartment_number'] = BaseFieldDefinition::create('integer')
-      ->setLabel(t('Номер квартири'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'integer_number',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
+
 
     $fields['last_data'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Показники'))
@@ -121,20 +108,6 @@ final class CounterLog extends ContentEntityBase implements CounterLogInterface 
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
-    $fields['owner_account_number'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Власник особового рахунку'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
-      ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
-        'weight' => 10,
-      ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
 
     return $fields;
   }
