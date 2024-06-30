@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Drupal\ktpersonal\Form;
 
-use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\ktpersonal\Entity\CounterLog;
+use Drupal\views\Views;
 
 /**
  * Provides a ktpersonal form.
@@ -81,29 +81,120 @@ final class KtpersonalBuildForm extends FormBase {
       '#arguments' => [$ktuser_inputs],
     ];
 
-    $form['view_counter'] = [
-      '#type' => 'view',
-      '#name' => 'ktpersonal_ktcounter',
-      '#display_id' => 'kt_personal_counter_block',
-      '#arguments' => [$ktuser_inputs],
+    // $form['view_counter'] = [
+    //      '#type' => 'view',
+    //      '#name' => 'ktpersonal_ktcounter',
+    //      '#display_id' => 'kt_personal_counter_block',
+    //      '#arguments' => [$ktuser_inputs],
+    //    ];
+    $view_test = Views::getView('ktpersonal_ktcounter');
+    $view_test->setArguments([$ktuser_inputs]);
+    $view_test->setDisplay('kt_personal_counter_block');
+    $view_test->execute();
+
+    $view_results = $view_test->result;
+
+    /** @var \Drupal\views\ResultRow $view_result */
+//    $counter_rows = [];
+//    foreach ($view_results as $view_result) {
+//      $counter_info = $view_result->_entity->get('info')->getValue();
+//      $counter_next_date = $view_result->_entity->get('next_date_checking')->getValue();
+//      $counter_last_data = $view_result->_entity->get('last_data')->getValue();
+//
+//      $last_info = $view_result->_entity->id();
+
+      // $form['counter_info'] = [
+      //        '#type' => 'container',
+      //        '#prefix' => '<div id="counter_info-container">',
+      //        '#suffix' => '</div>',
+      //      ];
+      //
+      //      $key = 'ololo';
+      //      $array[$key] = 'bebebe';
+      //      $array = [
+      //        $key => 'bebebe',
+      //      ];
+      //
+      //      $input = [
+      //        '#type' => 'number',
+      //        //              '#title' => '',
+      //        '#default_value' => '',
+      //      ];
+      //
+      //      $container = [
+      //        '#type' => 'container',
+      //        'input---' . $view_result->_entity->id() => $input,
+      //      ];
+//      $counter_rows['row-' . $view_result->_entity->id()] = [
+//        'counter' => [
+//          'data' => [
+//            '#markup' => $counter_info[0]['value'] . '<br>' . $counter_next_date[0]['value'],
+//          ],
+//        ],
+//
+//        'current_data' => $counter_last_data[0]['value'],
+//
+//        'ololo_input' => [
+//          'data' => [
+//            '#type' => 'number',
+//            '#name' => 'ololo-' . $view_result->_entity->id(),
+//            '#default_value' => '',
+//          ],
+//        ],
+//      ];
+//
+//    }
+
+//    $form['counter_table'] = [
+//      '#type' => 'table',
+//      '#tree' => TRUE,
+//      '#header' => [
+//        $this->t('Лічильник'),
+//        $this->t('Поточні показники'),
+//        $this->t('Нові показники'),
+//    // $this->t('Дата нових показників'),
+//      ],
+//      '#rows' => $counter_rows,
+//    ];
+
+    // Foreach ($entities_kt_counters as $counter) {
+    //
+    //      $form['counter_info']["$last_info"] = [
+    //        '#type' => 'number',
+    //        '#title' => '',
+    //      ];
+    //    }.
+    $form['contacts'] = [
+      '#type' => 'table',
+      '#title' => 'Sample Table',
+      '#header' => [
+        $this->t('Лічильник'),
+        $this->t('Поточні показники'),
+        $this->t('Нові показники'),
+        // $this->t('Дата нових показників'),
+      ],
     ];
 
-    $form['counter_info'] = [
-      '#type' => 'container',
-      '#tree' => TRUE,
-      '#prefix' => '<div id="counter_info-container">',
-      '#suffix' => '</div>',
-    ];
+    foreach ($view_results as $view_result) {
 
-    foreach ($entities_kt_counters as $counter) {
-      $last_info_array = $counter->get('id')->getValue();
+      $counter_info = $view_result->_entity->get('info')->getValue();
+      $counter_next_date = $view_result->_entity->get('next_date_checking')->getValue();
+      $counter_last_data = $view_result->_entity->get('last_data')->getValue();
 
-      $last_info = $last_info_array[0]['value'];
-
-      $form['counter_info']["$last_info"] = [
-        '#type' => 'number',
-        '#title' => '',
+      $form['contacts'][$view_result->_entity->id()]['counter'] = [
+        '#markup' => $counter_info[0]['value'] . '<br>' . $counter_next_date[0]['value'],
       ];
+
+      $form['contacts'][$view_result->_entity->id()]['current_data'] = [
+        '#markup' => $counter_last_data[0]['value'],
+      ];
+
+
+      $form['contacts'][$view_result->_entity->id()]['new_data'] = [
+        '#type' => 'number',
+        '#title_display' => 'invisible',
+      ];
+
     }
 
     $form_state_values = $form_state->getValues();
@@ -114,10 +205,7 @@ final class KtpersonalBuildForm extends FormBase {
 
       foreach ($form_state_values['counter_info'] as $key => $new_counter_value) {
 
-
-
         $ts = strtotime(date('Y-m-d'));
-
 
         $query = \Drupal::entityTypeManager()
           ->getStorage('ktpersonal_counterlog')->getQuery();
@@ -132,8 +220,6 @@ final class KtpersonalBuildForm extends FormBase {
         $result = $query->execute();
 
         $counter_info = $entities_kt_counters[$key]->get('info')->getValue();
-
-
 
         if (empty($result)) {
           $counter_log = CounterLog::create([
@@ -190,6 +276,7 @@ final class KtpersonalBuildForm extends FormBase {
     //     );
     //   }
     // @endcode
+    $z = 0;
   }
 
   /**
