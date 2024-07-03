@@ -95,68 +95,65 @@ final class KtpersonalBuildForm extends FormBase {
     $view_results = $view_test->result;
 
     /** @var \Drupal\views\ResultRow $view_result */
-//    $counter_rows = [];
-//    foreach ($view_results as $view_result) {
-//      $counter_info = $view_result->_entity->get('info')->getValue();
-//      $counter_next_date = $view_result->_entity->get('next_date_checking')->getValue();
-//      $counter_last_data = $view_result->_entity->get('last_data')->getValue();
-//
-//      $last_info = $view_result->_entity->id();
-
-      // $form['counter_info'] = [
-      //        '#type' => 'container',
-      //        '#prefix' => '<div id="counter_info-container">',
-      //        '#suffix' => '</div>',
-      //      ];
-      //
-      //      $key = 'ololo';
-      //      $array[$key] = 'bebebe';
-      //      $array = [
-      //        $key => 'bebebe',
-      //      ];
-      //
-      //      $input = [
-      //        '#type' => 'number',
-      //        //              '#title' => '',
-      //        '#default_value' => '',
-      //      ];
-      //
-      //      $container = [
-      //        '#type' => 'container',
-      //        'input---' . $view_result->_entity->id() => $input,
-      //      ];
-//      $counter_rows['row-' . $view_result->_entity->id()] = [
-//        'counter' => [
-//          'data' => [
-//            '#markup' => $counter_info[0]['value'] . '<br>' . $counter_next_date[0]['value'],
-//          ],
-//        ],
-//
-//        'current_data' => $counter_last_data[0]['value'],
-//
-//        'ololo_input' => [
-//          'data' => [
-//            '#type' => 'number',
-//            '#name' => 'ololo-' . $view_result->_entity->id(),
-//            '#default_value' => '',
-//          ],
-//        ],
-//      ];
-//
-//    }
-
-//    $form['counter_table'] = [
-//      '#type' => 'table',
-//      '#tree' => TRUE,
-//      '#header' => [
-//        $this->t('Лічильник'),
-//        $this->t('Поточні показники'),
-//        $this->t('Нові показники'),
-//    // $this->t('Дата нових показників'),
-//      ],
-//      '#rows' => $counter_rows,
-//    ];
-
+    // $counter_rows = [];
+    //    foreach ($view_results as $view_result) {
+    //      $counter_info = $view_result->_entity->get('info')->getValue();
+    //      $counter_next_date = $view_result->_entity->get('next_date_checking')->getValue();
+    //      $counter_last_data = $view_result->_entity->get('last_data')->getValue();
+    //
+    //      $last_info = $view_result->_entity->id();
+    // $form['counter_info'] = [
+    //        '#type' => 'container',
+    //        '#prefix' => '<div id="counter_info-container">',
+    //        '#suffix' => '</div>',
+    //      ];
+    //
+    //      $key = 'ololo';
+    //      $array[$key] = 'bebebe';
+    //      $array = [
+    //        $key => 'bebebe',
+    //      ];
+    //
+    //      $input = [
+    //        '#type' => 'number',
+    //        //              '#title' => '',
+    //        '#default_value' => '',
+    //      ];
+    //
+    //      $container = [
+    //        '#type' => 'container',
+    //        'input---' . $view_result->_entity->id() => $input,
+    //      ];
+    //      $counter_rows['row-' . $view_result->_entity->id()] = [
+    //        'counter' => [
+    //          'data' => [
+    //            '#markup' => $counter_info[0]['value'] . '<br>' . $counter_next_date[0]['value'],
+    //          ],
+    //        ],
+    //
+    //        'current_data' => $counter_last_data[0]['value'],
+    //
+    //        'ololo_input' => [
+    //          'data' => [
+    //            '#type' => 'number',
+    //            '#name' => 'ololo-' . $view_result->_entity->id(),
+    //            '#default_value' => '',
+    //          ],
+    //        ],
+    //      ];
+    //
+    //    }
+    //    $form['counter_table'] = [
+    //      '#type' => 'table',
+    //      '#tree' => TRUE,
+    //      '#header' => [
+    //        $this->t('Лічильник'),
+    //        $this->t('Поточні показники'),
+    //        $this->t('Нові показники'),
+    //    // $this->t('Дата нових показників'),
+    //      ],
+    //      '#rows' => $counter_rows,
+    //    ];
     // Foreach ($entities_kt_counters as $counter) {
     //
     //      $form['counter_info']["$last_info"] = [
@@ -171,9 +168,11 @@ final class KtpersonalBuildForm extends FormBase {
         $this->t('Лічильник'),
         $this->t('Поточні показники'),
         $this->t('Нові показники'),
-        // $this->t('Дата нових показників'),
+        $this->t('Дата нових показників'),
       ],
     ];
+
+    $form_state_values = $form_state->getValues();
 
     foreach ($view_results as $view_result) {
 
@@ -189,21 +188,30 @@ final class KtpersonalBuildForm extends FormBase {
         '#markup' => $counter_last_data[0]['value'],
       ];
 
-
       $form['contacts'][$view_result->_entity->id()]['new_data'] = [
         '#type' => 'number',
         '#title_display' => 'invisible',
       ];
 
+      if ($form_state_values['contacts']) {
+
+        $current_date = date('d.m.Y');
+        $current_time = date('H:i');
+
+        $form['contacts'][$view_result->_entity->id()]['new_date_of_counters'] = [
+          '#markup' => $current_date . '<br>' . $current_time,
+        ];
+      }
+
     }
 
-    $form_state_values = $form_state->getValues();
+
 
     if ($form_state_values) {
 
       /** @var \Drupal\ktpersonal\Entity\KtCounter[] $entities_kt_counters */
 
-      foreach ($form_state_values['counter_info'] as $key => $new_counter_value) {
+      foreach ($form_state_values['contacts'] as $key => $new_counter_value) {
 
         $ts = strtotime(date('Y-m-d'));
 
@@ -213,7 +221,7 @@ final class KtpersonalBuildForm extends FormBase {
         // $query = \Drupal::entityQuery('ktpersonal_counterlog');
         $query->condition('created', $ts, '>=');
         $query->condition('created', $ts + 24 * 60 * 60, '<');
-        $query->condition('last_data', $new_counter_value, '=');
+        $query->condition('last_data', $new_counter_value['new_data'], '=');
 
         $query->accessCheck(FALSE);
 
@@ -225,7 +233,7 @@ final class KtpersonalBuildForm extends FormBase {
           $counter_log = CounterLog::create([
             'info' => $counter_info[0]['value'],
 
-            'last_data' => "$new_counter_value",
+            'last_data' => $new_counter_value['new_data'],
           ]);
           $counter_log->save();
         }
@@ -293,6 +301,7 @@ final class KtpersonalBuildForm extends FormBase {
     if ($triggering_element['#id'] == 'edit-submit-values') {
       $form_state->setRebuild();
       // $form_state->setRedirect('ktpersonal.ktpersonal_edit');
+      $check = TRUE;
     }
 
   }
