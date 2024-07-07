@@ -30,6 +30,15 @@ final class KtpersonalBuildForm extends FormBase {
 
     $ktuser_inputs = $request->query->get('account');
 
+    $pageRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) &&($_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0' ||  $_SERVER['HTTP_CACHE_CONTROL'] == 'no-cache');
+    if ($pageRefreshed == 1) {
+      $z = 1;
+    }
+    else {
+      // Enter code here.
+      $z = 0;
+    }
+
     if (!empty($ktuser_inputs)) {
 
       /** @var \Drupal\ktpersonal\Entity\KtAccount[] $entities_kt_account */
@@ -161,6 +170,9 @@ final class KtpersonalBuildForm extends FormBase {
     //        '#title' => '',
     //      ];
     //    }.
+    $form_state_values = $form_state->getValues();
+
+    // If ($form_state_values['contacts']) {.
     $form['contacts'] = [
       '#type' => 'table',
       '#title' => 'Sample Table',
@@ -172,40 +184,10 @@ final class KtpersonalBuildForm extends FormBase {
       ],
     ];
 
-    $form_state_values = $form_state->getValues();
-
-    foreach ($view_results as $view_result) {
-
-      $counter_info = $view_result->_entity->get('info')->getValue();
-      $counter_next_date = $view_result->_entity->get('next_date_checking')->getValue();
-      $counter_last_data = $view_result->_entity->get('last_data')->getValue();
-
-      $form['contacts'][$view_result->_entity->id()]['counter'] = [
-        '#markup' => $counter_info[0]['value'] . '<br>' . $counter_next_date[0]['value'],
-      ];
-
-      $form['contacts'][$view_result->_entity->id()]['current_data'] = [
-        '#markup' => $counter_last_data[0]['value'],
-      ];
-
-      $form['contacts'][$view_result->_entity->id()]['new_data'] = [
-        '#type' => 'number',
-        '#title_display' => 'invisible',
-      ];
-
-      if ($form_state_values['contacts']) {
-
-        $current_date = date('d.m.Y');
-        $current_time = date('H:i');
-
-        $form['contacts'][$view_result->_entity->id()]['new_date_of_counters'] = [
-          '#markup' => $current_date . '<br>' . $current_time,
-        ];
-      }
-
-    }
-
-
+//    foreach ($view_results as $view_result) {
+//      $counter_info = $view_result->_entity->get('info')->getValue();
+//      $form['contacts'][] = $counter_info;
+//    }
 
     if ($form_state_values) {
 
@@ -215,6 +197,8 @@ final class KtpersonalBuildForm extends FormBase {
 
         $ts = strtotime(date('Y-m-d'));
 
+        $counter_info = $entities_kt_counters[$key]->get('info')->getValue();
+
         $query = \Drupal::entityTypeManager()
           ->getStorage('ktpersonal_counterlog')->getQuery();
 
@@ -222,6 +206,7 @@ final class KtpersonalBuildForm extends FormBase {
         $query->condition('created', $ts, '>=');
         $query->condition('created', $ts + 24 * 60 * 60, '<');
         $query->condition('last_data', $new_counter_value['new_data'], '=');
+        $query->condition('info', $counter_info[0]['value'], '=');
 
         $query->accessCheck(FALSE);
 
@@ -248,6 +233,63 @@ final class KtpersonalBuildForm extends FormBase {
         //
         //        $counter_log->save();
       }
+    }
+
+    foreach ($view_results as $view_result) {
+
+      $counter_info = $view_result->_entity->get('info')->getValue();
+      $counter_next_date = $view_result->_entity->get('next_date_checking')->getValue();
+      $counter_last_data = $view_result->_entity->get('last_data')->getValue();
+
+      /** @var \Drupal\Core\Entity\Query\QueryInterface $query */
+      $query = \Drupal::entityTypeManager()
+        ->getStorage('ktpersonal_counterlog')->getQuery();
+
+      $query->condition('info', $counter_info[0]['value'], '=');
+//      $query->condition('created', strtotime(date('Y-m-d')), '>=');
+//      $query->condition('created', strtotime(date('Y-m-d')) + 24 * 60 * 60 * 30, '<');
+      $query->sort('created', 'DESC');
+      $query->range(0,1);
+
+
+      $query->accessCheck(FALSE);
+
+      $result = $query->execute();
+
+      $entities_kt_log = \Drupal::entityTypeManager()
+        ->getStorage('ktpersonal_counterlog')
+        ->load(reset($result)
+        );
+
+      if (!empty($entities_kt_log)) {
+
+
+        $time_field = $entities_kt_log->get('created')
+          ->getValue();
+
+        $time_when_created = date('d.m.Y H:i', intval($time_field[0]['value']));
+      }
+
+      $form['contacts'][$view_result->_entity->id()]['counter'] = [
+        '#markup' => $counter_info[0]['value'] . '<br>' . $counter_next_date[0]['value'],
+      ];
+
+      $form['contacts'][$view_result->_entity->id()]['current_data'] = [
+        '#markup' => $counter_last_data[0]['value'],
+      ];
+
+      $form['contacts'][$view_result->_entity->id()]['new_data'] = [
+        '#type' => 'number',
+        '#title_display' => 'invisible',
+      ];
+
+      // If ($form_state_values['contacts']) {
+      //        $current_date = date('d.m.Y');
+      //        $current_time = date('H:i');.
+      $form['contacts'][$view_result->_entity->id()]['new_date_of_counters'] = [
+        '#markup' => $time_when_created,
+      ];
+      // }
     }
 
     $form['change_account'] = [
