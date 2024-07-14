@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Drupal\ktpersonal\Entity;
 
@@ -206,7 +208,7 @@ final class KtCounter extends RevisionableContentEntityBase implements KtCounter
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
-    //    $fields['personal_account_number'] = BaseFieldDefinition::create('string')
+    // $fields['personal_account_number'] = BaseFieldDefinition::create('string')
     //      ->setLabel(t('Номер особового рахунку'))
     //      ->setRequired(FALSE)
     //      ->setTranslatable(TRUE)
@@ -220,7 +222,6 @@ final class KtCounter extends RevisionableContentEntityBase implements KtCounter
     //      ])
     //      ->setDisplayConfigurable('view', TRUE)
     //      ->setDisplayConfigurable('form', TRUE);
-
     $fields['counter_id'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Id лічильника'))
       ->setRequired(FALSE)
@@ -317,6 +318,15 @@ final class KtCounter extends RevisionableContentEntityBase implements KtCounter
       ->setDisplayConfigurable('view', TRUE);
 
     return $fields;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function label() {
+
+    return $this->get('label')->value;
+
   }
 
 }

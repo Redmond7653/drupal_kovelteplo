@@ -1,0 +1,48 @@
+id: kt_logs_migration
+label: import all logs from ktmodx
+migration_group: default
+
+source:
+  plugin: 'csv'
+  path: './test_kt_logs.csv'
+  delimiter: ','
+  enclosure: '"'
+  header_offset: 0
+  ids:
+    - id
+  fields:
+    0:
+      name: id
+      label: 'id'
+    1:
+      name: f1
+    2:
+      name: f2
+    3:
+      name: counter_id
+      label: 'counter_id'
+    4:
+      name: updated
+      label: 'updated'
+    5:
+      name: new_data
+      label: 'new_data'
+
+
+process:
+  info:
+    - plugin: kt_logs_transform_id
+      source: counter_id
+    - plugin: skip_on_empty
+      method: row
+      message: 'Field counter_id is missing'
+    - plugin: migration_lookup
+      migration: kt_counters_migration
+      source: counter_id
+
+  created: updated
+
+  last_data: new_data
+
+destination:
+  plugin: entity:ktpersonal_counterlog

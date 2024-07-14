@@ -1,10 +1,10 @@
-#ktpersonal.personal:
-#  path: '/personal'
-#  defaults:
-#    _title: 'Personal search'
-#    _controller: '\Drupal\ktpersonal\Controller\KtpersonalController::content'
-#  requirements:
-#    _permission: 'access content'
+ktpersonal.personal:
+  path: '/personal'
+  defaults:
+    _title: 'Personal search'
+    _controller: '\Drupal\ktpersonal\Controller\KtpersonalController::content'
+  requirements:
+    _permission: 'access content'
 
 
 ktpersonal.admin_settings:

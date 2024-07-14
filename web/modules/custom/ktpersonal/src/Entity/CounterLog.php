@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Drupal\ktpersonal\Entity;
 
@@ -75,23 +77,25 @@ final class CounterLog extends ContentEntityBase implements CounterLogInterface 
       ])
       ->setDisplayConfigurable('view', TRUE);
 
-    $fields['info'] = BaseFieldDefinition::create('string')
+    $fields['info'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Інформація про лічильник'))
-      ->setRequired(FALSE)
-      ->setTranslatable(TRUE)
-      ->setSettings([
-        'default_value' => '',
-        'max_length' => 255,
-      ])
+      ->setSetting('target_type', 'ktpersonal_kt_counter')
       ->setDisplayOptions('form', [
-        'type' => 'string_textfield',
-        'weight' => 10,
+        'type' => 'entity_reference_autocomplete',
+        'settings' => [
+          'match_operator' => 'CONTAINS',
+          'size' => 60,
+          'placeholder' => '',
+        ],
+        'weight' => 15,
       ])
-      ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayConfigurable('form', TRUE);
-
-
-
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'author',
+        'weight' => 15,
+      ])
+      ->setDisplayConfigurable('view', TRUE);
 
     $fields['last_data'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Показники'))
@@ -108,8 +112,10 @@ final class CounterLog extends ContentEntityBase implements CounterLogInterface 
       ->setDisplayConfigurable('view', TRUE)
       ->setDisplayConfigurable('form', TRUE);
 
-
     return $fields;
   }
+
+
+
 
 }

@@ -212,7 +212,7 @@ final class KtpersonalBuildForm extends FormBase {
 
         $result = $query->execute();
 
-        $counter_info = $entities_kt_counters[$key]->get('info')->getValue();
+        $counter_info = $entities_kt_counters[$key]->get('id')->getValue();
 
         if (empty($result)) {
           $counter_log = CounterLog::create([

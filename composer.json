@@ -31,7 +31,8 @@
         "drupal/migrate_tools": "^6.0",
         "drupal/tara": "^10.1",
         "drupal/zeropoint": "^1.16",
-        "drush/drush": "^12.4"
+        "drush/drush": "^12.4",
+        "ext-http": "*"
     },
     "conflict": {
         "drupal/drupal": "*"
