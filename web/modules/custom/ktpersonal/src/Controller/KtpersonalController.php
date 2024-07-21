@@ -29,7 +29,7 @@ final class KtpersonalController extends ControllerBase {
   /**
    * Builds the response.
    */
-  public function content(): array {
+  public function content($date): array {
 
     $form['keys'] = [
       '#type' => 'textfield',
@@ -44,7 +44,13 @@ final class KtpersonalController extends ControllerBase {
     //      ->loadByProperties([
     //        'kt_accounts_drupal_id' => $drupal_id_account,
     //      ]);
-    $time = strtotime(date('Y-m-d'));
+
+
+//    $url = \Drupal::request()->query->get('date');
+
+    if ($date) {
+      $time = strtotime($date);
+    }
 
     $query = \Drupal::entityTypeManager()
       ->getStorage('ktpersonal_counterlog')->getQuery();
@@ -91,7 +97,7 @@ final class KtpersonalController extends ControllerBase {
       $counter_data[] = $entities_kt_account->get('account_number')->value;
       $counter_data[] = $entities_kt_counter->get('counter_id')->value;
       $counter_data[] = $entities_kt_log->get('last_data')->value;
-      $counter_data[] = $time_when_created;
+      $counter_data[] = "\"".$time_when_created."\"";
 
       // $data = $data . $kt_counter_operation_code . ';' . $kt_account_number . ';' . $kt_counter_id . ';' . $entity_counter_log_last_data . ';' . $time_when_created . "\n";
       $data = $data . implode(';', $counter_data) . "\n";
@@ -115,5 +121,12 @@ final class KtpersonalController extends ControllerBase {
 
     return $form;
   }
+
+
+
+//else if (substr($url, 0, 15) === "/password-reset") {
+//$page = '../private/pass-reset.php';
+//$param = substr($url, 16);
+//}
 
 }
