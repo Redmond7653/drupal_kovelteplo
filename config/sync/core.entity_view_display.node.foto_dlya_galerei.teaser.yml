@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.foto_dlya_galerei.body
     - field.field.node.foto_dlya_galerei.field_adv_label_gallery_photo
     - field.field.node.foto_dlya_galerei.field_dodati_image
+    - field.field.node.foto_dlya_galerei.field_parent_resource
     - node.type.foto_dlya_galerei
   module:
     - text
@@ -32,3 +33,4 @@ content:
 hidden:
   field_adv_label_gallery_photo: true
   field_dodati_image: true
+  field_parent_resource: true

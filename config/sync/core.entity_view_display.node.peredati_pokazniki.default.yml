@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.peredati_pokazniki.body
     - field.field.node.peredati_pokazniki.field_advanced_label_show_pokasn
     - field.field.node.peredati_pokazniki.field_dodati_image
+    - field.field.node.peredati_pokazniki.field_parent_resource
     - node.type.peredati_pokazniki
   module:
     - image
@@ -40,6 +41,13 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_parent_resource:
+    type: entity_reference_entity_id
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
     region: content
   links:
     settings: {  }

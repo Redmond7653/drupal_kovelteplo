@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.blokovaniy_sayt.body
     - field.field.node.blokovaniy_sayt.field_dodati_image
+    - field.field.node.blokovaniy_sayt.field_parent_resource
     - field.field.node.blokovaniy_sayt.field_rozshireniy_zagolovok
     - image.style.thumbnail
     - node.type.blokovaniy_sayt
@@ -40,6 +41,16 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_parent_resource:
+    type: entity_reference_autocomplete
+    weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_rozshireniy_zagolovok:
     type: text_textarea

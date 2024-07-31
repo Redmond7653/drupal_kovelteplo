@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.rezultati_poshuku.body
     - field.field.node.rezultati_poshuku.field_adv_label_search_result
     - field.field.node.rezultati_poshuku.field_dodati_image
+    - field.field.node.rezultati_poshuku.field_parent_resource
     - node.type.rezultati_poshuku
   module:
     - image
@@ -40,6 +41,13 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_parent_resource:
+    type: entity_reference_entity_id
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
     region: content
   links:
     settings: {  }

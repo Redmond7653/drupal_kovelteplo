@@ -222,7 +222,7 @@ final class KtCounter extends RevisionableContentEntityBase implements KtCounter
     //      ])
     //      ->setDisplayConfigurable('view', TRUE)
     //      ->setDisplayConfigurable('form', TRUE);
-    $fields['counter_id'] = BaseFieldDefinition::create('integer')
+    $fields['counter_id'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Id лічильника'))
       ->setRequired(FALSE)
       ->setTranslatable(TRUE)
@@ -231,7 +231,7 @@ final class KtCounter extends RevisionableContentEntityBase implements KtCounter
         'max_length' => 255,
       ])
       ->setDisplayOptions('form', [
-        'type' => 'integer_number',
+        'type' => 'string_textfield',
         'weight' => 10,
       ])
       ->setDisplayConfigurable('view', TRUE)

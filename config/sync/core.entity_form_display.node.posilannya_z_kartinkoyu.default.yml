@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.posilannya_z_kartinkoyu.field_anotaciya_vstup_
     - field.field.node.posilannya_z_kartinkoyu.field_dodati_image
     - field.field.node.posilannya_z_kartinkoyu.field_id
+    - field.field.node.posilannya_z_kartinkoyu.field_parent_resource
     - image.style.thumbnail
     - node.type.posilannya_z_kartinkoyu
   module:
@@ -64,6 +65,16 @@ content:
     weight: 27
     region: content
     settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_parent_resource:
+    type: entity_reference_autocomplete
+    weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   path:

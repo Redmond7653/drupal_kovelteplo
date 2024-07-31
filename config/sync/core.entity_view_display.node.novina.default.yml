@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.novina.field_anotaciya_vstup_
     - field.field.node.novina.field_dodati_image
     - field.field.node.novina.field_id
+    - field.field.node.novina.field_parent_resource
     - field.field.node.novina.field_rozshireniy_zagolovok_news
     - node.type.novina
   module:
@@ -49,6 +50,13 @@ content:
     settings:
       thousand_separator: ''
       prefix_suffix: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_parent_resource:
+    type: entity_reference_entity_id
+    label: above
+    settings: {  }
     third_party_settings: {  }
     weight: 104
     region: content

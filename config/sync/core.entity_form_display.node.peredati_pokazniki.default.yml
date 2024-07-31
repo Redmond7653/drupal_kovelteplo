@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.peredati_pokazniki.body
     - field.field.node.peredati_pokazniki.field_advanced_label_show_pokasn
     - field.field.node.peredati_pokazniki.field_dodati_image
+    - field.field.node.peredati_pokazniki.field_parent_resource
     - image.style.thumbnail
     - node.type.peredati_pokazniki
   module:
@@ -48,6 +49,16 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_parent_resource:
+    type: entity_reference_autocomplete
+    weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   path:
     type: path

@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.posilannya_z_kartinkoyu.field_anotaciya_vstup_
     - field.field.node.posilannya_z_kartinkoyu.field_dodati_image
     - field.field.node.posilannya_z_kartinkoyu.field_id
+    - field.field.node.posilannya_z_kartinkoyu.field_parent_resource
     - node.type.posilannya_z_kartinkoyu
   module:
     - text
@@ -36,3 +37,4 @@ hidden:
   field_anotaciya_vstup_: true
   field_dodati_image: true
   field_id: true
+  field_parent_resource: true

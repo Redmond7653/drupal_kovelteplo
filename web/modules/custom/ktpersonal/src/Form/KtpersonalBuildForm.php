@@ -72,6 +72,13 @@ final class KtpersonalBuildForm extends FormBase {
     $view_builder = \Drupal::entityTypeManager()->getViewBuilder('ktpersonal_kt_account');
     $output = $view_builder->view($entities_kt_account, 'short_ktaccount_info');
 
+
+//    $test['ktpersonal'] = [
+//      '#markup' => 'Hello',
+//    ];
+//
+//    hook_page_top($test);
+
     $form['display_entity'] = $output;
 
     $form['view_account_info'] = [

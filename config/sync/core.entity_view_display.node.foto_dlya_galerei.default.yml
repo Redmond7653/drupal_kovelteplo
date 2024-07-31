@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.foto_dlya_galerei.body
     - field.field.node.foto_dlya_galerei.field_adv_label_gallery_photo
     - field.field.node.foto_dlya_galerei.field_dodati_image
+    - field.field.node.foto_dlya_galerei.field_parent_resource
     - node.type.foto_dlya_galerei
   module:
     - image
@@ -40,6 +41,13 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_parent_resource:
+    type: entity_reference_entity_id
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
     region: content
   links:
     settings: {  }

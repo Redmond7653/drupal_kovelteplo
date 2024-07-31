@@ -2,14 +2,105 @@
 
 /**
  * @file
+ */
+
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+use Drupal\node\NodeInterface;
+
+/**
+ * @file
  * Primary module hooks for ktpersonal module.
  */
 
-  /**
-   * Implements hook_update_N().
-   */
-  function ktpersonal_update_9001(&$sandbox) {
-    $z = 0;
+/**
+ * Implements hook_update_N().
+ */
+function ktpersonal_update_9001(&$sandbox) {
+  $z = 0;
 
-    throw new Exception();
+  throw new Exception();
+}
+
+
+//function ktpersonal_page_top(array &$page_top) {
+//
+//  $node = \Drupal::routeMatch()->getParameter('node');
+//
+//  if ($node instanceof NodeInterface) {
+//    $nid = $node->id();
+//
+//    $parent = $node->get('field_parent_resource')->getValue();
+//
+//
+//
+//    $nodes = \Drupal::entityTypeManager()
+//      ->getStorage('node')
+//      ->loadByProperties([
+//        'field_parent_resource' => $parent[0]['target_id'],
+//      ]);
+//
+//    /** @var NodeInterface $node */
+//    foreach ($nodes as $node) {
+//      $key_array = $node->get('title')->getValue();
+//      $key = $key_array[0]['value'];
+//      $node_id_array[$key] = $node->id();
+////      $node->getTitle()
+////      $node->toUrl()
+//    }
+//
+//    foreach ($node_id_array as $key => $node_id) {
+//      $options = ['absolute' => TRUE];
+//      $url = Url::fromRoute('entity.node.canonical', ['node' => $node_id], $options);
+//      $link = Link::fromTextAndUrl($key, $url);
+//
+//      $page_top['ktpersonal'][$node_id] = $link->toRenderable();
+//
+//    }
+//  }
+//}
+
+  /**
+   * Implements hook_entity_view().
+   */
+  function ktpersonal_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
   }
+/**
+ * Implements hook_page_build().
+ */
+function ktpersonal_page_build(array &$page) {
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if ($node instanceof NodeInterface) {
+    $nid = $node->id();
+
+    $parent = $node->get('field_parent_resource')->getValue();
+
+
+
+    $nodes = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->loadByProperties([
+        'field_parent_resource' => $parent[0]['target_id'],
+      ]);
+
+    /** @var NodeInterface $node */
+    foreach ($nodes as $node) {
+      $key_array = $node->get('title')->getValue();
+      $key = $key_array[0]['value'];
+      $node_id_array[$key] = $node->id();
+      //      $node->getTitle()
+      //      $node->toUrl()
+    }
+
+    foreach ($node_id_array as $key => $node_id) {
+      $options = ['absolute' => TRUE];
+      $url = Url::fromRoute('entity.node.canonical', ['node' => $node_id], $options);
+      $link = Link::fromTextAndUrl($key, $url);
+
+      $page['content'][$node_id] = $link->toRenderable();
+
+    }
+  }
+}

@@ -39,7 +39,8 @@ source:
     10:
       name: f10
     11:
-      name: f11
+      name: parent
+      label: 'parent'
     12:
       name: f12
     13:
@@ -136,6 +137,17 @@ process:
 
   field_anotaciya_vstup_: annotation
 
+  field_parent_resource:
+
+    - plugin: skip_on_empty
+      method: process
+      source: parent
+
+    - plugin: migration_lookup
+      migration: content_migration
+      no_stub: true
+      source: parent
+
   source_full_path:
     plugin: concat
     delimiter: /
@@ -181,4 +193,5 @@ process:
 
 destination:
   plugin: entity:node
+
 

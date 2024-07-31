@@ -1,0 +1,48 @@
+uuid: 52ef5caf-15c7-4bbe-99fa-3011b42090f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_parent_resource
+    - node.type.blokovaniy_sayt
+    - node.type.foto_dlya_galerei
+    - node.type.golovna
+    - node.type.novina
+    - node.type.osobistiy_kabinet
+    - node.type.page
+    - node.type.peredati_pokazniki
+    - node.type.posilannya_z_kartinkoyu
+    - node.type.rezultati_poshuku
+    - node.type.slayder
+    - node.type.tekstova_storinka
+id: node.slayder.field_parent_resource
+field_name: field_parent_resource
+entity_type: node
+bundle: slayder
+label: 'Батьківський ресурс'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      page: page
+      blokovaniy_sayt: blokovaniy_sayt
+      golovna: golovna
+      novina: novina
+      osobistiy_kabinet: osobistiy_kabinet
+      peredati_pokazniki: peredati_pokazniki
+      posilannya_z_kartinkoyu: posilannya_z_kartinkoyu
+      rezultati_poshuku: rezultati_poshuku
+      slayder: slayder
+      tekstova_storinka: tekstova_storinka
+      foto_dlya_galerei: foto_dlya_galerei
+    sort:
+      field: field_id
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: page
+field_type: entity_reference

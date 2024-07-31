@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.novina.field_anotaciya_vstup_
     - field.field.node.novina.field_dodati_image
     - field.field.node.novina.field_id
+    - field.field.node.novina.field_parent_resource
     - field.field.node.novina.field_rozshireniy_zagolovok_news
     - image.style.thumbnail
     - node.type.novina
@@ -56,6 +57,16 @@ content:
     weight: 27
     region: content
     settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_parent_resource:
+    type: entity_reference_autocomplete
+    weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_rozshireniy_zagolovok_news:

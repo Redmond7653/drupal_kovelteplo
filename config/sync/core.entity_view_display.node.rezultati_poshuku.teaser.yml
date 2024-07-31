@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.rezultati_poshuku.body
     - field.field.node.rezultati_poshuku.field_adv_label_search_result
     - field.field.node.rezultati_poshuku.field_dodati_image
+    - field.field.node.rezultati_poshuku.field_parent_resource
     - node.type.rezultati_poshuku
   module:
     - text
@@ -32,3 +33,4 @@ content:
 hidden:
   field_adv_label_search_result: true
   field_dodati_image: true
+  field_parent_resource: true

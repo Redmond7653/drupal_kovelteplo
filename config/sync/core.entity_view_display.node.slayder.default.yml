@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.slayder.field_anotaciya_vstup_
     - field.field.node.slayder.field_dodati_image
     - field.field.node.slayder.field_id
+    - field.field.node.slayder.field_parent_resource
     - node.type.slayder
   module:
     - image
@@ -56,6 +57,13 @@ content:
     settings:
       thousand_separator: ''
       prefix_suffix: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_parent_resource:
+    type: entity_reference_entity_id
+    label: above
+    settings: {  }
     third_party_settings: {  }
     weight: 104
     region: content
