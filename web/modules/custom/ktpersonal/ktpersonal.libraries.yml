@@ -1,7 +1,7 @@
-foobar:
+test_library:
   js:
-    js/foobar.js: {}
+    js/ktpersonal_input_check.js: {}
   dependencies:
-    - core/drupal
     - core/jquery
-    - core/once
+    - core/drupal
+    - core/drupalSettings

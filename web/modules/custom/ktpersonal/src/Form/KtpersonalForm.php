@@ -73,6 +73,8 @@ final class KtpersonalForm extends FormBase {
       ],
     ];
 
+    $form['#attached']['library'][] = 'ktpersonal/test_library';
+
     // If (isset($ktuser_inputs['message']) && $form_state->isSubmitted()) {
     //
     //
@@ -160,6 +162,3 @@ final class KtpersonalForm extends FormBase {
   }
 
 }
-
-
-
