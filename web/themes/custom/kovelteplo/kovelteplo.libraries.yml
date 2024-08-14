@@ -5,3 +5,10 @@ global-styling:
     theme:
       css/style.css: {}
 
+foobar:
+  js:
+    js/foobar.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once

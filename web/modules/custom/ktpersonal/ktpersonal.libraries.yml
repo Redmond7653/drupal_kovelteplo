@@ -1,0 +1,7 @@
+foobar:
+  js:
+    js/foobar.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once

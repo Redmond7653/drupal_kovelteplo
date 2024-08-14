@@ -1,0 +1,7 @@
+block.settings.ktpersonal_child_nodes:
+  type: block_settings
+  label: 'child_nodes block'
+  mapping:
+    example:
+      type: string
+      label: Example

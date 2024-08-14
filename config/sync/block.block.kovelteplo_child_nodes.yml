@@ -1,0 +1,43 @@
+uuid: 011694ca-d8b5-46cb-89ee-72e388900bde
+langcode: en
+status: true
+dependencies:
+  module:
+    - ktpersonal
+    - node
+    - system
+  theme:
+    - kovelteplo
+id: kovelteplo_child_nodes
+theme: kovelteplo
+region: content_top
+weight: 0
+provider: null
+plugin: ktpersonal_child_nodes
+settings:
+  id: ktpersonal_child_nodes
+  label: child_nodes
+  label_display: '0'
+  provider: ktpersonal
+  example: 'Hello world!'
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '<front>'
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      blokovaniy_sayt: blokovaniy_sayt
+      foto_dlya_galerei: foto_dlya_galerei
+      golovna: golovna
+      novina: novina
+      page: page
+      peredati_pokazniki: peredati_pokazniki
+      posilannya_z_kartinkoyu: posilannya_z_kartinkoyu
+      rezultati_poshuku: rezultati_poshuku
+      slayder: slayder
+      tekstova_storinka: tekstova_storinka

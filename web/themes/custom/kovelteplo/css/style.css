@@ -3475,4 +3475,24 @@ div#sliding-popup, div#sliding-popup .eu-cookie-withdraw-banner, .eu-cookie-with
     color: red;
   }
 
+
+  div#block-kovelteplo-child-nodes {
+    background-color: rgb(148,225,245);
+    box-shadow: none;
+  }
+
+  div#block-kovelteplo-child-nodes .block-content a {
+    padding: 5px 0.5em;
+    background-color: #ededed8a;
+    margin: 0.5em;
+    display: inline-block;
+  }
+
+  div#block-kovelteplo-child-nodes .block-content a:hover {
+    color: #16a721;
+  }
+
+
+
+
 }/*# sourceMappingURL=style.css.map */

@@ -4,8 +4,12 @@
  * @file
  */
 
-use Drupal\Core\Url;
+use Drupal\Core\Breadcrumb\Breadcrumb;
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 
 /**
@@ -22,8 +26,7 @@ function ktpersonal_update_9001(&$sandbox) {
   throw new Exception();
 }
 
-
-//function ktpersonal_page_top(array &$page_top) {
+// Function ktpersonal_page_top(array &$page_top) {
 //
 //  $node = \Drupal::routeMatch()->getParameter('node');
 //
@@ -45,8 +48,8 @@ function ktpersonal_update_9001(&$sandbox) {
 //      $key_array = $node->get('title')->getValue();
 //      $key = $key_array[0]['value'];
 //      $node_id_array[$key] = $node->id();
-////      $node->getTitle()
-////      $node->toUrl()
+// $node->getTitle()
+// $node->toUrl()
 //    }
 //
 //    foreach ($node_id_array as $key => $node_id) {
@@ -58,13 +61,12 @@ function ktpersonal_update_9001(&$sandbox) {
 //
 //    }
 //  }
-//}
+// }
 
-  /**
-   * Implements hook_entity_view().
-   */
-  function ktpersonal_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
-  }
+/**
+ * Implements hook_entity_view().
+ */
+
 /**
  * Implements hook_page_build().
  */
@@ -77,20 +79,18 @@ function ktpersonal_page_build(array &$page) {
 
     $parent = $node->get('field_parent_resource')->getValue();
 
-
-
     $nodes = \Drupal::entityTypeManager()
       ->getStorage('node')
       ->loadByProperties([
         'field_parent_resource' => $parent[0]['target_id'],
       ]);
 
-    /** @var NodeInterface $node */
+    /** @var \Drupal\node\NodeInterface $node */
     foreach ($nodes as $node) {
       $key_array = $node->get('title')->getValue();
       $key = $key_array[0]['value'];
       $node_id_array[$key] = $node->id();
-      //      $node->getTitle()
+      // $node->getTitle()
       //      $node->toUrl()
     }
 
@@ -103,4 +103,48 @@ function ktpersonal_page_build(array &$page) {
 
     }
   }
+
 }
+
+
+//function ktpersonal_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+//  $z = 0;
+//
+//  if ('ktpersonal_ktpersonal_build' == $form_id) {
+//    $element = [
+//      '#type' => 'container',
+//      '#markup' => 'ololol ' . $form_id,
+//      '#weight' => -100,
+//    ];
+//
+//    $form['element'] = $element;
+//  }
+//}
+
+/**
+ *
+ */
+function ktpersonal_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMatchInterface $route_match, array $context) {
+  $routename = $route_match->getRouteName();
+
+  if ('ktpersonal.ktpersonal_build' == $routename || 'ktpersonal.ktpersonal' == $routename) {
+
+    $url = new Url('ktpersonal.ktpersonal');
+    $link = new Link('Особистий кабінет', $url);
+
+    // Add new link.
+    $breadcrumb->addLink($link);
+    // Saving the original links and caching.
+    $original_links = $breadcrumb->getLinks();
+    $cacheability = CacheableMetadata::createFromObject($breadcrumb);
+
+    if ('ktpersonal.ktpersonal_build' == $routename) {
+      unset($original_links[1]);
+    }
+
+    $breadcrumb = new Breadcrumb();
+    $breadcrumb->setLinks($original_links);
+    $breadcrumb->addCacheableDependency($cacheability);
+  }
+}
+

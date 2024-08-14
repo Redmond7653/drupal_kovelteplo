@@ -31,14 +31,14 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 102
+    weight: 2
     region: content
   field_anotaciya_vstup_:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 103
+    weight: 4
     region: content
   field_dodati_image:
     type: image
@@ -49,27 +49,13 @@ content:
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 102
-    region: content
-  field_id:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 104
-    region: content
-  field_parent_resource:
-    type: entity_reference_entity_id
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 104
+    weight: 3
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 1
     region: content
-hidden: {  }
+hidden:
+  field_id: true
+  field_parent_resource: true

@@ -2,10 +2,6 @@ uuid: 4d5bd387-f811-4675-85d4-72020e7fe881
 langcode: en
 status: false
 dependencies:
-  config:
-    - views.view.kt_personal
-  module:
-    - views
   theme:
     - kovelteplo
 id: kovelteplo_views_block__kt_personal_block_1
