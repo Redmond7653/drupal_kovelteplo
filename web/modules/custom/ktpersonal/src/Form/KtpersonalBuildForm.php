@@ -33,6 +33,9 @@ final class KtpersonalBuildForm extends FormBase {
     // End: Getting account number from user input.
 
 
+
+
+
     // Start: Loading all entitites about kt_account.
     if (!empty($ktuser_inputs)) {
 

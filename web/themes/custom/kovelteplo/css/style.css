@@ -3492,7 +3492,13 @@ div#sliding-popup, div#sliding-popup .eu-cookie-withdraw-banner, .eu-cookie-with
     color: #16a721;
   }
 
+  .wrong-user-input-message {
+    display: none;
+  }
+
+  .wrong-user-input-message.show {
+    display: block;
+  }
 
 
-
-}/*# sourceMappingURL=style.css.map */
+}
