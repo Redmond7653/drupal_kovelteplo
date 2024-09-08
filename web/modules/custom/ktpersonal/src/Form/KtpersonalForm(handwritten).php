@@ -179,14 +179,14 @@ final class KtpersonalForm extends FormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state): void {
 
-    if (is_null($form_state->getValue('message')) || empty($form_state->getValue('message'))) {
+    if (is_null($form_state->getValue('user_input')) || empty($form_state->getValue('user_input'))) {
       $form_state->setErrorByName(
         'message',
         $this->t('Message should not be empty.'),
       );
     }
 
-    if (mb_strlen($form_state->getValue('message')) < 3) {
+    if (mb_strlen($form_state->getValue('user_input')) < 3) {
       $form_state->setErrorByName(
         'message',
         $this->t('Message should be at least 3 characters.'),

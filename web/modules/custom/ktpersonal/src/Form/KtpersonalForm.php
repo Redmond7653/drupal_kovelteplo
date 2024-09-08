@@ -59,7 +59,7 @@ final class KtpersonalForm extends FormBase {
     //        $apartment_array_field = $entities_kt_account->get('apartment_number')->getValue();
     //      }
     //    }
-    $form['message'] = [
+    $form['user_input'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Введіть номер рахунку'),
       '#placeholder' => 'Номер рахунку',
@@ -67,7 +67,7 @@ final class KtpersonalForm extends FormBase {
 
     $form['contact'] = [
       '#type' => 'container',
-      '#attributes' => [ 'id' => 'wrong-user-unput', 'class' => ['wrong-user-input-message']],
+      '#attributes' => ['id' => 'wrong-user-unput', 'class' => ['wrong-user-input-message']],
       '#markup' => 'Дані введено неправильно',
     ];
 
@@ -126,39 +126,70 @@ final class KtpersonalForm extends FormBase {
    */
   public function validateForm(array &$form, FormStateInterface $form_state): void {
 
-    $user_input = $form_state->getValue('message');
+    $user_input = $form_state->getValue('user_input');
 
     $check_input = explode('/', $user_input);
 
-    if (strlen($check_input[1]) < 5) {
-      $check_input[1] = str_pad($check_input[1], 5, '0', STR_PAD_LEFT);
+    // If (strlen($check_input[1]) < 5) {
+    //      $check_input[1] = str_pad($check_input[1], 5, '0', STR_PAD_LEFT);
+    //
+    //      $user_input = implode('/', $check_input);
+    //    }.
 
-      $user_input = implode('/', $check_input);
-    }
 
+    if (strlen($check_input[1]) <= 5) {
 
-      $validate_user_input = \Drupal::entityTypeManager()
-        ->getStorage('ktpersonal_kt_account')
-        ->loadByProperties([
-          'account_number' => $user_input,
-        ]);
+      $validate_user_input = FALSE;
 
-      if (empty($validate_user_input)) {
-        $form_state->setErrorByName(
-          'message',
-          $this->t('Номер особового рахунку не знайдено')
-        );
+      for ($i = strlen($check_input[1]); $i < 6; $i++) {
+
+//        $t = 0;
+//        $t++;
+//
+//        $check_input[1] = str_pad($check_input[1], strlen($check_input[1]) + $t, '0', STR_PAD_LEFT);
+        if ($i > strlen($check_input[1])) {
+          $check_input[1] = '0' . $check_input[1];
+        }
+
+        $user_input = implode('/', $check_input);
+
+        $validate_user_input = \Drupal::entityTypeManager()
+          ->getStorage('ktpersonal_kt_account')
+          ->loadByProperties([
+            'account_number' => $user_input,
+          ]);
+
+        if ($validate_user_input) {
+//          $check = TRUE;
+          $form['user_input'] = $user_input;
+          break;
+
+        }
+
       }
 
+    }
 
-    if (is_null($form_state->getValue('message')) || empty($form_state->getValue('message'))) {
+    // $validate_user_input = \Drupal::entityTypeManager()
+    //        ->getStorage('ktpersonal_kt_account')
+    //        ->loadByProperties([
+    //          'account_number' => $user_input,
+    //        ]);
+    if (!$validate_user_input) {
+      $form_state->setErrorByName(
+        'message',
+        $this->t('Номер особового рахунку не знайдено')
+      );
+    }
+
+    if (is_null($form_state->getValue('user_input')) || empty($form_state->getValue('user_input'))) {
       $form_state->setErrorByName(
         'message',
         $this->t('Message should not be empty.'),
       );
     }
 
-    if (mb_strlen($form_state->getValue('message')) < 3) {
+    if (mb_strlen($form_state->getValue('user_input')) < 3) {
       $form_state->setErrorByName(
         'message',
         $this->t('Message should be at least 3 characters.'),
@@ -172,16 +203,17 @@ final class KtpersonalForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
 
+//    $ktuser_all_inputs = $form_state->getUserInput();
+//    $ktuser_account_number = $ktuser_all_inputs['message'];
+//    $check_input = explode('/', $ktuser_account_number);
+//
+//    if (strlen($check_input[1]) < 5) {
+//      $check_input[1] = str_pad($check_input[1], 5, '0', STR_PAD_LEFT);
+//
+//      $ktuser_account_number = implode('/', $check_input);
+//    }
 
-    $ktuser_all_inputs = $form_state->getUserInput();
-    $ktuser_account_number = $ktuser_all_inputs['message'];
-    $check_input = explode('/', $ktuser_account_number);
-
-    if (strlen($check_input[1]) < 5) {
-      $check_input[1] = str_pad($check_input[1], 5, '0', STR_PAD_LEFT);
-
-      $ktuser_account_number = implode('/', $check_input);
-    }
+    $ktuser_account_number = $form['user_input'];
 
     $this->messenger()->addStatus($this->t('The message has been sent.'));
     // $form_state->setRedirect('ktpersonal.ktpersonal');

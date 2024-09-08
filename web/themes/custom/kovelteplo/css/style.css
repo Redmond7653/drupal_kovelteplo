@@ -150,7 +150,7 @@ a:not([class]) {
 }
 
 a {
-  color: var(--color-primary);
+  color: #08A1CA;
   background-color: transparent;
   text-decoration: none;
   transition: color 0.4s ease;
@@ -785,7 +785,7 @@ summary {
 
 #main {
   position: relative;
-  background: rgb(148, 225, 245);
+  background: rgb(255, 255, 255, 1);
   width: 100%;
   margin: 0;
   order: 2;
@@ -1790,8 +1790,8 @@ ol.breadcrumb-items li {
 .region-content-bottom .block {
   margin: 0 0 1rem 0;
   padding: 1rem;
-  background-color: var(--light);
-  box-shadow: var(--shadow);
+  background-color: white;
+  box-shadow: none;
 }
 
 /* Comments
@@ -3422,17 +3422,17 @@ div#sliding-popup, div#sliding-popup .eu-cookie-withdraw-banner, .eu-cookie-with
     background-color: white;
   }
 
-  article.contextual-region.node.node-type-novina.node-view-mode-teaser {
-    background-color: #85e2ec;
-  }
+  /*article.contextual-region.node.node-type-novina.node-view-mode-teaser {*/
+  /*  background-color: #85e2ec;*/
+  /*}*/
 
   article.contextual-region.node.node-type-novina.node-view-mode-teaser span {
-    color: #5f6ee7;
+    color: #FF6200;
   }
 
-  article.contextual-region.node.node-type-novina.node-view-mode-teaser span:hover {
-    color: #f5ffac;
-  }
+  /*article.contextual-region.node.node-type-novina.node-view-mode-teaser span:hover {*/
+  /*  color: orange;*/
+  /*}*/
 
   ul.links.inline a {
     color: #5f6ee7;
@@ -3464,7 +3464,7 @@ div#sliding-popup, div#sliding-popup .eu-cookie-withdraw-banner, .eu-cookie-with
   }
 
   .node-content a:hover {
-    color: #f5ffac;
+    color: #FF6200;
   }
 
   aside.views-label.views-label-info.bold {
@@ -3477,7 +3477,7 @@ div#sliding-popup, div#sliding-popup .eu-cookie-withdraw-banner, .eu-cookie-with
 
 
   div#block-kovelteplo-child-nodes {
-    background-color: rgb(148,225,245);
+    background: rgb(255, 255, 255, 1);
     box-shadow: none;
   }
 
@@ -3489,7 +3489,7 @@ div#sliding-popup, div#sliding-popup .eu-cookie-withdraw-banner, .eu-cookie-with
   }
 
   div#block-kovelteplo-child-nodes .block-content a:hover {
-    color: #16a721;
+    color: #FF6200;
   }
 
   .wrong-user-input-message {
@@ -3498,6 +3498,11 @@ div#sliding-popup, div#sliding-popup .eu-cookie-withdraw-banner, .eu-cookie-with
 
   .wrong-user-input-message.show {
     display: block;
+  }
+
+  h2.node-title {
+    background-color: #f0f0f3;
+    padding: 10px 5px;
   }
 
 

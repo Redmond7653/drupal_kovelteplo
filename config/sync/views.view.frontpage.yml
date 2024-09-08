@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.rss
     - core.entity_view_mode.node.teaser
+    - node.type.novina
   module:
     - node
     - user
@@ -30,7 +31,7 @@ display:
         type: mini
         options:
           offset: 0
-          items_per_page: 5
+          items_per_page: 10
           total_pages: 0
           id: 0
           tags:
@@ -183,19 +184,19 @@ display:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-        langcode:
-          id: langcode
+        type:
+          id: type
           table: node_field_data
-          field: langcode
+          field: type
           relationship: none
           group_type: group
           admin_label: ''
           entity_type: node
-          entity_field: langcode
-          plugin_id: language
+          entity_field: type
+          plugin_id: bundle
           operator: in
           value:
-            '***LANGUAGE_language_content***': '***LANGUAGE_language_content***'
+            novina: novina
           group: 1
           exposed: false
           expose:
@@ -299,7 +300,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: node
+      path: frontpage
     cache_metadata:
       max-age: -1
       contexts:
