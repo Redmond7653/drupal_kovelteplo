@@ -67,3 +67,5 @@
 /drupal
 
 /private
+/docker-compose.override.yml
+/.env

@@ -1,3 +1,8 @@
+### local dev settings for docker containers
+ln -s docker-compose.override.local.yml docker-compose.override.yml
+ln -s .env-local .env
+--------------
+
 
 drush sql-dump > private/backup/2024-02-28-23-30.sql -- Вигрузити базу
 drush sql-drop #- Скинути базу

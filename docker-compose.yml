@@ -14,21 +14,9 @@ services:
 #      - ./mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
 #      - /path/to/mariadb/data/on/host:/var/lib/mysql # Use bind mount
 
-  db:
-    image: 'mysql:5.7'
-    container_name: "${PROJECT_NAME}_db"
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: mysql
-      MYSQL_DATABASE: modx
-      MYSQL_USER: modx
-      MYSQL_PASSWORD: modx
-    command: mysqld --sql-mode=NO_ENGINE_SUBSTITUTION
-
-
 
   php:
-    image: wodby/drupal-php:$PHP_TAG
+    image: wodby/drupal:$DRUPAL_TAG
     container_name: "${PROJECT_NAME}_php"
     environment:
       # For PHP 8.2 use busybox sendmail together with "PHP_MAIL_MIXED_LF_AND_CRLF=On".
@@ -36,8 +24,9 @@ services:
 #      PHP_SENDMAIL_PATH: '/bin/busybox sendmail -t -i -S mailhog:25'
 #      PHP_SENDMAIL_PATH: '/bin/busybox sendmail -t -i -S opensmtpd:25'
 #      # For PHP <8.2 use ssmtp instead of sendmail.
-      SSMTP_MAILHUB: mailhog:1025
-#      SSMTP_MAILHUB: opensmtpd:25
+
+      SSMTP_MAILHUB: opensmtpd:25
+
       PHP_SENDMAIL_PATH: '"/usr/bin/dos2unix -u | /usr/sbin/ssmtp -t -f"'
       PHP_FPM_USER: wodby
       PHP_FPM_GROUP: wodby
@@ -84,13 +73,6 @@ services:
 #    - drupal:/var/www/html
     labels:
     - "traefik.http.routers.${PROJECT_NAME}_nginx.rule=Host(`${PROJECT_BASE_URL}`)"
-
-  mailhog:
-    image: mailhog/mailhog
-    container_name: "${PROJECT_NAME}_mailhog"
-    labels:
-    - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
-    - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
 
 #  postgres:
 #    image: wodby/postgres:$POSTGRES_TAG
@@ -141,18 +123,6 @@ services:
 #  redis:
 #    container_name: "${PROJECT_NAME}_redis"
 #    image: wodby/redis:$REDIS_TAG
-
-  adminer:
-    container_name: "${PROJECT_NAME}_adminer"
-    init: true
-    image: wodby/adminer:$ADMINER_TAG
-    environment:
-      # For PostgreSQL:
-      #      ADMINER_DEFAULT_DB_DRIVER: pgsql
-      ADMINER_DEFAULT_DB_HOST: $DB_HOST
-      ADMINER_DEFAULT_DB_NAME: $DB_NAME
-    labels:
-    - "traefik.http.routers.${PROJECT_NAME}_adminer.rule=Host(`adminer.${PROJECT_BASE_URL}`)"
 
 #  pma:
 #    image: phpmyadmin/phpmyadmin
@@ -281,16 +251,6 @@ services:
 #    - "--log-path=/tmp/chromedriver.log"
 #    - "--verbose"
 #    - "--whitelisted-ips="
-
-  traefik:
-    image: traefik:v2.0
-    container_name: "${PROJECT_NAME}_traefik"
-    command: --api.insecure=true --providers.docker
-    ports:
-    - "${PROJECT_PORT}:80"
-#    - '80:80' # Dashboard
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
 
 #x-mutagen:
 #  sync:
