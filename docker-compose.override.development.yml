@@ -1,0 +1,12 @@
+version: "3.7"
+
+networks:
+  traefik:
+    external:
+      name: traefik
+
+services:
+  nginx:
+    networks:
+      - default
+      - traefik

@@ -1,0 +1,81 @@
+version: "3.7"
+
+services:
+  php:
+    environment:
+      PHP_FPM_CLEAR_ENV: "no"
+#      #
+#      DRUSH_OPTIONS_URI: "http://${PROJECT_BASE_URL}:${PROJECT_PORT}"
+#      COLUMNS: 80 # Set 80 columns for docker exec -it.
+#      # Read instructions at https://wodby.com/docs/stacks/php/local/#xdebug
+      PHP_XDEBUG: 1
+      PHP_XDEBUG_MODE: debug
+#      PHP_XDEBUG_MODE: profile
+#      PHP_XDEBUG_USE_COMPRESSION: false
+      PHP_IDE_CONFIG: serverName=docker
+#      PHP_XDEBUG_IDEKEY: "my-ide"
+      PHP_XDEBUG_CLIENT_HOST: 172.17.0.1 # Linux
+#      PHP_XDEBUG_CLIENT_HOST: host.docker.internal # Docker 18.03+ Mac/Win
+#      PHP_XDEBUG_CLIENT_HOST: 10.0.75.1 # Windows, Docker < 18.03
+#      PHP_XDEBUG_LOG: /tmp/php-xdebug.log
+#      # PHPUnit Drupal testing configurations
+#      SIMPLETEST_BASE_URL: "http://nginx"
+#      SIMPLETEST_DB: "${DB_DRIVER}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}#tests_"
+#      MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--disable-gpu","--headless"]}}, "http://chrome:9515"]'
+
+      PHP_MAIL_MIXED_LF_AND_CRLF:
+      #      PHP_SENDMAIL_PATH: '/bin/busybox sendmail -t -i -S mailhog:25'
+      #      PHP_SENDMAIL_PATH: '/bin/busybox sendmail -t -i -S opensmtpd:25'
+      #      # For PHP <8.2 use ssmtp instead of sendmail.
+      SSMTP_MAILHUB: mailhog:1025
+      #      SSMTP_MAILHUB: opensmtpd:25
+      PHP_SENDMAIL_PATH: '"/usr/bin/dos2unix -u | /usr/sbin/ssmtp -t -f"'
+
+#  webgrind:
+#    volumes:
+#    - codebase:/mnt/codebase
+
+  db:
+    image: 'mysql:5.7'
+    container_name: "${PROJECT_NAME}_db"
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: modx
+      MYSQL_USER: modx
+      MYSQL_PASSWORD: modx
+    command: mysqld --sql-mode=NO_ENGINE_SUBSTITUTION
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: "${PROJECT_NAME}_mailhog"
+    labels:
+      - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
+      - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
+
+  adminer:
+    container_name: "${PROJECT_NAME}_adminer"
+    init: true
+    image: wodby/adminer:$ADMINER_TAG
+    environment:
+      # For PostgreSQL:
+      #      ADMINER_DEFAULT_DB_DRIVER: pgsql
+      ADMINER_DEFAULT_DB_HOST: $DB_HOST
+      ADMINER_DEFAULT_DB_NAME: $DB_NAME
+    labels:
+      - "traefik.http.routers.${PROJECT_NAME}_adminer.rule=Host(`adminer.${PROJECT_BASE_URL}`)"
+
+
+  traefik:
+    image: traefik:v2.0
+    container_name: "${PROJECT_NAME}_traefik"
+    command: --api.insecure=true --providers.docker
+    ports:
+      - "${PROJECT_PORT}:80"
+    #    - '80:80' # Dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+
+volumes:
+  codebase:
