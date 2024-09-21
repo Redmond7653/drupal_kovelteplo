@@ -1,5 +1,6 @@
 ### local dev settings for docker containers
 ln -s docker-compose.override.local.yml docker-compose.override.yml
+ln -s .env-local .env
 --------------
 
 
