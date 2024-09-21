@@ -133,7 +133,12 @@ process:
 
   summary: description
 
-  body: body
+  body/value: body
+  body/format:
+    plugin: default_value
+    default_value: basic_html
+
+#  body: body
 
   field_anotaciya_vstup_: annotation
 
