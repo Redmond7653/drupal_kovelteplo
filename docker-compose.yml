@@ -271,8 +271,8 @@ services:
 #          defaultOwner: "id:501"
 #          defaultGroup: "id:20"
 
-volumes:
-## For macOS users (Mutagen)
-#  drupal:
-# For Xdebug profiler
-  files:
+#volumes:
+### For macOS users (Mutagen)
+##  drupal:
+## For Xdebug profiler
+#  files:

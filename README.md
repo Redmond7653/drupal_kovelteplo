@@ -50,3 +50,11 @@ value
 END;
 
 -----------------------------------------
+### Вставити в файл web/sites/default/settings.php
+
+$settings['trusted_host_patterns'] = array(
+'\.localhost$', '\.local$', '\.loc$',
+'development\.kovelteplo\.org\.ua$'
+);
+
+$settings['config_sync_directory'] = '../config/sync';

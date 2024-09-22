@@ -10,3 +10,7 @@ services:
     networks:
       - default
       - traefik
+
+  mariadb:
+    volumes:
+      - ./private/mysql:/var/lib/mysql # Use bind mount
